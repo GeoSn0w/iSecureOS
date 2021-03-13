@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uX8-hv-Fvb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.76470588240000004" green="0.49019607840000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLogoLaunchpng" translatesAutoresizingMaskIntoConstraints="NO" id="aV7-GL-avX">
+                                <rect key="frame" x="84" y="236" width="246" height="424"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="securiOS booting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lR3-0S-NxV">
+                                <rect key="frame" x="119" y="801" width="176" height="41"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="ioj-j3-lyP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.91624999242082139" blue="0.98172649545359647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4f7-wE-8sA"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="84" id="6Nl-2F-lDW"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AaS-UV-qW0"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PUL-TE-SSS"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Y6T-iw-X8R"/>
+                            <constraint firstItem="uX8-hv-Fvb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Yby-17-0p4"/>
+                            <constraint firstItem="uX8-hv-Fvb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eG0-v7-W8H"/>
+                            <constraint firstItem="uX8-hv-Fvb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-44" id="ei3-CE-uWv"/>
+                            <constraint firstItem="uX8-hv-Fvb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jTD-8z-As3"/>
+                            <constraint firstItem="lR3-0S-NxV" firstAttribute="centerX" secondItem="aV7-GL-avX" secondAttribute="centerX" id="lVw-es-5iF"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="192" id="otX-67-Fx8"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="centerY" secondItem="uX8-hv-Fvb" secondAttribute="centerY" id="q7H-WJ-lFD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lR3-0S-NxV" secondAttribute="bottom" constant="20" id="xvy-0d-z5X"/>
+                            <constraint firstItem="aV7-GL-avX" firstAttribute="centerX" secondItem="uX8-hv-Fvb" secondAttribute="centerX" id="zGq-ZP-Jek"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49.275362318840585" y="374.33035714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="appLogoLaunchpng" width="170.66667175292969" height="170.66667175292969"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

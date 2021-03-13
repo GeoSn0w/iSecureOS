@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p49-tn-Mtp">
+                                <rect key="frame" x="0.0" y="-44" width="375" height="288"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.49019607843137253" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="288" id="eeH-6u-zhP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A scan is necessary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EuY-zj-fjy">
+                                <rect key="frame" x="94.5" y="171" width="186" height="28"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-OL-EpH">
+                                <rect key="frame" x="38" y="413" width="299" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="AeR-6G-RTy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="Load securiOS" backgroundImage="button_mask"/>
+                                <connections>
+                                    <action selector="beginSecureOS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qjl-UG-Dhf"/>
+                                    <segue destination="9vg-SR-JMH" kind="show" id="vDl-AV-qEN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="securiOS v1.00-B1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
+                                <rect key="frame" x="111.5" y="605" width="152" height="23.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" red="0.81568627449999997" green="0.61286604109999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by GeoSn0w (FCE365)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-ci-w8X">
+                                <rect key="frame" x="118" y="630" width="139" height="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                <color key="textColor" red="0.81568627449999997" green="0.61286604109999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield_err" translatesAutoresizingMaskIntoConstraints="NO" id="Eh3-i4-hpt">
+                                <rect key="frame" x="104" y="43" width="167" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="wDn-Nh-F0J"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.98960442742590438" green="0.97730657663561504" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Eh3-i4-hpt" firstAttribute="centerX" secondItem="p49-tn-Mtp" secondAttribute="centerX" id="21C-XN-YzX"/>
+                            <constraint firstItem="Eh3-i4-hpt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="104" id="8tK-By-o6Z"/>
+                            <constraint firstItem="EuY-zj-fjy" firstAttribute="top" secondItem="Eh3-i4-hpt" secondAttribute="bottom" constant="14" id="Bup-Pk-m8h"/>
+                            <constraint firstItem="p49-tn-Mtp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="DNt-3D-myA"/>
+                            <constraint firstItem="aEp-Bv-fsT" firstAttribute="centerX" secondItem="5eV-ci-w8X" secondAttribute="centerX" id="DSx-GP-glI"/>
+                            <constraint firstItem="Eh3-i4-hpt" firstAttribute="centerX" secondItem="EuY-zj-fjy" secondAttribute="centerX" id="GCv-XI-1Ka"/>
+                            <constraint firstItem="aEp-Bv-fsT" firstAttribute="centerX" secondItem="0oG-OL-EpH" secondAttribute="centerX" id="MWz-XQ-ECG"/>
+                            <constraint firstItem="Eh3-i4-hpt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="43" id="OH4-8M-oYF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5eV-ci-w8X" secondAttribute="bottom" constant="20" id="VhP-mZ-uYt"/>
+                            <constraint firstItem="5eV-ci-w8X" firstAttribute="top" secondItem="aEp-Bv-fsT" secondAttribute="bottom" constant="1.5" id="WZb-9M-eVH"/>
+                            <constraint firstItem="0oG-OL-EpH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XQG-DS-gcD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0oG-OL-EpH" secondAttribute="bottom" constant="203" id="dg6-69-fdN"/>
+                            <constraint firstItem="0oG-OL-EpH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="rll-pw-F8a"/>
+                            <constraint firstItem="0oG-OL-EpH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tG4-RG-WL8"/>
+                            <constraint firstItem="0oG-OL-EpH" firstAttribute="centerX" secondItem="p49-tn-Mtp" secondAttribute="centerX" id="tLF-at-2uP"/>
+                            <constraint firstItem="p49-tn-Mtp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wZz-2Y-HnT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="secureOS_Load_Btn" destination="0oG-OL-EpH" id="Gp0-KA-veX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.75" y="118.30985915492958"/>
+        </scene>
+        <!--SecuriOS Logging-->
+        <scene sceneID="bvW-Ys-bfo">
+            <objects>
+                <viewController storyboardIdentifier="logging" extendedLayoutIncludesOpaqueBars="YES" interfaceStyle="dark" id="9vg-SR-JMH" customClass="securiOS_Logging" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="we9-2Y-wmv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2un-7q-3Em">
+                                <rect key="frame" x="8" y="10" width="359" height="561"/>
+                                <color key="backgroundColor" red="0.00054205967688919585" green="0.019812372607126379" blue="0.11845653553299496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.98960442739999999" green="0.97730657659999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-hp-1mj">
+                                <rect key="frame" x="38" y="579" width="299" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="NGq-nK-48e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="Dismiss" backgroundImage="button_mask"/>
+                                <connections>
+                                    <action selector="beginSecureOS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B5X-X2-Sv5"/>
+                                    <action selector="dismissLoggingScreen:" destination="9vg-SR-JMH" eventType="touchUpInside" id="oFp-oO-nx5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sIm-ly-QK4"/>
+                        <color key="backgroundColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="0.27860124143835618" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qTM-hp-1mj" firstAttribute="top" secondItem="2un-7q-3Em" secondAttribute="bottom" constant="8" id="6Kc-7J-94m"/>
+                            <constraint firstItem="2un-7q-3Em" firstAttribute="leading" secondItem="sIm-ly-QK4" secondAttribute="leading" constant="8" id="MBD-Df-dW3"/>
+                            <constraint firstItem="qTM-hp-1mj" firstAttribute="centerX" secondItem="we9-2Y-wmv" secondAttribute="centerX" id="Tjk-OC-RjC"/>
+                            <constraint firstItem="qTM-hp-1mj" firstAttribute="leading" secondItem="sIm-ly-QK4" secondAttribute="leading" constant="38" id="VNt-wM-lJn"/>
+                            <constraint firstItem="qTM-hp-1mj" firstAttribute="centerX" secondItem="2un-7q-3Em" secondAttribute="centerX" id="YBm-R1-iwx"/>
+                            <constraint firstItem="2un-7q-3Em" firstAttribute="top" secondItem="sIm-ly-QK4" secondAttribute="top" constant="10" id="aN5-Vp-qDb"/>
+                            <constraint firstItem="sIm-ly-QK4" firstAttribute="bottom" secondItem="qTM-hp-1mj" secondAttribute="bottom" constant="9" id="uES-yY-Ueq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RAe-cJ-GQc"/>
+                    <connections>
+                        <outlet property="dismissLoggingButton" destination="qTM-hp-1mj" id="hbK-6W-iww"/>
+                        <outlet property="securiOSLoggingWindow" destination="2un-7q-3Em" id="YhC-lr-BrI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekf-z5-c7y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="117.39130434782609"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="button_mask" width="200" height="100"/>
+        <image name="shield_err" width="256" height="256"/>
+    </resources>
+</document>
