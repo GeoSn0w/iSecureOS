@@ -33,6 +33,8 @@
 #include <CoreFoundation/CoreFoundation.h>
 #import <Security/Security.h>
 
+#include "securiOS-Tampering.h"
+
 #define vm_address_t mach_vm_address_t
 #define tfp0 escalation.kernel_port
 #define slide escalation.kernel_slide
@@ -151,6 +153,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         } else {
             printf("[ i ] You do not seem to have problematic repos installed. GREAT!\n\n");
         }
+        checkTampering();
 }
 
 - (void) checkPasscodeProtectionStatus{
@@ -204,4 +207,5 @@ int potentiallyMalwareRepoCheck(char *repoToCheck) {
       fclose(filepointer);
       return -1;
 }
+
 @end

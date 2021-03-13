@@ -16,7 +16,7 @@
 		D65BF72E25F7B983003242F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF72D25F7B983003242F5 /* main.m */; };
 		D65BF73825F7B983003242F5 /* securOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF73725F7B983003242F5 /* securOSTests.m */; };
 		D65BF74325F7B984003242F5 /* securOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF74225F7B984003242F5 /* securOSUITests.m */; };
-		D678EB8E25FC48D300464879 /* securiOS-Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = D678EB8D25FC48D300464879 /* securiOS-Networking.m */; };
+		D678EB8E25FC48D300464879 /* securiOS-Tampering.m in Sources */ = {isa = PBXBuildFile; fileRef = D678EB8D25FC48D300464879 /* securiOS-Tampering.m */; };
 		D6AE881C25F7E55A0088F23B /* securiOS-Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE881B25F7E55A0088F23B /* securiOS-Logging.m */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +56,8 @@
 		D65BF73E25F7B984003242F5 /* securiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = securiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65BF74225F7B984003242F5 /* securOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = securOSUITests.m; sourceTree = "<group>"; };
 		D65BF74425F7B984003242F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D678EB8D25FC48D300464879 /* securiOS-Networking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "securiOS-Networking.m"; sourceTree = "<group>"; };
-		D678EB9225FC48E700464879 /* securiOS-Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "securiOS-Networking.h"; sourceTree = "<group>"; };
+		D678EB8D25FC48D300464879 /* securiOS-Tampering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "securiOS-Tampering.m"; sourceTree = "<group>"; };
+		D678EB9225FC48E700464879 /* securiOS-Tampering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "securiOS-Tampering.h"; sourceTree = "<group>"; };
 		D6AE881A25F7E55A0088F23B /* securiOS-Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "securiOS-Logging.h"; sourceTree = "<group>"; };
 		D6AE881B25F7E55A0088F23B /* securiOS-Logging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "securiOS-Logging.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,8 +120,8 @@
 				D65BF72425F7B982003242F5 /* Main.storyboard */,
 				D6AE881A25F7E55A0088F23B /* securiOS-Logging.h */,
 				D6AE881B25F7E55A0088F23B /* securiOS-Logging.m */,
-				D678EB8D25FC48D300464879 /* securiOS-Networking.m */,
-				D678EB9225FC48E700464879 /* securiOS-Networking.h */,
+				D678EB8D25FC48D300464879 /* securiOS-Tampering.m */,
+				D678EB9225FC48E700464879 /* securiOS-Tampering.h */,
 				D65BF72725F7B983003242F5 /* Assets.xcassets */,
 				D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */,
 				D65BF72C25F7B983003242F5 /* Info.plist */,
@@ -288,7 +288,7 @@
 				D65BF72325F7B982003242F5 /* ViewController.m in Sources */,
 				D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */,
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
-				D678EB8E25FC48D300464879 /* securiOS-Networking.m in Sources */,
+				D678EB8E25FC48D300464879 /* securiOS-Tampering.m in Sources */,
 				D65BF72025F7B982003242F5 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
