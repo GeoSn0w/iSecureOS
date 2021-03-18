@@ -16,8 +16,8 @@
 		D65BF72E25F7B983003242F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF72D25F7B983003242F5 /* main.m */; };
 		D65BF73825F7B983003242F5 /* securOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF73725F7B983003242F5 /* securOSTests.m */; };
 		D65BF74325F7B984003242F5 /* securOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF74225F7B984003242F5 /* securOSUITests.m */; };
-		D678EB8E25FC48D300464879 /* securiOS-Tampering.m in Sources */ = {isa = PBXBuildFile; fileRef = D678EB8D25FC48D300464879 /* securiOS-Tampering.m */; };
-		D6AE881C25F7E55A0088F23B /* securiOS-Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE881B25F7E55A0088F23B /* securiOS-Logging.m */; };
+		D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */ = {isa = PBXBuildFile; fileRef = D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */; };
+		D6AE881C25F7E55A0088F23B /* iSecureOS-Core.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D65BF71825F7B982003242F5 /* securiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = securiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65BF71825F7B982003242F5 /* iSecureOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSecureOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65BF71B25F7B982003242F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D65BF71C25F7B982003242F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D65BF71E25F7B982003242F5 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -50,16 +50,16 @@
 		D65BF72A25F7B983003242F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D65BF72C25F7B983003242F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D65BF72D25F7B983003242F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D65BF73325F7B983003242F5 /* securiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = securiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65BF73325F7B983003242F5 /* iSecureOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSecureOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65BF73725F7B983003242F5 /* securOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = securOSTests.m; sourceTree = "<group>"; };
 		D65BF73925F7B983003242F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D65BF73E25F7B984003242F5 /* securiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = securiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65BF73E25F7B984003242F5 /* iSecureOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSecureOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65BF74225F7B984003242F5 /* securOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = securOSUITests.m; sourceTree = "<group>"; };
 		D65BF74425F7B984003242F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D678EB8D25FC48D300464879 /* securiOS-Tampering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "securiOS-Tampering.m"; sourceTree = "<group>"; };
-		D678EB9225FC48E700464879 /* securiOS-Tampering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "securiOS-Tampering.h"; sourceTree = "<group>"; };
-		D6AE881A25F7E55A0088F23B /* securiOS-Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "securiOS-Logging.h"; sourceTree = "<group>"; };
-		D6AE881B25F7E55A0088F23B /* securiOS-Logging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "securiOS-Logging.m"; sourceTree = "<group>"; };
+		D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Tampering.m"; sourceTree = "<group>"; };
+		D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Tampering.h"; sourceTree = "<group>"; };
+		D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Core.h"; sourceTree = "<group>"; };
+		D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Core.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +100,9 @@
 		D65BF71925F7B982003242F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D65BF71825F7B982003242F5 /* securiOS.app */,
-				D65BF73325F7B983003242F5 /* securiOSTests.xctest */,
-				D65BF73E25F7B984003242F5 /* securiOSUITests.xctest */,
+				D65BF71825F7B982003242F5 /* iSecureOS.app */,
+				D65BF73325F7B983003242F5 /* iSecureOSTests.xctest */,
+				D65BF73E25F7B984003242F5 /* iSecureOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,12 +117,12 @@
 				D65BF71F25F7B982003242F5 /* SceneDelegate.m */,
 				D65BF72125F7B982003242F5 /* ViewController.h */,
 				D65BF72225F7B982003242F5 /* ViewController.m */,
-				D65BF72425F7B982003242F5 /* Main.storyboard */,
-				D6AE881A25F7E55A0088F23B /* securiOS-Logging.h */,
-				D6AE881B25F7E55A0088F23B /* securiOS-Logging.m */,
-				D678EB8D25FC48D300464879 /* securiOS-Tampering.m */,
-				D678EB9225FC48E700464879 /* securiOS-Tampering.h */,
+				D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */,
+				D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */,
+				D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */,
+				D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */,
 				D65BF72725F7B983003242F5 /* Assets.xcassets */,
+				D65BF72425F7B982003242F5 /* Main.storyboard */,
 				D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */,
 				D65BF72C25F7B983003242F5 /* Info.plist */,
 				D65BF72D25F7B983003242F5 /* main.m */,
@@ -158,9 +158,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D65BF71725F7B982003242F5 /* securiOS */ = {
+		D65BF71725F7B982003242F5 /* iSecureOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D65BF74725F7B984003242F5 /* Build configuration list for PBXNativeTarget "securiOS" */;
+			buildConfigurationList = D65BF74725F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOS" */;
 			buildPhases = (
 				D65BF71425F7B982003242F5 /* Sources */,
 				D65BF71525F7B982003242F5 /* Frameworks */,
@@ -170,14 +170,14 @@
 			);
 			dependencies = (
 			);
-			name = securiOS;
+			name = iSecureOS;
 			productName = securOS;
-			productReference = D65BF71825F7B982003242F5 /* securiOS.app */;
+			productReference = D65BF71825F7B982003242F5 /* iSecureOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D65BF73225F7B983003242F5 /* securiOSTests */ = {
+		D65BF73225F7B983003242F5 /* iSecureOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D65BF74A25F7B984003242F5 /* Build configuration list for PBXNativeTarget "securiOSTests" */;
+			buildConfigurationList = D65BF74A25F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOSTests" */;
 			buildPhases = (
 				D65BF72F25F7B983003242F5 /* Sources */,
 				D65BF73025F7B983003242F5 /* Frameworks */,
@@ -188,14 +188,14 @@
 			dependencies = (
 				D65BF73525F7B983003242F5 /* PBXTargetDependency */,
 			);
-			name = securiOSTests;
+			name = iSecureOSTests;
 			productName = securOSTests;
-			productReference = D65BF73325F7B983003242F5 /* securiOSTests.xctest */;
+			productReference = D65BF73325F7B983003242F5 /* iSecureOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D65BF73D25F7B983003242F5 /* securiOSUITests */ = {
+		D65BF73D25F7B983003242F5 /* iSecureOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D65BF74D25F7B984003242F5 /* Build configuration list for PBXNativeTarget "securiOSUITests" */;
+			buildConfigurationList = D65BF74D25F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOSUITests" */;
 			buildPhases = (
 				D65BF73A25F7B983003242F5 /* Sources */,
 				D65BF73B25F7B983003242F5 /* Frameworks */,
@@ -206,9 +206,9 @@
 			dependencies = (
 				D65BF74025F7B984003242F5 /* PBXTargetDependency */,
 			);
-			name = securiOSUITests;
+			name = iSecureOSUITests;
 			productName = securOSUITests;
-			productReference = D65BF73E25F7B984003242F5 /* securiOSUITests.xctest */;
+			productReference = D65BF73E25F7B984003242F5 /* iSecureOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -232,7 +232,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D65BF71325F7B982003242F5 /* Build configuration list for PBXProject "securiOS" */;
+			buildConfigurationList = D65BF71325F7B982003242F5 /* Build configuration list for PBXProject "iSecureOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -245,9 +245,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D65BF71725F7B982003242F5 /* securiOS */,
-				D65BF73225F7B983003242F5 /* securiOSTests */,
-				D65BF73D25F7B983003242F5 /* securiOSUITests */,
+				D65BF71725F7B982003242F5 /* iSecureOS */,
+				D65BF73225F7B983003242F5 /* iSecureOSTests */,
+				D65BF73D25F7B983003242F5 /* iSecureOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -284,11 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6AE881C25F7E55A0088F23B /* securiOS-Logging.m in Sources */,
+				D6AE881C25F7E55A0088F23B /* iSecureOS-Core.m in Sources */,
 				D65BF72325F7B982003242F5 /* ViewController.m in Sources */,
 				D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */,
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
-				D678EB8E25FC48D300464879 /* securiOS-Tampering.m in Sources */,
+				D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */,
 				D65BF72025F7B982003242F5 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,12 +314,12 @@
 /* Begin PBXTargetDependency section */
 		D65BF73525F7B983003242F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D65BF71725F7B982003242F5 /* securiOS */;
+			target = D65BF71725F7B982003242F5 /* iSecureOS */;
 			targetProxy = D65BF73425F7B983003242F5 /* PBXContainerItemProxy */;
 		};
 		D65BF74025F7B984003242F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D65BF71725F7B982003242F5 /* securiOS */;
+			target = D65BF71725F7B982003242F5 /* iSecureOS */;
 			targetProxy = D65BF73F25F7B984003242F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -510,7 +510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.securOS.securOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/securiOS.app/securiOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSecureOS.app/iSecureOS";
 			};
 			name = Debug;
 		};
@@ -530,7 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.securOS.securOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/securiOS.app/securiOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSecureOS.app/iSecureOS";
 			};
 			name = Release;
 		};
@@ -573,7 +573,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D65BF71325F7B982003242F5 /* Build configuration list for PBXProject "securiOS" */ = {
+		D65BF71325F7B982003242F5 /* Build configuration list for PBXProject "iSecureOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D65BF74525F7B984003242F5 /* Debug */,
@@ -582,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D65BF74725F7B984003242F5 /* Build configuration list for PBXNativeTarget "securiOS" */ = {
+		D65BF74725F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D65BF74825F7B984003242F5 /* Debug */,
@@ -591,7 +591,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D65BF74A25F7B984003242F5 /* Build configuration list for PBXNativeTarget "securiOSTests" */ = {
+		D65BF74A25F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D65BF74B25F7B984003242F5 /* Debug */,
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D65BF74D25F7B984003242F5 /* Build configuration list for PBXNativeTarget "securiOSUITests" */ = {
+		D65BF74D25F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D65BF74E25F7B984003242F5 /* Debug */,

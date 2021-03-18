@@ -17,6 +17,8 @@
     [super viewDidLoad];
     _secureOS_Load_Btn.layer.cornerRadius = 22;
     _secureOS_Load_Btn.clipsToBounds = YES;
+    _settingsbutton.layer.cornerRadius = 22;
+    _settingsbutton.clipsToBounds = YES;
 }
 
 - (IBAction)beginSecureOS:(id)sender {

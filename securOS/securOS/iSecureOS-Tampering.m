@@ -6,7 +6,7 @@
 //  Thanks: avltree9798 for their isJailbroken Open Source snippets.
 
 #import <Foundation/Foundation.h>
-#import "securiOS-Tampering.h"
+#import "iSecureOS-Tampering.h"
 #import <dlfcn.h>
 #import <mach-o/dyld.h>
 #import <TargetConditionals.h>

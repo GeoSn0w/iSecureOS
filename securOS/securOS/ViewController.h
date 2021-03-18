@@ -9,6 +9,7 @@
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *secureOS_Load_Btn;
+@property (weak, nonatomic) IBOutlet UIButton *settingsbutton;
 
 
 @end
