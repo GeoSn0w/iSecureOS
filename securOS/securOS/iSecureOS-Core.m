@@ -17,6 +17,7 @@
 #include <dlfcn.h>
 #include <string.h>
 
+#include <spawn.h>
 #include <sys/stat.h>
 #include <sys/proc.h>
 #include <sys/syscall.h>
@@ -38,9 +39,9 @@
 #include "iSecureOS-Tampering.h"
 
 #define vm_address_t mach_vm_address_t
-#define tfp0 escalation.kernel_port
-#define slide escalation.kernel_slide
-#define kbase escalation.kernel_base
+#define tfp0 pwnage.kernel_port
+#define slide pwnage.kernel_slide
+#define kbase pwnage.kernel_base
 
 #define kalloc Kernel_alloc
 #define kfree Kernel_free
@@ -54,12 +55,11 @@ bool isProblematicReposPresent = false;
 //***********************************************
 
 
-typedef struct escalation_data
-{
+typedef struct kernel_data_t {
     mach_port_t kernel_port;
     mach_vm_address_t kernel_base;
     mach_vm_offset_t kernel_slide;
-} escalation_data_t;
+} kernel_data_t;
 
 @interface securiOS_Logging () <UITableViewDelegate, UITableViewDataSource>
 
@@ -67,6 +67,9 @@ typedef struct escalation_data
 
 NSMutableArray * Vulnerabilities;
 NSMutableArray * VulnerabilityDetails;
+NSMutableArray * VulnerabilitySeverity;
+NSString *selectedVulnerabilityForDetails;
+
 char *mostLikelyJailbreak;
 
 @implementation securiOS_Logging
@@ -90,20 +93,33 @@ char *mostLikelyJailbreak;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"secuiOSTableCell"];
     cell.textLabel.text = [Vulnerabilities objectAtIndex:(indexPath.row)];
     cell.detailTextLabel.text = [VulnerabilityDetails objectAtIndex:(indexPath.row)];
-    
+    [[cell textLabel] setNumberOfLines:0];
+    [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+    [[cell textLabel] setFont:[UIFont systemFontOfSize: 14.0]];
     return cell;
     
 }
 
-escalation_data_t escalation = {};
-kern_return_t get_kernelport(escalation_data_t* data)
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectedVulnerabilityForDetails = [Vulnerabilities objectAtIndex:indexPath.row];
     
-    if(!data)
-    {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Vulnerability details"
+                               message:[VulnerabilityDetails objectAtIndex:indexPath.row]
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+kernel_data_t pwnage = {};
+kern_return_t get_kernelport(kernel_data_t* data){
+    if(!data){
         return KERN_INVALID_ARGUMENT;
     }
-    
     return host_get_special_port(mach_host_self(), HOST_LOCAL_NODE, 4, &tfp0);
 }
 - (void)redirectNotificationHandle:(NSNotification *)nf{
@@ -149,48 +165,49 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 - (void) initsecuriOS {
         Vulnerabilities = [[NSMutableArray alloc] init];
         VulnerabilityDetails = [[NSMutableArray alloc] init];
+        VulnerabilitySeverity = [[NSMutableArray alloc] init];
         kern_return_t oskernfail = KERN_SUCCESS;
-        printf("securiOS v1.0 by GeoSn0w (@FCE365)\n");
+        setuid(0);
+        printf("iSecureOS v1.0 by GeoSn0w (@FCE365)\n");
         printf("Initializing securiOS...\n", NULL);
         printf("Performing jailbreak probing...\n", NULL);
-        if (performJailbreakProbingAtPath() == 0) {
-            oskernfail = get_kernelport(&escalation);
-            printf("[ i ] Testing to see if tfp0 / hsp4 is exported...\n");
-            printf("[ i ] Kernel Task Port is 0x%x\n", tfp0);
-            if(oskernfail) {
-                printf("[ ! ] Failed to get kernel taskport: %s.\n", mach_error_string(oskernfail));
-            } else {
-                printf("[VULNERABILITY] Kernel Task Port IS Exported. Disable it after running securiOS.\n\n");
-            }
-            [self checkPasswordDefaulting];
-            // Performing repo sanity checks. This will check if the user has installed any problematic repos.
-            if (potentiallyMalwareRepoCheck("cydia.kiiimo.org") == 0){
-                printf("[VULNERABILITY] cydia.kiiimo.org is a problematic piracy repo which can contain malware, outdated tweaks or otherwise modified tweaks. You should remove it, and everything installed from it.\n\n");
-            }
-            if (potentiallyMalwareRepoCheck("repo.hackyouriphone.org") == 0){
-                printf("[VULNERABILITY] repo.hackyouriphone.org is a problematic piracy repo which can contain malware, outdated tweaks or otherwise modified tweaks. You should remove it, and everything installed from it.\n\n");
-            }
-            // End repo sanity checks
-            if (isProblematicReposPresent){
-                printf("[VULNERABILITY] You have pirate repos installed in your Cydia.\n\n");
-            } else {
-                printf("[ i ] You do not seem to have problematic repos installed. GREAT!\n\n");
-            }
-            checkTampering();
-        } else if (performJailbreakProbingAtPath() == 1){
-            printf("This device appears to be jailbroken, but it's not in the jailbroken state. Please enable the jailbreak first, and then run iSecureOS.\n");
-            [Vulnerabilities addObject:@"Could not probe!"];
-            [VulnerabilityDetails addObject:@"The device is not in jailbroken state. Can't probe."];
-            [_securiOSTableView reloadData];
-        } else if (performJailbreakProbingAtPath() == -1) {
-            printf("This device is not jailbroken. iSecureOS can only perform a very small amount of checks.");
-            [Vulnerabilities addObject:@"Could not probe!"];
-            [VulnerabilityDetails addObject:@"The device is not jailbroken. Cannot assess vulnerabilities."];
+        int jailbreakProbing = performJailbreakProbingAtPath();
+        switch (jailbreakProbing) {
+            case 0:
+                oskernfail = get_kernelport(&pwnage);
+                printf("[ i ] Testing to see if tfp0 / hsp4 is exported...\n");
+                if(oskernfail) {
+                    printf("[ ! ] Failed to get kernel taskport: %s. Good.\n", mach_error_string(oskernfail));
+                } else {
+                    printf("[VULNERABILITY] Kernel Task Port IS Exported. Disable it after running securiOS.\n\n");
+                    printf("[ i ] Kernel Task Port is 0x%x\n", tfp0);
+                }
+                performSuspectRepoScanning();
+                checkForUnsafeTweaks();
+                checkForOutdatedPackages();
+                [self checkPasswordDefaulting];
+                break;
+            case 1:
+                printf("This device appears to be jailbroken, but it's not in the jailbroken state. Please enable the jailbreak first, and then run iSecureOS.\n");
+                [Vulnerabilities addObject:@"Could not probe!"];
+                [VulnerabilityDetails addObject:@"The device is not in jailbroken state. Can't probe."];
+                [_securiOSTableView reloadData];
+                break;
+            case 2:
+                printf("This device is not jailbroken. iSecureOS can only perform a very small amount of checks.");
+                [Vulnerabilities addObject:@"Could not probe!"];
+                [VulnerabilityDetails addObject:@"The device is not jailbroken. Cannot assess vulnerabilities."];
+                break;
+                
+            default:
+                printf("This device is not jailbroken. iSecureOS can only perform a very small amount of checks.");
+                [Vulnerabilities addObject:@"Could not probe!"];
+                [VulnerabilityDetails addObject:@"The device is not jailbroken. Cannot assess vulnerabilities."];
+                break;
         }
-
         [self checkPasscodeProtectionStatus];
-        [_securiOSTableView reloadData];
-        changeUserPassword();
+        
+        //changeUserPassword();
 }
 
 - (void) checkPasscodeProtectionStatus{
@@ -208,6 +225,15 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     return;
 }
 
+void printUnsafeRepoWarning(char *problematicRepo){
+    printf("[VULNERABILITY] %s is a problematic piracy repo which can contain malware, outdated tweaks or otherwise modified tweaks. You should remove it, and everything installed from it.\n\n", problematicRepo);
+    return;
+}
+
+void printUnsafeTweakWarning(char *problematicTweak){
+    printf("[VULNERABILITY] %s is a problematic tweak which can contain malware. Tweaks used to pirate Cydia tweaks, like CyDown, create botnets on your device to attempt to grab tweaks and share them with pirates from your UDID. In the case of LocaliAPStore, many applications detect this and may refuze to work and may ban you.\n\n", problematicTweak);
+    return;
+}
 - (int) checkPasswordDefaulting {
       FILE *filepointer;
       char *searchString="root:/smx7MYTQIi2M";
@@ -243,7 +269,7 @@ int potentiallyMalwareRepoCheck(char *repoToCheck) {
         }
       }
       fclose(filepointer);
-      return -1;
+      return 1;
 }
 
 bool file_exists (char *filename) {
@@ -252,18 +278,18 @@ bool file_exists (char *filename) {
 }
 
 int performJailbreakProbingAtPath(){
-    int result = -1;
+    int result = 2;
     printf("Attempting to detect if the device is jailbroken...\n");
-    /*
     FILE * f = fopen("/var/mobile/iSecureOS", "w");
        if (!f) {
+           fclose(f);
            fprintf(stderr,"Random processes are running sandboxed. Will attempt to check further.\n");
        } else {
            printf("Detected sandbox escape. This device is likely jailbroken.\n");
            result = 0;
+           fclose(f);
            return result;
        }
-    */
     if(file_exists("/Applications/Cydia.app" )) {
         printf("[ i ] Found Cydia installed. This device is jailbroken.\n");
         result = 1;
@@ -296,12 +322,163 @@ int performJailbreakProbingAtPath(){
     
     return result;
 }
+int checkForUnsafeTweaks(){
+    if(file_exists("/Library/MobileSubstrate/DynamicLibraries/CyDown.dylib" )) {
+        printUnsafeTweakWarning("CyDown");
+        [Vulnerabilities addObject:@"CyDown is an unsafe pirate tweak / Botnet."];
+        [VulnerabilityDetails addObject:@"This is a pirate tweak used to get paid tweaks for free. There are reports in the community from developers (LaughingQuoll et al.), that the tweak acts as a botnet and uses your device / UDID to grab tweaks from Packix and other legitimate repos in your name, and then share them with pirates. It's advised to uninstall it for your safety."];
+    }
+    if(file_exists("/Library/MobileSubstrate/DynamicLibraries/LocalIAPStore.dylib") || file_exists("/Library/MobileSubstrate/DynamicLibraries/LocalIAPStore13.dylib")) {
+        printUnsafeTweakWarning("LocaliAPStore");
+        [Vulnerabilities addObject:@"LocaliAPStore is an unsafe pirate tweak that can get you banned."];
+        [VulnerabilityDetails addObject:@"LocaliAPStore is a pirate repo that makes some applications believe you made a real in-app purchase / microtransaction. Many applications are nowadays immune to it, but may ban you because you have it installed."];
+    }
+    return 0;
+}
+void performSuspectRepoScanning(){
+    // Performing repo sanity checks. This will check if the user has installed any problematic repos.
+    if (potentiallyMalwareRepoCheck("cydia.kiiimo.org") == 0){
+        printUnsafeRepoWarning("cydia.kiiimo.org");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("repo.hackyouriphone.org") == 0){
+        printUnsafeRepoWarning("repo.hackyouriphone.org");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("repo.xarold.com")){
+        printUnsafeRepoWarning("repo.xarold.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("repo.biteyourapple.net") == 0){
+        printUnsafeRepoWarning("repo.biteyourapple.net");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("sinfuliphonerepo.com") == 0){
+        printUnsafeRepoWarning("sinfuliphonerepo.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("cydia.iphonecake.com") == 0){
+        printUnsafeRepoWarning("cydia.iphonecake.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("repo.insanelyi.com") == 0){
+        printUnsafeRepoWarning("repo.insanelyi.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("idwaneo.org") == 0){
+        printUnsafeRepoWarning("idwaneo.org");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("ihackstore.com") == 0){
+        printUnsafeRepoWarning("ihackstore.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("ihacksrepo.com") == 0){
+        printUnsafeRepoWarning("ihacksrepo.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("xsellize.com") == 0){
+        printUnsafeRepoWarning("xsellize.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("pulandres") == 0){
+        printUnsafeRepoWarning("Pulandres");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("idevicehacked.com") == 0){
+        printUnsafeRepoWarning("idevicehacked.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("repo.appvv.com") == 0){
+        printUnsafeRepoWarning("repo.appvv.com");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("julioverne.github.io") == 0){
+        printUnsafeRepoWarning("julioverne.github.io");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("mainrepo.org") == 0){
+        printUnsafeRepoWarning("mainrepo.org");
+        isProblematicReposPresent = true;
+    }
+    if (potentiallyMalwareRepoCheck("rejail.ru") == 0){
+        printUnsafeRepoWarning("rejail.ru");
+        isProblematicReposPresent = true;
+    }
+    // End repo sanity checks
+    if (isProblematicReposPresent){
+        printf("[VULNERABILITY] You have pirate repos installed in your Cydia.\n\n");
+    } else {
+        printf("[ i ] You do not seem to have problematic repos installed. GREAT!\n\n");
+    }
+}
+int execprog(const char *prog, const char* args[]) {
+    if (args == NULL) {
+        args = (const char **)&(const char*[]){ prog, NULL };
+    }
+    
+    printf("Spawning [ ");
+    for (const char **arg = args; *arg != NULL; ++arg) {
+        printf("'%s' ", *arg);
+    }
+    
+    int rv;
+    posix_spawn_file_actions_t child_fd_actions;
+    if ((rv = posix_spawn_file_actions_init (&child_fd_actions))) {
+        perror ("posix_spawn_file_actions_init");
+        return rv;
+    }
+    
+    if ((rv = posix_spawn_file_actions_adddup2 (&child_fd_actions, STDOUT_FILENO, STDERR_FILENO))) {
+        perror ("posix_spawn_file_actions_adddup2");
+        return rv;
+    }
+    
+    pid_t pd;
+    if ((rv = posix_spawn(&pd, prog, &child_fd_actions, NULL, (char**)args, NULL))) {
+        printf("posix_spawn error: %d (%s)\n", rv, strerror(rv));
+        return rv;
+    }
+    
+    printf("process spawned with pid %d \n", pd);
+    
+    int status;
+    waitpid(pd, &status, 0);
+    printf("'%s' exited with %d (sig %d)\n", prog, WEXITSTATUS(status), WTERMSIG(status));
+    return 0;
+}
+
+int checkForOutdatedPackages(){
+    execprog("apt-get upgrade -s | grep upgraded | cut -d ' ' -f 1", NULL);
+    FILE * f = fopen("/var/mobile/tbd", "r");
+       if (f) {
+           fprintf(stderr,"Successfully fetched the amount of outdated packages.\n");
+             int tweaksToBeUpdated = 0;
+             fscanf (f, "%d", &tweaksToBeUpdated);
+             while (!feof (f))
+               {
+                 printf ("%d ", tweaksToBeUpdated);
+                 fscanf (f, "%d", &tweaksToBeUpdated);
+               }
+             fclose (f);
+           if (tweaksToBeUpdated == 0){
+               printf("[ i ] No outdated tweaks detected! Great! (Ignores the ones you specifically downgraded.)");
+           } else {
+               printf("[ ! ] There are tweaks that need to be upgraded! It's recommended that you always get the latest version of the tweaks.");
+               NSString *message = [NSString stringWithFormat:@"You have %d outdated tweaks! Please update them.", tweaksToBeUpdated];
+               [Vulnerabilities addObject:message];
+               [VulnerabilityDetails addObject:@"It's important to keep your tweaks up to date to ensure you get the latest bug fixes and security improvements for your tweaks. Many tweaks get fixed daily and updates are being pushed, especially for stability reasons. Navigate to your favorite Package Manager and update your tweaks."];
+           }
+       } else {
+           printf("Could not parse amount of outdated packages...\n");
+       }
+    return 0;
+}
 
 int changeUserPassword(){
         char cmd[32];
         sprintf(cmd, " passwd %s", "root");
         FILE *fp= popen(cmd, "w");
-        fprintf(fp, "%s\n", "alpine");
         fprintf(fp, "%s\n", "dory");
         fprintf(fp, "%s\n", "dory");
     if (pclose(fp) == 0){

@@ -133,6 +133,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RAe-cJ-GQc"/>
                     <connections>
+                        <outlet property="dismissLoggingButton" destination="qTM-hp-1mj" id="Jwc-Uf-5vi"/>
                         <outlet property="securiOSLoggingWindow" destination="2un-7q-3Em" id="YhC-lr-BrI"/>
                     </connections>
                 </viewController>

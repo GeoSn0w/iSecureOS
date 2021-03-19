@@ -10,9 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface securiOS_Logging : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *dismissLoggingButton;
 @property (weak, nonatomic) IBOutlet UITextView *securiOSLoggingWindow;
 @property (weak, nonatomic) IBOutlet UITableView *securiOSTableView;
+@property (weak, nonatomic) IBOutlet UIButton *dismissLoggingButton;
 
 @end
 
