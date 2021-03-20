@@ -9,6 +9,8 @@
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *secureOS_Load_Btn;
+@property (weak, nonatomic) IBOutlet UILabel *currentStatus;
+@property (weak, nonatomic) IBOutlet UIImageView *shieldStatus;
 
 
 @end

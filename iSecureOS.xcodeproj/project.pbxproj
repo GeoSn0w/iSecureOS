@@ -18,6 +18,7 @@
 		D65BF74325F7B984003242F5 /* securOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF74225F7B984003242F5 /* securOSUITests.m */; };
 		D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */ = {isa = PBXBuildFile; fileRef = D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */; };
 		D6AE881C25F7E55A0088F23B /* iSecureOS-Core.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */; };
+		D6B5008426058C010073E833 /* iSecureOS-Security.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B5008326058C010073E833 /* iSecureOS-Security.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Tampering.h"; sourceTree = "<group>"; };
 		D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Core.h"; sourceTree = "<group>"; };
 		D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Core.m"; sourceTree = "<group>"; };
+		D6B5008326058C010073E833 /* iSecureOS-Security.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Security.m"; sourceTree = "<group>"; };
+		D6B5008826058D4C0073E833 /* iSecureOS-Security.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Security.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				D65BF72225F7B982003242F5 /* ViewController.m */,
 				D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */,
 				D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */,
+				D6B5008326058C010073E833 /* iSecureOS-Security.m */,
+				D6B5008826058D4C0073E833 /* iSecureOS-Security.h */,
 				D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */,
 				D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */,
 				D65BF72725F7B983003242F5 /* Assets.xcassets */,
@@ -290,6 +295,7 @@
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
 				D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */,
 				D65BF72025F7B982003242F5 /* SceneDelegate.m in Sources */,
+				D6B5008426058C010073E833 /* iSecureOS-Security.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +475,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.securiOSs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.securiOSd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -488,7 +494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.securiOSs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.securiOSd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

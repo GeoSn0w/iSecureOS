@@ -19,8 +19,4 @@
     _secureOS_Load_Btn.clipsToBounds = YES;
 }
 
-- (IBAction)beginSecureOS:(id)sender {
-    
-}
-
 @end

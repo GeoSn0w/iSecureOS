@@ -37,6 +37,7 @@
 #import <Security/Security.h>
 
 #include "iSecureOS-Tampering.h"
+#include "iSecureOS-Security.h"
 
 #define vm_address_t mach_vm_address_t
 #define tfp0 pwnage.kernel_port
@@ -69,6 +70,8 @@ NSMutableArray * Vulnerabilities;
 NSMutableArray * VulnerabilityDetails;
 NSMutableArray * VulnerabilitySeverity;
 NSString *selectedVulnerabilityForDetails;
+NSTimer * uiProgressTime;
+float duration;
 
 char *mostLikelyJailbreak;
 
@@ -76,13 +79,105 @@ char *mostLikelyJailbreak;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _dismissLoggingButton.layer.cornerRadius = 22;
-    _dismissLoggingButton.clipsToBounds = YES;
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+        [self.view addGestureRecognizer:gestureRecognizer];
+        gestureRecognizer.cancelsTouchesInView = NO;
+    _viewVulnerabilities.layer.cornerRadius = 22;
+    _viewVulnerabilities.clipsToBounds = YES;
+    _viewScanLog.layer.cornerRadius = 19;
+    _viewScanLog.clipsToBounds = YES;
     [self redirectSTD:STDOUT_FILENO];
     [self initsecuriOS];
 }
-- (IBAction)dismissLoggingScreen:(id)sender {
+-(void)updateProgress {
+    duration += 0.1;
+    _scannProgressbar.progress = (duration/5.0);
+
+    if (_scannProgressbar.progress == 1)
+    {
+        [uiProgressTime invalidate];
+        uiProgressTime = nil;
+        _viewVulnerabilities.hidden = NO;
+        _viewScanLog.hidden = NO;
+        _scanningLabel.text = @"Finished scanning.";
+    }
+}
+
+- (void)dismissKeyboard {
+     [self.view endEditing:YES];
+}
+- (IBAction)changeRootPassword:(id)sender {
+    if (_passwordField.text && _passwordField.text.length < 1){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oooops..."
+                                   message:@"The password cannot be empty (unless you wanna brick the jailbreak, that is...)"
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        if (_passwordField.text && _passwordField.text.length < 6){
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ooops..."
+                                       message:@"The password must be at least 6 characters long. Please try again."
+                                       preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction * action) {}];
+
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else {
+            if ([_passwordField.text isEqualToString: _passwordVerificationField.text]) {
+                NSString *newPassword = _passwordField.text;
+                const char *passwordForFunc = [newPassword UTF8String];
+                    if (hashPasswordAndPrepare(passwordForFunc) == 0){
+                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"ROOT Password Updated!"
+                                                   message:@"Successfully updated the ROOT password to your own. Your device is already more secure now because any attempt of stray SSH via the network would require your password, rather than the default alpine. Congrats!"
+                                                   preferredStyle:UIAlertControllerStyleAlert];
+
+                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thank you!" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {}];
+
+                        [alert addAction:defaultAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    } else if (hashPasswordAndPrepare(passwordForFunc) == -1) {
+                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Could not update ROOT Password"
+                                                   message:@"It looks like, for some reason, iSecureOS doesn't run as ROOT or doesn't have access to the master.passwd file."
+                                                   preferredStyle:UIAlertControllerStyleAlert];
+
+                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {}];
+
+                        [alert addAction:defaultAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    } else if (hashPasswordAndPrepare(passwordForFunc) == -2) {
+                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Could not update ROOT Password"
+                                                   message:@"While iSecureOS could successfully access the master.passwd file, the system has blocked the attempt to write to it. This is likely a permissions issue."
+                                                   preferredStyle:UIAlertControllerStyleAlert];
+
+                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {}];
+
+                        [alert addAction:defaultAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                } else {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ooops..."
+                                               message:@"Sorry, but the passwords you entered do not match. Please type the same password in both fields. Also, make sure you can remember it later."
+                                               preferredStyle:UIAlertControllerStyleAlert];
+
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Let me try again." style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {}];
+
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+        }
+    }
     
+
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -167,10 +262,10 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         VulnerabilityDetails = [[NSMutableArray alloc] init];
         VulnerabilitySeverity = [[NSMutableArray alloc] init];
         kern_return_t oskernfail = KERN_SUCCESS;
-        setuid(0);
         printf("iSecureOS v1.0 by GeoSn0w (@FCE365)\n");
         printf("Initializing securiOS...\n", NULL);
         printf("Performing jailbreak probing...\n", NULL);
+    _scannProgressbar.progress  += 1;
         int jailbreakProbing = performJailbreakProbingAtPath();
         switch (jailbreakProbing) {
             case 0:
@@ -182,9 +277,10 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                     printf("[VULNERABILITY] Kernel Task Port IS Exported. Disable it after running securiOS.\n\n");
                     printf("[ i ] Kernel Task Port is 0x%x\n", tfp0);
                 }
+                
                 performSuspectRepoScanning();
                 checkForUnsafeTweaks();
-                checkForOutdatedPackages();
+                [self checkForOutdatedPackages];
                 [self checkPasswordDefaulting];
                 break;
             case 1:
@@ -206,8 +302,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                 break;
         }
         [self checkPasscodeProtectionStatus];
-        
-        //changeUserPassword();
+        uiProgressTime = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
 }
 
 - (void) checkPasscodeProtectionStatus{
@@ -441,50 +536,41 @@ int execprog(const char *prog, const char* args[]) {
     }
     
     printf("process spawned with pid %d \n", pd);
-    
     int status;
     waitpid(pd, &status, 0);
-    printf("'%s' exited with %d (sig %d)\n", prog, WEXITSTATUS(status), WTERMSIG(status));
     return 0;
 }
 
-int checkForOutdatedPackages(){
-    execprog("apt-get upgrade -s | grep upgraded | cut -d ' ' -f 1", NULL);
-    FILE * f = fopen("/var/mobile/tbd", "r");
-       if (f) {
-           fprintf(stderr,"Successfully fetched the amount of outdated packages.\n");
-             int tweaksToBeUpdated = 0;
-             fscanf (f, "%d", &tweaksToBeUpdated);
-             while (!feof (f))
-               {
-                 printf ("%d ", tweaksToBeUpdated);
+-(void) checkForOutdatedPackages{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        char command[100];
+        strcpy(command, "apt-get upgrade -s | grep upgraded | cut -d ' ' -f 1 > /var/mobile/tbd.txt" );
+        system(command);
+        FILE * f = fopen("/var/mobile/tbd.txt", "r");
+           if (f) {
+               fprintf(stderr,"Successfully fetched the amount of outdated packages.\n");
+                 int tweaksToBeUpdated = 0;
                  fscanf (f, "%d", &tweaksToBeUpdated);
+                 while (!feof (f))
+                   {
+                     printf ("%d ", tweaksToBeUpdated);
+                     fscanf (f, "%d", &tweaksToBeUpdated);
+                   }
+                 fclose (f);
+               if (tweaksToBeUpdated == 0){
+                   printf("[ i ] No outdated tweaks detected! Great! (Ignores the ones you specifically downgraded.)\n");
+               } else {
+                   printf("[ ! ] There are tweaks that need to be upgraded! It's recommended that you always get the latest version of the tweaks.\n");
+                   NSString *message = [NSString stringWithFormat:@"You have %d outdated tweaks! Please update them.\n", tweaksToBeUpdated];
+                   [Vulnerabilities addObject:message];
+                   [VulnerabilityDetails addObject:@"It's important to keep your tweaks up to date to ensure you get the latest bug fixes and security improvements for your tweaks. Many tweaks get fixed daily and updates are being pushed, especially for stability reasons. Navigate to your favorite Package Manager and update your tweaks.\n"];
                }
-             fclose (f);
-           if (tweaksToBeUpdated == 0){
-               printf("[ i ] No outdated tweaks detected! Great! (Ignores the ones you specifically downgraded.)");
            } else {
-               printf("[ ! ] There are tweaks that need to be upgraded! It's recommended that you always get the latest version of the tweaks.");
-               NSString *message = [NSString stringWithFormat:@"You have %d outdated tweaks! Please update them.", tweaksToBeUpdated];
-               [Vulnerabilities addObject:message];
-               [VulnerabilityDetails addObject:@"It's important to keep your tweaks up to date to ensure you get the latest bug fixes and security improvements for your tweaks. Many tweaks get fixed daily and updates are being pushed, especially for stability reasons. Navigate to your favorite Package Manager and update your tweaks."];
+               printf("Could not parse amount of outdated packages...\n");
            }
-       } else {
-           printf("Could not parse amount of outdated packages...\n");
-       }
-    return 0;
+    });
 }
 
-int changeUserPassword(){
-        char cmd[32];
-        sprintf(cmd, " passwd %s", "root");
-        FILE *fp= popen(cmd, "w");
-        fprintf(fp, "%s\n", "dory");
-        fprintf(fp, "%s\n", "dory");
-    if (pclose(fp) == 0){
-        printf("[!] Successfully changed root password.");
-    }
-    return 0;
+- (IBAction)secureThisDevice:(id)sender {
 }
-
 @end
