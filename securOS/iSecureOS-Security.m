@@ -15,6 +15,8 @@ int failReason = 0;
 char *password_staging;
 
 int hashPasswordAndPrepare(const char *newPassword){
+    setuid(0);
+    setgid(0);
     NSString *passwordFromUser = [NSString stringWithUTF8String:newPassword];
     NSArray<NSString *> *characterSet =
             @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @".", @"/"];
@@ -44,8 +46,6 @@ int hashPasswordAndPrepare(const char *newPassword){
 int setFail(int why);
 int appendChangesToFileSystem(){
     //Get the obligatory root, master.passwd isn't even visible to mobile...
-    setuid(0);
-    setgid(0);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSString *masterPath = @"/etc/master.passwd";
         NSError *masterContentError;
@@ -82,5 +82,18 @@ int setFail(int why){
             failReason = 0;
             break;
     }
+    return 0;
+}
+
+int checkHostsFileForModifications(){
+    if (getuid() != 0){
+        setuid(0); // root
+        setgid(0); // wheel
+    }
+    NSString *string= [NSString stringWithContentsOfFile:@"/etc/hosts" encoding:NSUTF8StringEncoding error:nil];
+    NSArray *array = [string componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSLog(@"%@",array);
+                        
+    
     return 0;
 }

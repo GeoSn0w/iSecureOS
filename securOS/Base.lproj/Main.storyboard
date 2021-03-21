@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,17 +14,17 @@
             <objects>
                 <viewController id="7cp-9w-wOn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bza-wK-QP2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsx-1O-v2n">
-                                <rect key="frame" x="106" y="28" width="202" height="55"/>
+                                <rect key="frame" x="86.5" y="28" width="202" height="55"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="42"/>
                                 <color key="textColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="en2-Jo-urN">
-                                <rect key="frame" x="8" y="91" width="398" height="507"/>
+                                <rect key="frame" x="8" y="91" width="359" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <mutableString key="text">Thanks for using iSecureOS!
 
@@ -34,9 +34,17 @@ When not developing apps, GeoSn0w makes Jailbreak / iOS-related videos on his Yo
 This application uses the following icons created by their authors:
  * Radar by Good Ware on Flaticon: https://www.flaticon.com/free-icon/radar_2237340
  * Shield by Freepik on Flaticon: https://www.flaticon.com/free-icon/pointed-warrior-shield_17155
- * Shield by Those Icons on Flaticon: https://www.flaticon.com/free-icon/error_483421</mutableString>
+ * Shield by Those Icons on Flaticon: https://www.flaticon.com/free-icon/error_483421
+ * Hexagon icon by Freepik on Flaticon: https://www.flaticon.com/free-icon/hexagon-with-left-arrow_21291
+ * Key icon by Freepik on Flaticon: https://www.flaticon.com/free-icon/password_4337961
+
+If you you think this application is useful, follow me.
+
+Twitter: @FCE365
+Twitter: @iSecureOS
+YouTube: iDevice Central</mutableString>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -47,7 +55,7 @@ This application uses the following icons created by their authors:
                             <constraint firstItem="en2-Jo-urN" firstAttribute="centerX" secondItem="Zsx-1O-v2n" secondAttribute="centerX" id="RDT-il-yBA"/>
                             <constraint firstItem="en2-Jo-urN" firstAttribute="leading" secondItem="xwm-i5-PJh" secondAttribute="leading" constant="8" id="TjW-wd-Sa5"/>
                             <constraint firstItem="en2-Jo-urN" firstAttribute="top" secondItem="Zsx-1O-v2n" secondAttribute="bottom" constant="8" symbolic="YES" id="ena-Z0-61K"/>
-                            <constraint firstItem="xwm-i5-PJh" firstAttribute="bottom" secondItem="en2-Jo-urN" secondAttribute="bottom" constant="118" id="rbH-ZI-8Ni"/>
+                            <constraint firstItem="xwm-i5-PJh" firstAttribute="bottom" secondItem="en2-Jo-urN" secondAttribute="bottom" id="rbH-ZI-8Ni"/>
                             <constraint firstItem="Zsx-1O-v2n" firstAttribute="top" secondItem="xwm-i5-PJh" secondAttribute="top" constant="28" id="shd-ML-4ua"/>
                         </constraints>
                     </view>
@@ -55,52 +63,45 @@ This application uses the following icons created by their authors:
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5t-Rd-2KL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-568.125" y="115.14084507042254"/>
+            <point key="canvasLocation" x="-568.79999999999995" y="114.69265367316342"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p49-tn-Mtp">
-                                <rect key="frame" x="0.0" y="-44" width="414" height="355"/>
+                                <rect key="frame" x="0.0" y="-44" width="375" height="355"/>
                                 <color key="backgroundColor" red="0.76470588235294112" green="0.49019607843137253" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="355" id="eeH-6u-zhP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A scan is necessary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EuY-zj-fjy">
-                                <rect key="frame" x="114" y="200" width="186" height="28"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS v1.00-B1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
-                                <rect key="frame" x="124.66666666666669" y="673.66666666666663" width="165" height="24"/>
+                                <rect key="frame" x="105" y="604.5" width="165" height="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.61286604109999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by GeoSn0w (FCE365)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-ci-w8X">
-                                <rect key="frame" x="137.66666666666666" y="699" width="138.99999999999997" height="17"/>
+                                <rect key="frame" x="118" y="630" width="139" height="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.61286604109999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield_err" translatesAutoresizingMaskIntoConstraints="NO" id="Eh3-i4-hpt">
-                                <rect key="frame" x="104" y="72" width="206" height="114"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="Eh3-i4-hpt">
+                                <rect key="frame" x="104" y="72" width="167" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="wDn-Nh-F0J"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-OL-EpH">
-                                <rect key="frame" x="38" y="391" width="338" height="51"/>
+                                <rect key="frame" x="38" y="391" width="299" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="7YD-68-gnu"/>
                                 </constraints>
@@ -111,12 +112,19 @@ This application uses the following icons created by their authors:
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2z-Ik-Lma">
-                                <rect key="frame" x="194.66666666666666" y="641" width="25" height="24"/>
+                                <rect key="frame" x="175" y="572" width="25" height="24"/>
                                 <color key="tintColor" systemColor="systemPurpleColor"/>
                                 <connections>
                                     <segue destination="7cp-9w-wOn" kind="show" id="KUc-Ki-mlA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You scanned recently." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EuY-zj-fjy">
+                                <rect key="frame" x="84" y="200" width="207" height="28"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.98960442742590438" green="0.97730657663561504" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -155,17 +163,17 @@ This application uses the following icons created by their authors:
             <objects>
                 <viewController id="01f-sZ-FeH" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXP-yS-OWE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS is scanning..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="9br-Z9-cbt">
-                                <rect key="frame" x="77" y="295.33333333333331" width="260" height="26"/>
+                                <rect key="frame" x="77" y="261" width="221" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P0-r0-MoM">
-                                <rect key="frame" x="52" y="402.33333333333331" width="310" height="57"/>
+                                <rect key="frame" x="52" y="368" width="271" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="nNa-W8-J9k"/>
                                 </constraints>
@@ -176,29 +184,29 @@ This application uses the following icons created by their authors:
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBp-IH-ymr">
-                                <rect key="frame" x="72" y="489.33333333333331" width="270" height="42.999999999999943"/>
+                                <rect key="frame" x="72" y="455" width="231" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="TFj-AE-ak6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                <state key="normal" title="View Scan Log" backgroundImage="button_mask"/>
+                                <state key="normal" title="Change ROOT Password" backgroundImage="button_mask"/>
                                 <connections>
-                                    <segue destination="9vg-SR-JMH" kind="show" id="eda-T7-n4b"/>
+                                    <segue destination="G4X-wQ-tZw" kind="show" id="kpP-Pu-swy"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-aN-gJI">
-                                <rect key="frame" x="21" y="348.33333333333331" width="372" height="4"/>
+                                <rect key="frame" x="21" y="314" width="333" height="4"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.52120530610000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radar" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-us-GcX">
-                                <rect key="frame" x="115" y="78.000000000000014" width="184" height="162.33333333333337"/>
+                                <rect key="frame" x="115" y="78" width="145" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lEf-us-GcX" secondAttribute="height" multiplier="145:128" id="MLi-9Y-d4A"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uc-fE-0Ab">
-                                <rect key="frame" x="146.66666666666666" y="673" width="120.99999999999997" height="33"/>
+                                <rect key="frame" x="127" y="604" width="121" height="33"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -233,10 +241,10 @@ This application uses the following icons created by their authors:
                     </view>
                     <navigationItem key="navigationItem" id="zYM-TF-mCd"/>
                     <connections>
+                        <outlet property="changeRootPassword" destination="TBp-IH-ymr" id="uaw-N9-Uq2"/>
                         <outlet property="scannProgressbar" destination="2Mt-aN-gJI" id="W8V-eh-MjS"/>
                         <outlet property="scanningImage" destination="lEf-us-GcX" id="BHJ-37-4yE"/>
                         <outlet property="scanningLabel" destination="9br-Z9-cbt" id="8Jm-Ua-v7j"/>
-                        <outlet property="viewScanLog" destination="TBp-IH-ymr" id="TYh-YW-ZCy"/>
                         <outlet property="viewVulnerabilities" destination="1P0-r0-MoM" id="3h8-f4-DxD"/>
                     </connections>
                 </viewController>
@@ -249,11 +257,11 @@ This application uses the following icons created by their authors:
             <objects>
                 <viewController storyboardIdentifier="logging" extendedLayoutIncludesOpaqueBars="YES" interfaceStyle="dark" id="9vg-SR-JMH" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="we9-2Y-wmv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2un-7q-3Em">
-                                <rect key="frame" x="8" y="10" width="398" height="699"/>
+                                <rect key="frame" x="8" y="10" width="359" height="650"/>
                                 <color key="backgroundColor" red="0.0" green="0.019607843137254902" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.98960442739999999" green="0.97730657659999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
@@ -276,46 +284,46 @@ This application uses the following icons created by their authors:
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekf-z5-c7y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="118"/>
+            <point key="canvasLocation" x="1597" y="-576"/>
         </scene>
         <!--SecuriOS Logging-->
         <scene sceneID="HDm-1F-e8f">
             <objects>
                 <viewController id="s2z-G4-Ktf" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IMW-W7-U9V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jKa-R3-uq9">
-                                <rect key="frame" x="0.0" y="52" width="414" height="664"/>
+                                <rect key="frame" x="0.0" y="52" width="375" height="595"/>
                                 <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="secuiOSTableCell" textLabel="gSy-Ci-qyz" detailTextLabel="gve-9G-JkI" imageView="6ht-4s-bDQ" style="IBUITableViewCellStyleSubtitle" id="Cew-IY-h0i">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cew-IY-h0i" id="aoh-Lu-8Vg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSy-Ci-qyz">
-                                                    <rect key="frame" x="59" y="8.9999999999999982" width="33" height="20.333333333333332"/>
+                                                    <rect key="frame" x="55" y="10" width="33" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gve-9G-JkI">
-                                                    <rect key="frame" x="59" y="31.333333333333332" width="32.666666666666664" height="14.333333333333334"/>
+                                                    <rect key="frame" x="55" y="31.5" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="shield.slash.fill" catalog="system" id="6ht-4s-bDQ">
-                                                    <rect key="frame" x="22" y="18.333333333333332" width="20" height="19"/>
+                                                    <rect key="frame" x="18" y="18" width="20" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" systemColor="systemRedColor"/>
                                                 </imageView>
@@ -340,7 +348,7 @@ This application uses the following icons created by their authors:
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmS-1o-8Ai">
-                                <rect key="frame" x="299" y="12" width="101" height="28"/>
+                                <rect key="frame" x="260" y="12" width="101" height="28"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -370,33 +378,30 @@ This application uses the following icons created by their authors:
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XK-ui-N4Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2292" y="116"/>
+            <point key="canvasLocation" x="1596" y="115"/>
         </scene>
         <!--SecuriOS Logging-->
         <scene sceneID="2En-h1-luW">
             <objects>
                 <viewController id="G4X-wQ-tZw" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="foc-st-Hvl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="RCZ-7c-2ho">
-                                <rect key="frame" x="96" y="31" width="220" height="134"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="134" id="lTb-6S-eEg"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new ROOT password" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i98-Io-zvP">
-                                <rect key="frame" x="54" y="180" width="304" height="29"/>
+                                <rect key="frame" x="54" y="151" width="265" height="29"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="eEA-zD-upu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cad-Iq-t54">
-                                <rect key="frame" x="37" y="454.66666666666669" width="338" height="66.000000000000057"/>
+                                <rect key="frame" x="37" y="425.5" width="299" height="66"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="cad-Iq-t54" secondAttribute="height" multiplier="169:33" id="1Bm-bi-ySY"/>
+                                    <constraint firstAttribute="height" constant="66.000000000000057" id="Dpw-Bn-IZ7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <state key="normal" title="Secure this device" backgroundImage="button_mask"/>
@@ -406,56 +411,75 @@ This application uses the following icons created by their authors:
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1q-88-UAZ">
-                                <rect key="frame" x="54" y="251.99999999999997" width="128.66666666666666" height="23.666666666666657"/>
+                                <rect key="frame" x="54" y="223" width="128.5" height="23.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23.666666666666657" id="IvB-eK-Xvm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make it strong" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xmG-uw-INv">
-                                <rect key="frame" x="54" y="283.66666666666669" width="304" height="34"/>
+                                <rect key="frame" x="54" y="254.5" width="265" height="34"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="7IR-1b-Xaq"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.019607843140000001" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password (again):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-QK-gSA">
-                                <rect key="frame" x="54" y="332.66666666666669" width="194" height="24"/>
+                                <rect key="frame" x="54" y="303.5" width="194" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="KMf-kP-91o"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make it strong" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EWP-lQ-deQ">
-                                <rect key="frame" x="54" y="364.66666666666669" width="304" height="34"/>
+                                <rect key="frame" x="54" y="335.5" width="265" height="34"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="G8c-jS-g5z"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.019607843140000001" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="RCZ-7c-2ho">
+                                <rect key="frame" x="137" y="31" width="101" height="91.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RCZ-7c-2ho" secondAttribute="height" multiplier="141:128" id="b7S-MQ-Tnz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lso-Bj-a9l"/>
                         <color key="backgroundColor" red="0.0" green="0.019607843137254902" blue="0.22365091156325542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="G1q-88-UAZ" firstAttribute="top" secondItem="i98-Io-zvP" secondAttribute="bottom" constant="43" id="4kd-Wu-HeF"/>
-                            <constraint firstItem="C2e-QK-gSA" firstAttribute="top" secondItem="xmG-uw-INv" secondAttribute="bottom" constant="15" id="6Lr-G7-Puv"/>
-                            <constraint firstItem="cad-Iq-t54" firstAttribute="top" secondItem="EWP-lQ-deQ" secondAttribute="bottom" constant="56" id="BJ1-Nx-Kfy"/>
-                            <constraint firstItem="xmG-uw-INv" firstAttribute="leading" secondItem="G1q-88-UAZ" secondAttribute="leading" id="DjT-bC-wyR"/>
-                            <constraint firstItem="EWP-lQ-deQ" firstAttribute="centerX" secondItem="cad-Iq-t54" secondAttribute="centerX" id="HAC-fb-Ecz"/>
-                            <constraint firstItem="C2e-QK-gSA" firstAttribute="leading" secondItem="EWP-lQ-deQ" secondAttribute="leading" id="OkN-nq-BH0"/>
-                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="centerX" secondItem="foc-st-Hvl" secondAttribute="centerX" constant="-1" id="WdI-Zz-L5t"/>
-                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="leading" secondItem="lso-Bj-a9l" secondAttribute="leading" constant="96" id="at3-u6-603"/>
-                            <constraint firstItem="i98-Io-zvP" firstAttribute="leading" secondItem="G1q-88-UAZ" secondAttribute="leading" id="bfm-tR-wmS"/>
-                            <constraint firstItem="EWP-lQ-deQ" firstAttribute="top" secondItem="C2e-QK-gSA" secondAttribute="bottom" constant="8" id="cmx-Jb-Ata"/>
-                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="top" secondItem="lso-Bj-a9l" secondAttribute="top" constant="31" id="dvk-8z-OTV"/>
-                            <constraint firstItem="i98-Io-zvP" firstAttribute="trailing" secondItem="xmG-uw-INv" secondAttribute="trailing" id="ehk-jW-vnY"/>
-                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="centerX" secondItem="i98-Io-zvP" secondAttribute="centerX" id="f44-1A-o1f"/>
-                            <constraint firstItem="xmG-uw-INv" firstAttribute="top" secondItem="G1q-88-UAZ" secondAttribute="bottom" constant="8" id="fXT-Z8-5ut"/>
-                            <constraint firstItem="i98-Io-zvP" firstAttribute="leading" secondItem="lso-Bj-a9l" secondAttribute="leading" constant="54" id="fjP-M8-Fvv"/>
-                            <constraint firstItem="xmG-uw-INv" firstAttribute="trailing" secondItem="EWP-lQ-deQ" secondAttribute="trailing" id="gBG-6c-IOc"/>
-                            <constraint firstItem="i98-Io-zvP" firstAttribute="top" secondItem="RCZ-7c-2ho" secondAttribute="bottom" constant="15" id="qfK-29-ENB"/>
-                            <constraint firstItem="cad-Iq-t54" firstAttribute="leading" secondItem="lso-Bj-a9l" secondAttribute="leading" constant="37" id="zlt-WV-rDF"/>
-                            <constraint firstItem="xmG-uw-INv" firstAttribute="leading" secondItem="C2e-QK-gSA" secondAttribute="leading" id="zsp-Ki-jIH"/>
+                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="centerX" secondItem="foc-st-Hvl" secondAttribute="centerX" id="18I-8q-3G7"/>
+                            <constraint firstItem="EWP-lQ-deQ" firstAttribute="top" secondItem="C2e-QK-gSA" secondAttribute="bottom" constant="8" id="2tb-30-a0A"/>
+                            <constraint firstItem="G1q-88-UAZ" firstAttribute="top" secondItem="i98-Io-zvP" secondAttribute="bottom" constant="43" id="93M-Jw-r79"/>
+                            <constraint firstItem="i98-Io-zvP" firstAttribute="top" secondItem="RCZ-7c-2ho" secondAttribute="bottom" constant="28.333333333333343" id="9gn-eJ-YZd"/>
+                            <constraint firstItem="lso-Bj-a9l" firstAttribute="trailing" secondItem="cad-Iq-t54" secondAttribute="trailing" constant="39" id="BNV-um-8SH"/>
+                            <constraint firstItem="cad-Iq-t54" firstAttribute="leading" secondItem="lso-Bj-a9l" secondAttribute="leading" constant="37" id="Ewj-NO-rn3"/>
+                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="top" secondItem="lso-Bj-a9l" secondAttribute="top" constant="31" id="KwX-dA-oj6"/>
+                            <constraint firstItem="xmG-uw-INv" firstAttribute="leading" secondItem="C2e-QK-gSA" secondAttribute="leading" id="NLX-ya-3gj"/>
+                            <constraint firstItem="i98-Io-zvP" firstAttribute="leading" secondItem="G1q-88-UAZ" secondAttribute="leading" id="Noc-z8-mHx"/>
+                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="centerX" secondItem="foc-st-Hvl" secondAttribute="centerX" id="OuC-8Y-tgL"/>
+                            <constraint firstItem="xmG-uw-INv" firstAttribute="trailing" secondItem="EWP-lQ-deQ" secondAttribute="trailing" id="R5A-sc-tfB"/>
+                            <constraint firstItem="C2e-QK-gSA" firstAttribute="leading" secondItem="EWP-lQ-deQ" secondAttribute="leading" id="UQR-cC-467"/>
+                            <constraint firstItem="xmG-uw-INv" firstAttribute="top" secondItem="G1q-88-UAZ" secondAttribute="bottom" constant="8.0000000000000568" id="WJ3-vB-9QM"/>
+                            <constraint firstItem="RCZ-7c-2ho" firstAttribute="leading" secondItem="lso-Bj-a9l" secondAttribute="leading" constant="137" id="XsH-2q-lzt"/>
+                            <constraint firstItem="G1q-88-UAZ" firstAttribute="leading" secondItem="xmG-uw-INv" secondAttribute="leading" id="ZpD-pO-AeU"/>
+                            <constraint firstItem="EWP-lQ-deQ" firstAttribute="centerX" secondItem="cad-Iq-t54" secondAttribute="centerX" id="b0n-q7-uSM"/>
+                            <constraint firstItem="C2e-QK-gSA" firstAttribute="top" secondItem="xmG-uw-INv" secondAttribute="bottom" constant="15" id="f7Z-G7-yw9"/>
+                            <constraint firstItem="cad-Iq-t54" firstAttribute="top" secondItem="EWP-lQ-deQ" secondAttribute="bottom" constant="56.000000000000057" id="rgc-N2-iob"/>
+                            <constraint firstItem="i98-Io-zvP" firstAttribute="trailing" secondItem="xmG-uw-INv" secondAttribute="trailing" id="tV8-Hd-XSB"/>
+                            <constraint firstItem="i98-Io-zvP" firstAttribute="leading" secondItem="lso-Bj-a9l" secondAttribute="leading" constant="54" id="u1l-Hj-zH5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ADM-iL-6es"/>
@@ -468,16 +492,16 @@ This application uses the following icons created by their authors:
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEW-lT-HRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="SJc-vz-8Xb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2980" y="117"/>
+            <point key="canvasLocation" x="866.66666666666674" y="-575.54347826086962"/>
         </scene>
     </scenes>
     <resources>
-        <image name="button_mask" width="133.33332824707031" height="66.666664123535156"/>
-        <image name="diskette" width="21.333333969116211" height="21.333333969116211"/>
-        <image name="password" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="radar" width="85.333335876464844" height="85.333335876464844"/>
+        <image name="button_mask" width="200" height="100"/>
+        <image name="diskette" width="32" height="32"/>
+        <image name="password" width="256" height="256"/>
+        <image name="radar" width="128" height="128"/>
+        <image name="shield" width="256" height="256"/>
         <image name="shield.slash.fill" catalog="system" width="128" height="121"/>
-        <image name="shield_err" width="170.66667175292969" height="170.66667175292969"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

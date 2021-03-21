@@ -38,6 +38,8 @@
 
 #include "iSecureOS-Tampering.h"
 #include "iSecureOS-Security.h"
+#include "iSecureOS-Networking.h"
+#include "iSecureOS-Signatures.h"
 
 #define vm_address_t mach_vm_address_t
 #define tfp0 pwnage.kernel_port
@@ -66,45 +68,112 @@ typedef struct kernel_data_t {
 
 @end
 
+// For Signatures
+NSMutableArray * SecurityRiskRepos;
+//
+
+// For results
 NSMutableArray * Vulnerabilities;
 NSMutableArray * VulnerabilityDetails;
 NSMutableArray * VulnerabilitySeverity;
 NSString *selectedVulnerabilityForDetails;
+//
 NSTimer * uiProgressTime;
 float duration;
 
 char *mostLikelyJailbreak;
 
 @implementation securiOS_Logging
-
+int shouldScan = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    printf("iSecureOS v1.0 by GeoSn0w (@FCE365)\n");
+    printf("Initializing securiOS...\n", NULL);
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
         [self.view addGestureRecognizer:gestureRecognizer];
         gestureRecognizer.cancelsTouchesInView = NO;
+    
+    // Beginning of UI Button Rounding
     _viewVulnerabilities.layer.cornerRadius = 22;
     _viewVulnerabilities.clipsToBounds = YES;
-    _viewScanLog.layer.cornerRadius = 19;
-    _viewScanLog.clipsToBounds = YES;
-    [self redirectSTD:STDOUT_FILENO];
-    [self initsecuriOS];
+    _changeRootPassword.layer.cornerRadius = 19;
+    _changeRootPassword.clipsToBounds = YES;
+    _secureThisDevice.layer.cornerRadius = 22;
+    _secureThisDevice.clipsToBounds = YES;
+    
+    // End of UI Rounding
+    
+    if (shouldScan == 0){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self iSecureOSInitMain];
+        });
+        /*
+        if (performMalwareSignatureUpdate() == 0){
+            if (populateVulnerableReposFromSignatures() == 0){
+                [self iSecureOSInitMain];
+            } else {
+                printf("Could not populate the signatures for iSecureOS.\n");
+            }
+        } else {
+            printf("Could not obtain the signatures for iSecureOS.\n");
+        }
+         */
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.scannProgressbar setProgress: 0.70f animated:YES];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.scannProgressbar setProgress: 0.80f animated:YES];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.scannProgressbar setProgress: 1.0f animated:YES];
+    });
 }
--(void)updateProgress {
-    duration += 0.1;
-    _scannProgressbar.progress = (duration/5.0);
 
-    if (_scannProgressbar.progress == 1)
-    {
+-(void)updateProgress {
+    float newProgress = [self.scannProgressbar progress] + 0.01666;
+    [self.scannProgressbar setProgress:newProgress animated:YES];
+
+    if (_scannProgressbar.progress == 1) {
         [uiProgressTime invalidate];
         uiProgressTime = nil;
         _viewVulnerabilities.hidden = NO;
-        _viewScanLog.hidden = NO;
+        if (isSSHPasswordVulnerable){
+            _changeRootPassword.hidden = NO;
+        }
         _scanningLabel.text = @"Finished scanning.";
     }
 }
 
-- (void)dismissKeyboard {
+- (void) dismissKeyboard {
      [self.view endEditing:YES];
+}
+
+int populateVulnerableReposFromSignatures(){
+    SecurityRiskRepos = [[NSMutableArray alloc] init];
+    NSString *textFilePath = @"/var/mobile/iSecureOS/repo-signatures";
+    NSString *fileContentsUrls = [NSString stringWithContentsOfFile:textFilePath encoding:NSUTF8StringEncoding error:nil];
+    SecurityRiskRepos = [[fileContentsUrls componentsSeparatedByString:@"\n"] mutableCopy];
+    if (SecurityRiskRepos != nil) {
+        printf("Successfully loaded Repo Signatures into iSecureOS\n");
+        return 0;
+    } else {
+        printf("Failed to load Repo Signatures into iSecureOS\n");
+        return -1;
+    }
+}
+
+-(void) performCleanupSegue {
+    shouldScan = 1;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDate *currDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"dd-MM-YY"];
+    
+    [userDefaults setObject:currDate
+                     forKey:@"LastScan"];
+    [userDefaults synchronize];
+    return;
 }
 - (IBAction)changeRootPassword:(id)sender {
     if (_passwordField.text && _passwordField.text.length < 1){
@@ -117,6 +186,7 @@ char *mostLikelyJailbreak;
 
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
+        
     } else {
         if (_passwordField.text && _passwordField.text.length < 6){
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ooops..."
@@ -188,9 +258,6 @@ char *mostLikelyJailbreak;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"secuiOSTableCell"];
     cell.textLabel.text = [Vulnerabilities objectAtIndex:(indexPath.row)];
     cell.detailTextLabel.text = [VulnerabilityDetails objectAtIndex:(indexPath.row)];
-    [[cell textLabel] setNumberOfLines:0];
-    [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
-    [[cell textLabel] setFont:[UIFont systemFontOfSize: 14.0]];
     return cell;
     
 }
@@ -257,18 +324,29 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 
         return DeviceNoPasscode;
 }
-- (void) initsecuriOS {
+
+// Main Scanning Stub
+
+- (void) iSecureOSInitMain {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.05 animated:YES];
+            }];
+        });
         Vulnerabilities = [[NSMutableArray alloc] init];
         VulnerabilityDetails = [[NSMutableArray alloc] init];
         VulnerabilitySeverity = [[NSMutableArray alloc] init];
         kern_return_t oskernfail = KERN_SUCCESS;
-        printf("iSecureOS v1.0 by GeoSn0w (@FCE365)\n");
-        printf("Initializing securiOS...\n", NULL);
         printf("Performing jailbreak probing...\n", NULL);
-    _scannProgressbar.progress  += 1;
         int jailbreakProbing = performJailbreakProbingAtPath();
-        switch (jailbreakProbing) {
-            case 0:
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.1 animated:YES];
+            }];
+        });
+    
+        if (jailbreakProbing == 0) {
                 oskernfail = get_kernelport(&pwnage);
                 printf("[ i ] Testing to see if tfp0 / hsp4 is exported...\n");
                 if(oskernfail) {
@@ -278,32 +356,129 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                     printf("[ i ] Kernel Task Port is 0x%x\n", tfp0);
                 }
                 
-                performSuspectRepoScanning();
-                checkForUnsafeTweaks();
-                [self checkForOutdatedPackages];
-                [self checkPasswordDefaulting];
-                break;
-            case 1:
-                printf("This device appears to be jailbroken, but it's not in the jailbroken state. Please enable the jailbreak first, and then run iSecureOS.\n");
-                [Vulnerabilities addObject:@"Could not probe!"];
-                [VulnerabilityDetails addObject:@"The device is not in jailbroken state. Can't probe."];
-                [_securiOSTableView reloadData];
-                break;
-            case 2:
-                printf("This device is not jailbroken. iSecureOS can only perform a very small amount of checks.");
-                [Vulnerabilities addObject:@"Could not probe!"];
-                [VulnerabilityDetails addObject:@"The device is not jailbroken. Cannot assess vulnerabilities."];
-                break;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:1.5 animations:^{
+                            [self.scannProgressbar setProgress:0.15 animated:YES];
+                    }];
+                });
                 
-            default:
-                printf("This device is not jailbroken. iSecureOS can only perform a very small amount of checks.");
-                [Vulnerabilities addObject:@"Could not probe!"];
-                [VulnerabilityDetails addObject:@"The device is not jailbroken. Cannot assess vulnerabilities."];
-                break;
+                performSuspectRepoScanning();
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:1.5 animations:^{
+                            [self.scannProgressbar setProgress:0.20 animated:YES];
+                    }];
+                });
+                
+                checkForUnsafeTweaks();
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:1.5 animations:^{
+                            [self.scannProgressbar setProgress:0.25 animated:YES];
+                    }];
+                });
+                
+                [self checkForOutdatedPackages];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:1.5 animations:^{
+                            [self.scannProgressbar setProgress:0.30 animated:YES];
+                    }];
+                });
+                
+                [self checkPasswordDefaulting];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:1.5 animations:^{
+                            [self.scannProgressbar setProgress:0.40 animated:YES];
+                    }];
+                });
         }
         [self checkPasscodeProtectionStatus];
-        uiProgressTime = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+    
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:1.5 animations:^{
+                        [self.scannProgressbar setProgress:0.50 animated:YES];
+                }];
+            });
+    
+        [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27930"];
+        [VulnerabilityDetails addObject:@"CVE-2020-27930 is a FontParser vulnerability that can lead to arbitrary code execution. Apple is aware of reports that an exploit for this issue exists in the wild. Pay attention to the apps you install, and websites you visit."];
+        [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27918"];
+        [VulnerabilityDetails addObject:@"CVE-2020-27918 is a WebKit vulnerability that can lead to arbitrary code execution. Pay attention to the websites you visit, as a malicious website can trigger an exploit for this vulnerability in order to exfiltrate data."];
+        [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27935"];
+        [VulnerabilityDetails addObject:@"CVE-2020-27935 is an XNU vulnerability that can lead to sandbox escape, and thus reading of personal files. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data."];
+    
+        [self performLocationCheck];
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.60 animated:YES];
+            }];
+        });
+    
+        [self checkIfVPNIsActive];
+        //uiProgressTime = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.70 animated:YES];
+            }];
+        });
+    
+        [self performCleanupSegue];
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.80 animated:YES];
+            }];
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.90 animated:YES];
+            }];
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:1.0 animated:YES];
+            }];
+        });
+    return;
 }
+
+// Location Services
+
+- (void) performLocationCheck {
+    int retval = checkLocationServices();
+    switch (retval) {
+        case 0:
+            printf("Location services are enabled. Unless you really use them, they should be disabled.");
+            [Vulnerabilities addObject:@"Location Services are enabled."];
+            [VulnerabilityDetails addObject:@"Unless you really need GPS, you should keep them off to save battery and ensure applications don't have on-demand unfethered access to your position for tracking purposes. Enable Location Services only for when the app is in use, and do not keep them on for more than you need."];
+            break;
+        case -1:
+            printf("Location services are not enabled. Unless you really use them, they should stay disabled.");
+        default:
+            break;
+    }
+}
+
+-(void) checkIfVPNIsActive{
+    int retval = performVPNCheck(); //Calls the function iSecureOS-Networking
+    switch (retval) {
+        case 0:
+            printf("Detected an enabled VPN. Great!");
+            break;
+        case -1:
+            printf("There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device.");
+            [Vulnerabilities addObject:@"You're not using a VPN"];
+            [VulnerabilityDetails addObject:@"There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device. Be sure to get a quality, no LOGS VPN with preferably a transparent user data collection policies. Not all VPN providers are honest and you may end up worse than without one."];
+        default:
+            break;
+    }
+}
+
+// Passcode / FaceID / TouchID
 
 - (void) checkPasscodeProtectionStatus{
     if ([self extractPasscodeStatusWithKeychain] == 0){
@@ -320,53 +495,121 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     return;
 }
 
-void printUnsafeRepoWarning(char *problematicRepo){
+void printUnsafeRepoWarning(const char *problematicRepo){
     printf("[VULNERABILITY] %s is a problematic piracy repo which can contain malware, outdated tweaks or otherwise modified tweaks. You should remove it, and everything installed from it.\n\n", problematicRepo);
     return;
 }
 
-void printUnsafeTweakWarning(char *problematicTweak){
+void printUnsafeTweakWarning(const char *problematicTweak){
     printf("[VULNERABILITY] %s is a problematic tweak which can contain malware. Tweaks used to pirate Cydia tweaks, like CyDown, create botnets on your device to attempt to grab tweaks and share them with pirates from your UDID. In the case of LocaliAPStore, many applications detect this and may refuze to work and may ban you.\n\n", problematicTweak);
     return;
 }
 - (int) checkPasswordDefaulting {
-      FILE *filepointer;
-      char *searchString="root:/smx7MYTQIi2M";
-      filepointer = fopen("/etc/passwd", "r");
-      char buf[100];
-      while((fgets(buf, 100, filepointer)!=NULL)) {
-        if(strstr(buf, searchString)!=NULL) {
-            printf("[VULNERABILITY] Your SSH password is the default, alpine! You should change it.\n\n");
-            [Vulnerabilities addObject:@"Default SSH password detected."];
-            [VulnerabilityDetails addObject:@"This device has the default alpine password for remote SSH access. You must change it."];
-            fclose(filepointer);
-            return -1;
-            break;
-        }
-      }
-      fclose(filepointer);
-      printf("[ i ] Your SSH password does not seem to be the default, great!\n");
-      return (0);
+    setuid(0);
+    setgid(0);
+    if (getuid() == 0){
+          FILE *filepointer;
+          char *searchString="root:/smx7MYTQIi2M";
+          filepointer = fopen("/etc/master.passwd", "r");
+          char buf[100];
+          while((fgets(buf, 100, filepointer)!=NULL)) {
+            if(strstr(buf, searchString)!=NULL) {
+                printf("[VULNERABILITY] Your SSH password is the default, alpine! You should change it.\n\n");
+                [Vulnerabilities addObject:@"Default SSH password detected."];
+                [VulnerabilityDetails addObject:@"This device has the default alpine password for remote SSH access. You must change it."];
+                isSSHPasswordVulnerable = true;
+                fclose(filepointer);
+                return -1;
+                break;
+            }
+          }
+          fclose(filepointer);
+          printf("[ i ] Your SSH password does not seem to be the default, great!\n");
+          return (0);
+    } else {
+        printf("[ ! ] Could not assess the ROOT password. You are not root.\n");
+    }
+    return -1;
 }
 
-int potentiallyMalwareRepoCheck(char *repoToCheck) {
-      FILE *filepointer;
-      filepointer = fopen("/etc/apt/sources.list.d/cydia.list", "r");
-      char buf[100];
-      while((fgets(buf, 100, filepointer)!=NULL)) {
-        if(strstr(buf, repoToCheck)!=NULL) {
-            NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
-            [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo."]];
-            [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
-            fclose(filepointer);
-            return 0;
-            break;
-        }
-      }
-      fclose(filepointer);
-      return 1;
-}
 
+
+int potentiallyMalwareRepoCheck(const char *repoToCheck) {
+      //Let's figure out just what package manager we should expect.
+    FILE *filepointer;
+    filepointer = fopen("/etc/apt/sources.list.d/cydia.list", "r");
+    if (filepointer){
+        fclose(filepointer);
+        filepointer = fopen("/etc/apt/sources.list.d/cydia.list", "r");
+        char buf[100];
+            if (filepointer){
+                while((fgets(buf, 100, filepointer)!=NULL)) {
+                    if(strstr(buf, repoToCheck)!=NULL) {
+                        NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
+                        [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In Cydia]"]];
+                        [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        fclose(filepointer);
+                        return 0;
+                        break;
+                    }
+                }
+                fclose(filepointer);
+            }
+    } else {
+        fclose(filepointer);
+        printf("[ ! ] Cydia's sources list isn't present. Will skip checking that one.\n");
+    }
+    
+    // Prepare to also check for Sileo's packages.
+    
+    filepointer = fopen("/etc/apt/sources.list.d/sileo.sources", "r");
+    if (filepointer){
+        fclose(filepointer);
+        filepointer = fopen("/etc/apt/sources.list.d/sileo.sources", "r");
+        char buf[100];
+            if (filepointer){
+                while((fgets(buf, 100, filepointer)!=NULL)) {
+                    if(strstr(buf, repoToCheck)!=NULL) {
+                        NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
+                        [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In SILEO]"]];
+                        [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        fclose(filepointer);
+                        return 0;
+                        break;
+                    }
+                }
+                fclose(filepointer);
+            }
+    } else {
+        fclose(filepointer);
+        printf("[ ! ] Sileo's sources list isn't present. Will skip checking that one.\n");
+    }
+    
+    filepointer = fopen("/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list", "r");
+    if (filepointer){
+        fclose(filepointer);
+        filepointer = fopen("/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list", "r");
+        char buf[200];
+            if (filepointer){
+                
+                while((fgets(buf, 100, filepointer)!=NULL)) {
+                    if(strstr(buf, repoToCheck)!=NULL) {
+                        NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
+                        [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In Zebra]"]];
+                        [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        fclose(filepointer);
+                        return 0;
+                        break;
+                    }
+                }
+                fclose(filepointer);
+            }
+    } else {
+        fclose(filepointer);
+        printf("[ ! ] Zebra's sources list isn't present. Will skip checking that one.\n");
+    }
+    return -1;
+}
 bool file_exists (char *filename) {
   struct stat   buffer;
   return (stat (filename, &buffer) == 0);
@@ -375,7 +618,7 @@ bool file_exists (char *filename) {
 int performJailbreakProbingAtPath(){
     int result = 2;
     printf("Attempting to detect if the device is jailbroken...\n");
-    FILE * f = fopen("/var/mobile/iSecureOS", "w");
+    FILE * f = fopen("/var/mobile/iSecureOS-Sandbox", "w");
        if (!f) {
            fclose(f);
            fprintf(stderr,"Random processes are running sandboxed. Will attempt to check further.\n");
@@ -411,10 +654,7 @@ int performJailbreakProbingAtPath(){
     if (file_exists("/.bit_of_fun")){
         mostLikelyJailbreak = "Electra";
         result = 1;
-    } else if (file_exists("/.bit_of_fun")){
-        
     }
-    
     return result;
 }
 int checkForUnsafeTweaks(){
@@ -432,74 +672,21 @@ int checkForUnsafeTweaks(){
 }
 void performSuspectRepoScanning(){
     // Performing repo sanity checks. This will check if the user has installed any problematic repos.
-    if (potentiallyMalwareRepoCheck("cydia.kiiimo.org") == 0){
-        printUnsafeRepoWarning("cydia.kiiimo.org");
-        isProblematicReposPresent = true;
+    
+    for (NSString *Repo in SecurityRiskRepos) {
+        const char *EndOfFile = "EOF";
+        const char *repoToCheck = [Repo UTF8String];
+        if (strcmp(EndOfFile, repoToCheck) == 0){
+            printf("Reached End of Signature Files\n");
+            break;
+        } else {
+            if (potentiallyMalwareRepoCheck(repoToCheck) == 0){
+                printUnsafeRepoWarning(repoToCheck);
+                isProblematicReposPresent = true;
+            }
+        }
     }
-    if (potentiallyMalwareRepoCheck("repo.hackyouriphone.org") == 0){
-        printUnsafeRepoWarning("repo.hackyouriphone.org");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("repo.xarold.com")){
-        printUnsafeRepoWarning("repo.xarold.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("repo.biteyourapple.net") == 0){
-        printUnsafeRepoWarning("repo.biteyourapple.net");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("sinfuliphonerepo.com") == 0){
-        printUnsafeRepoWarning("sinfuliphonerepo.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("cydia.iphonecake.com") == 0){
-        printUnsafeRepoWarning("cydia.iphonecake.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("repo.insanelyi.com") == 0){
-        printUnsafeRepoWarning("repo.insanelyi.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("idwaneo.org") == 0){
-        printUnsafeRepoWarning("idwaneo.org");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("ihackstore.com") == 0){
-        printUnsafeRepoWarning("ihackstore.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("ihacksrepo.com") == 0){
-        printUnsafeRepoWarning("ihacksrepo.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("xsellize.com") == 0){
-        printUnsafeRepoWarning("xsellize.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("pulandres") == 0){
-        printUnsafeRepoWarning("Pulandres");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("idevicehacked.com") == 0){
-        printUnsafeRepoWarning("idevicehacked.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("repo.appvv.com") == 0){
-        printUnsafeRepoWarning("repo.appvv.com");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("julioverne.github.io") == 0){
-        printUnsafeRepoWarning("julioverne.github.io");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("mainrepo.org") == 0){
-        printUnsafeRepoWarning("mainrepo.org");
-        isProblematicReposPresent = true;
-    }
-    if (potentiallyMalwareRepoCheck("rejail.ru") == 0){
-        printUnsafeRepoWarning("rejail.ru");
-        isProblematicReposPresent = true;
-    }
+
     // End repo sanity checks
     if (isProblematicReposPresent){
         printf("[VULNERABILITY] You have pirate repos installed in your Cydia.\n\n");
@@ -549,19 +736,31 @@ int execprog(const char *prog, const char* args[]) {
         FILE * f = fopen("/var/mobile/tbd.txt", "r");
            if (f) {
                fprintf(stderr,"Successfully fetched the amount of outdated packages.\n");
-                 int tweaksToBeUpdated = 0;
-                 fscanf (f, "%d", &tweaksToBeUpdated);
+                char tweaksToBeUpdated[100];
+                int finalTweakNumber = 0;
+                 fscanf (f, "%s", tweaksToBeUpdated);
                  while (!feof (f))
                    {
-                     printf ("%d ", tweaksToBeUpdated);
-                     fscanf (f, "%d", &tweaksToBeUpdated);
+                     printf ("%s ", tweaksToBeUpdated);
+                     fscanf (f, "%s", tweaksToBeUpdated);
                    }
                  fclose (f);
-               if (tweaksToBeUpdated == 0){
+               
+               int i;
+               int j = 0;
+                   for(i=0; tweaksToBeUpdated[i] ;i++){
+                       if(tweaksToBeUpdated[i] >= '0' && tweaksToBeUpdated[i] <= '9'){
+                           tweaksToBeUpdated[j] = tweaksToBeUpdated[i];
+                           j++;
+                       }
+                   }
+               tweaksToBeUpdated[j] = '\0';
+               finalTweakNumber = atoi(tweaksToBeUpdated);
+               if (finalTweakNumber == 0){
                    printf("[ i ] No outdated tweaks detected! Great! (Ignores the ones you specifically downgraded.)\n");
                } else {
                    printf("[ ! ] There are tweaks that need to be upgraded! It's recommended that you always get the latest version of the tweaks.\n");
-                   NSString *message = [NSString stringWithFormat:@"You have %d outdated tweaks! Please update them.\n", tweaksToBeUpdated];
+                   NSString *message = [NSString stringWithFormat:@"You have %d outdated tweaks! Please update them.\n", finalTweakNumber];
                    [Vulnerabilities addObject:message];
                    [VulnerabilityDetails addObject:@"It's important to keep your tweaks up to date to ensure you get the latest bug fixes and security improvements for your tweaks. Many tweaks get fixed daily and updates are being pushed, especially for stability reasons. Navigate to your favorite Package Manager and update your tweaks.\n"];
                }
