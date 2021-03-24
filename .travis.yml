@@ -1,7 +1,6 @@
 before_install:
   - gem install cocoapods
 install:
-  - brew update && brew upgrade AWFileHash
   - pod install
 language: objective-c
 osx_image: xcode12.4
