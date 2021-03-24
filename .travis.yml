@@ -5,5 +5,5 @@ install:
 language: objective-c
 osx_image: xcode12.4
 xcode_project: iSecureOS.xcworkspace # path to your xcodeproj folder
-xcode_scheme: iSecureOS
+xcode_scheme: securOSTests
 xcode_destination: platform=iOS Simulator,OS=14.3,name=iPhone 8
