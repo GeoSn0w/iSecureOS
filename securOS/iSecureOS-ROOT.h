@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *updatedPasswdRecheck;
 @property (weak, nonatomic) IBOutlet UIButton *changePassword;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

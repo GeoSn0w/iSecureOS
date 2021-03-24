@@ -19,7 +19,7 @@
 		D65BF72E25F7B983003242F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF72D25F7B983003242F5 /* main.m */; };
 		D65BF73825F7B983003242F5 /* securOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF73725F7B983003242F5 /* securOSTests.m */; };
 		D65BF74325F7B984003242F5 /* securOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF74225F7B984003242F5 /* securOSUITests.m */; };
-		D67095B72607C7D900FC6851 /* ThreatScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D67095B62607C7D900FC6851 /* ThreatScreen.m */; };
+		D67095B72607C7D900FC6851 /* iSecureOS-ThreatScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D67095B62607C7D900FC6851 /* iSecureOS-ThreatScreen.m */; };
 		D67095BC2607C94600FC6851 /* threat-detection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D67095BB2607C94600FC6851 /* threat-detection.mp3 */; };
 		D67095CE2607EAC000FC6851 /* iSecureOS-ROOT.m in Sources */ = {isa = PBXBuildFile; fileRef = D67095CD2607EAC000FC6851 /* iSecureOS-ROOT.m */; };
 		D67096172608435400FC6851 /* iSecureOS-AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D67096162608435400FC6851 /* iSecureOS-AppInfo.m */; };
@@ -72,8 +72,8 @@
 		D65BF73E25F7B984003242F5 /* iSecureOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSecureOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65BF74225F7B984003242F5 /* securOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = securOSUITests.m; sourceTree = "<group>"; };
 		D65BF74425F7B984003242F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D67095B52607C7D900FC6851 /* ThreatScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreatScreen.h; sourceTree = "<group>"; };
-		D67095B62607C7D900FC6851 /* ThreatScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreatScreen.m; sourceTree = "<group>"; };
+		D67095B52607C7D900FC6851 /* iSecureOS-ThreatScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-ThreatScreen.h"; sourceTree = "<group>"; };
+		D67095B62607C7D900FC6851 /* iSecureOS-ThreatScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-ThreatScreen.m"; sourceTree = "<group>"; };
 		D67095BB2607C94600FC6851 /* threat-detection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "threat-detection.mp3"; sourceTree = "<group>"; };
 		D67095CC2607EAC000FC6851 /* iSecureOS-ROOT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-ROOT.h"; sourceTree = "<group>"; };
 		D67095CD2607EAC000FC6851 /* iSecureOS-ROOT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-ROOT.m"; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 		D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Core.m"; sourceTree = "<group>"; };
 		D6B5008326058C010073E833 /* iSecureOS-Security.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Security.m"; sourceTree = "<group>"; };
 		D6B5008826058D4C0073E833 /* iSecureOS-Security.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Security.h"; sourceTree = "<group>"; };
+		D6EA7365260B21EC009C11E5 /* iSecureOS-Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Common.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +156,7 @@
 				D65BF71E25F7B982003242F5 /* SceneDelegate.h */,
 				D65BF71F25F7B982003242F5 /* SceneDelegate.m */,
 				D67095D22607EC6700FC6851 /* SystemReboot.h */,
+				D6EA7365260B21EC009C11E5 /* iSecureOS-Common.h */,
 				D65BF72125F7B982003242F5 /* ViewController.h */,
 				D65BF72225F7B982003242F5 /* ViewController.m */,
 				D67095CC2607EAC000FC6851 /* iSecureOS-ROOT.h */,
@@ -172,8 +174,8 @@
 				D6B5008826058D4C0073E833 /* iSecureOS-Security.h */,
 				D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */,
 				D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */,
-				D67095B62607C7D900FC6851 /* ThreatScreen.m */,
-				D67095B52607C7D900FC6851 /* ThreatScreen.h */,
+				D67095B62607C7D900FC6851 /* iSecureOS-ThreatScreen.m */,
+				D67095B52607C7D900FC6851 /* iSecureOS-ThreatScreen.h */,
 				D65BF72725F7B983003242F5 /* Assets.xcassets */,
 				D65BF72425F7B982003242F5 /* Main.storyboard */,
 				D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */,
@@ -350,7 +352,7 @@
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
 				D67096172608435400FC6851 /* iSecureOS-AppInfo.m in Sources */,
 				D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */,
-				D67095B72607C7D900FC6851 /* ThreatScreen.m in Sources */,
+				D67095B72607C7D900FC6851 /* iSecureOS-ThreatScreen.m in Sources */,
 				D62E05F1260688F000C5CDB8 /* iSecureOS-Signatures.m in Sources */,
 				D65BF72025F7B982003242F5 /* SceneDelegate.m in Sources */,
 				D6B5008426058C010073E833 /* iSecureOS-Security.m in Sources */,
@@ -526,7 +528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 423J45LL22;
 				INFOPLIST_FILE = securOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -534,7 +536,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.08;
+				MARKETING_VERSION = 1.09;
 				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.iSecureOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -547,7 +549,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 423J45LL22;
 				INFOPLIST_FILE = securOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -555,7 +557,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.08;
+				MARKETING_VERSION = 1.09;
 				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.iSecureOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

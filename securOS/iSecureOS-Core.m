@@ -40,16 +40,14 @@
 #include "iSecureOS-Security.h"
 #include "iSecureOS-Networking.h"
 #include "iSecureOS-Signatures.h"
-#include "ThreatScreen.h"
+#include "iSecureOS-ThreatScreen.h"
 #include "iSecureOS-Defaulting.h"
+#include "iSecureOS-Common.h"
 
 #define vm_address_t mach_vm_address_t
 #define tfp0 pwnage.kernel_port
 #define slide pwnage.kernel_slide
 #define kbase pwnage.kernel_base
-
-#define kalloc Kernel_alloc
-#define kfree Kernel_free
 
 
 //***********************************************
@@ -86,12 +84,20 @@ float duration;
 char *mostLikelyJailbreak;
 
 @implementation securiOS_Logging
+
 int shouldScan = 0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (@available(iOS 13.0, *)) {
             self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     }
+    
+    if (SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(@"13.0")){
+        // iOS 12 lacks the modals you can close by draging down. We add a manual back button.
+        _backButton12.hidden = NO;
+    }
+    
     printf("iSecureOS v1.05 by GeoSn0w (@FCE365)\n");
     printf("Initializing securiOS...\n", NULL);
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -186,6 +192,7 @@ int populateVulnerableReposFromSignatures(){
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"secuiOSTableCell"];
     cell.textLabel.text = [Vulnerabilities objectAtIndex:(indexPath.row)];
     cell.detailTextLabel.text = [VulnerabilityDetails objectAtIndex:(indexPath.row)];
+    [[cell imageView] setTintColor: [VulnerabilitySeverity objectAtIndex:(indexPath.row)]];
     [[cell textLabel] setNumberOfLines:0];
     [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[cell textLabel] setFont:[UIFont systemFontOfSize: 13.0]];
@@ -332,16 +339,29 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
             });
     
         // After this beta, these will be a database of their own. For now, all jailbreaks are vulnerable to these 3 anyways. Will do better.
+        UIColor *orangeColor = [UIColor orangeColor];
+        if (SYSTEM_VERSION_LESS_THAN(@"14.2")){
+            [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27930"];
+            [VulnerabilityDetails addObject:@"CVE-2020-27930 is a FontParser vulnerability that can lead to arbitrary code execution. Apple is aware of reports that an exploit for this issue exists in the wild. Pay attention to the apps you install, and websites you visit."];
+            [VulnerabilitySeverity addObject:orangeColor];
+        }
     
-        [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27930"];
-        [VulnerabilityDetails addObject:@"CVE-2020-27930 is a FontParser vulnerability that can lead to arbitrary code execution. Apple is aware of reports that an exploit for this issue exists in the wild. Pay attention to the apps you install, and websites you visit."];
-        [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27918"];
-        [VulnerabilityDetails addObject:@"CVE-2020-27918 is a WebKit vulnerability that can lead to arbitrary code execution. Pay attention to the websites you visit, as a malicious website can trigger an exploit for this vulnerability in order to exfiltrate data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
-        [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27935"];
-        [VulnerabilityDetails addObject:@"CVE-2020-27935 is an XNU vulnerability that can lead to sandbox escape, and thus reading of personal files. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
-        [Vulnerabilities addObject:@"Vulnerable to CVE-2021-1782 (cicuta_virosa)"];
-        [VulnerabilityDetails addObject:@"CVE-2021-1782 (cicuta_virosa) is a race condition in user_data_get_value() leading to ivac entry uaf. This issue has been actively exploited in the wild with the WebKit exploit. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
-    
+        if (SYSTEM_VERSION_LESS_THAN(@"14.2")){
+            [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27918"];
+            [VulnerabilityDetails addObject:@"CVE-2020-27918 is a WebKit vulnerability that can lead to arbitrary code execution. Pay attention to the websites you visit, as a malicious website can trigger an exploit for this vulnerability in order to exfiltrate data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
+            [VulnerabilitySeverity addObject:orangeColor];
+        }
+       
+        if (SYSTEM_VERSION_LESS_THAN(@"14.4")) {
+            [Vulnerabilities addObject:@"Vulnerable to CVE-2021-1782 (cicuta_virosa)"];
+            [VulnerabilityDetails addObject:@"CVE-2021-1782 (cicuta_virosa) is a race condition in user_data_get_value() leading to ivac entry uaf. This issue has been actively exploited in the wild with the WebKit exploit. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
+            [VulnerabilitySeverity addObject:orangeColor];
+        }
+        if (SYSTEM_VERSION_LESS_THAN(@"14.4.1")) {
+            [Vulnerabilities addObject:@"Vulnerable to CVE-2021-1844 (WebKit)"];
+            [VulnerabilityDetails addObject:@"CVE-2021-1844 is a WebKit memory corruption issue. Using this, processing maliciously crafted web content may lead to arbitrary code execution. Pay attention to the websites you visit. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
+            [VulnerabilitySeverity addObject:orangeColor];
+        }
         [self performLocationCheck];
     
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -410,12 +430,14 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 // Location Services
 
 - (void) performLocationCheck {
+    UIColor *yellowColor = [UIColor yellowColor];
     int retval = checkLocationServices();
     switch (retval) {
         case 0:
             printf("Location services are enabled. Unless you really use them, they should be disabled.");
             [Vulnerabilities addObject:@"Location Services are enabled."];
             [VulnerabilityDetails addObject:@"Unless you really need GPS, you should keep them off to save battery and ensure applications don't have on-demand unfettered access to your position for tracking purposes. Enable Location Services only for when the app is in use, and do not keep them on for more than you need."];
+            [VulnerabilitySeverity addObject:yellowColor];
             break;
         case -1:
             printf("Location services are not enabled. Unless you really use them, they should stay disabled.");
@@ -425,6 +447,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 }
 
 -(void) checkIfVPNIsActive{
+    UIColor *yellowColor = [UIColor yellowColor];
     int retval = performVPNCheck(); //Calls the function iSecureOS-Networking
     switch (retval) {
         case 0:
@@ -434,6 +457,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
             printf("There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device.");
             [Vulnerabilities addObject:@"You're not using a VPN"];
             [VulnerabilityDetails addObject:@"There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device. Be sure to get a quality, no LOGS VPN with preferably a transparent user data collection policies. Not all VPN providers are honest and you may end up worse than without one."];
+            [VulnerabilitySeverity addObject:yellowColor];
         default:
             break;
     }
@@ -442,16 +466,19 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 // Passcode / FaceID / TouchID
 
 - (void) checkPasscodeProtectionStatus{
+    UIColor *orangeColor = [UIColor orangeColor];
     if ([self extractPasscodeStatusWithKeychain] == 0){
         printf("[ ! ] Could not detect if the device has a passcode!\n\n");
         [Vulnerabilities addObject:@"Cannot detect if passcode is set."];
         [VulnerabilityDetails addObject:@"This device may not have a Passcode set. Data may be accessible to anybody with physical access."];
+        [VulnerabilitySeverity addObject:orangeColor];
     } else if ([self extractPasscodeStatusWithKeychain] == 1){
         printf("[ i ] Passcode is active on the device. Great!\n\n");
     } else if ([self extractPasscodeStatusWithKeychain] == 2){
         printf("[VULNERABILITY] Passcode is NOT enabled on this device. That's BAD.\n\n");
         [Vulnerabilities addObject:@"Passcode not set!"];
         [VulnerabilityDetails addObject:@"This device does not have a Passcode set. Data is accessible to anybody with physical access."];
+        [VulnerabilitySeverity addObject:orangeColor];
     }
     return;
 }
@@ -466,6 +493,7 @@ void printUnsafeTweakWarning(const char *problematicTweak){
     return;
 }
 - (int) checkPasswordDefaulting {
+    UIColor *redColor = [UIColor redColor];
     setuid(0);
     setgid(0);
     if (getuid() == 0){
@@ -478,6 +506,7 @@ void printUnsafeTweakWarning(const char *problematicTweak){
                 printf("[VULNERABILITY] Your SSH password is the default, alpine! You should change it.\n\n");
                 [Vulnerabilities addObject:@"Default SSH password detected."];
                 [VulnerabilityDetails addObject:@"This device has the default alpine password for remote SSH access. You must change it."];
+                [VulnerabilitySeverity addObject: redColor];
                 isSSHPasswordVulnerable = true;
                 fclose(filepointer);
                 return -1;
@@ -496,7 +525,8 @@ void printUnsafeTweakWarning(const char *problematicTweak){
 
 
 int potentiallyMalwareRepoCheck(const char *repoToCheck) {
-      //Let's figure out just what package manager we should expect.
+    UIColor *redColor = [UIColor redColor];
+    
     FILE *filepointer;
     filepointer = fopen("/etc/apt/sources.list.d/cydia.list", "r");
     if (filepointer){
@@ -509,6 +539,7 @@ int potentiallyMalwareRepoCheck(const char *repoToCheck) {
                         NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
                         [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In Cydia]"]];
                         [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        [VulnerabilitySeverity addObject:redColor];
                         fclose(filepointer);
                         return 0;
                         break;
@@ -534,6 +565,7 @@ int potentiallyMalwareRepoCheck(const char *repoToCheck) {
                         NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
                         [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In SILEO]"]];
                         [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        [VulnerabilitySeverity addObject:redColor];
                         fclose(filepointer);
                         return 0;
                         break;
@@ -558,6 +590,7 @@ int potentiallyMalwareRepoCheck(const char *repoToCheck) {
                         NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
                         [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In Zebra]"]];
                         [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        [VulnerabilitySeverity addObject:redColor];
                         fclose(filepointer);
                         return 0;
                         break;
@@ -619,15 +652,18 @@ int performJailbreakProbingAtPath(){
     return result;
 }
 int checkForUnsafeTweaks(){
+    UIColor *redColor = [UIColor redColor];
     if(file_exists("/Library/MobileSubstrate/DynamicLibraries/CyDown.dylib" )) {
         printUnsafeTweakWarning("CyDown");
         [Vulnerabilities addObject:@"CyDown is an unsafe pirate tweak / Botnet."];
         [VulnerabilityDetails addObject:@"This is a pirate tweak used to get paid tweaks for free. There are reports in the community from developers (LaughingQuoll et al.), that the tweak acts as a botnet and uses your device / UDID to grab tweaks from Packix and other legitimate repos in your name, and then share them with pirates. It's advised to uninstall it for your safety."];
+        [VulnerabilitySeverity addObject: redColor];
     }
     if(file_exists("/Library/MobileSubstrate/DynamicLibraries/LocalIAPStore.dylib") || file_exists("/Library/MobileSubstrate/DynamicLibraries/LocalIAPStore13.dylib")) {
         printUnsafeTweakWarning("LocaliAPStore");
         [Vulnerabilities addObject:@"LocaliAPStore is an unsafe pirate tweak that can get you banned."];
-        [VulnerabilityDetails addObject:@"LocaliAPStore is a pirate repo that makes some applications believe you made a real in-app purchase / microtransaction. Many applications are nowadays immune to it, but may ban you because you have it installed."];
+        [VulnerabilityDetails addObject:@"LocaliAPStore is a pirate tweak that makes some applications believe you made a real in-app purchase / microtransaction. Many applications are nowadays immune to it, but may ban you because you have it installed."];
+        [VulnerabilitySeverity addObject: redColor];
     }
     return 0;
 }
@@ -717,6 +753,7 @@ int execprog(const char *prog, const char* args[]) {
                    }
                tweaksToBeUpdated[j] = '\0';
                finalTweakNumber = atoi(tweaksToBeUpdated);
+    
                if (finalTweakNumber == 0){
                    printf("[ i ] No outdated tweaks detected! Great! (Ignores the ones you specifically downgraded.)\n");
                } else {
@@ -733,11 +770,13 @@ int execprog(const char *prog, const char* args[]) {
 
 int checkActiveSSHConnection(){
     // Check if an active root connection is found
+    UIColor *redColor = [UIColor redColor];
     int rootAccess = warnaxActiveSSHConnection("sshd: root@ttys");
     if (rootAccess == 0) {
         printf("An active ROOT SSH connection is going on right now. If it's not you, this is BAD.\n");
             [Vulnerabilities addObject:@"WARNING! Active root SSH Connection to this device."];
             [VulnerabilityDetails addObject:@"An active SSH connection is going on right now. If it's not you, this is BAD. It means that someone is right now connected via the network to this device and can exfiltrate files as they please. Change your root password and reboot your device. As ROOT, the attacker has even more power."];
+            [VulnerabilitySeverity addObject: redColor];
         isSSHPasswordVulnerable = true;
             return 0; // ROOT
     }
@@ -748,6 +787,7 @@ int checkActiveSSHConnection(){
         printf("An active SSH connection as MOBILE is going on right now. If it's not you, this is BAD.\n");
             [Vulnerabilities addObject:@"WARNING! Active mobile SSH Connection to this device."];
             [VulnerabilityDetails addObject:@"An active SSH connection is going on right now. If it's not you, this is BAD. It means that someone is right now connected via the network to this device and can exfiltrate files as they please. Change your root and mobile password and reboot your device."];
+            [VulnerabilitySeverity addObject: redColor];
         isSSHPasswordVulnerable = true;
             return 1; // mobile
     }
@@ -760,6 +800,7 @@ int checkActiveSSHConnection(){
         printf("An attempted SSH connection as MOBILE is going on right now. If it's not you, this is BAD.\n");
             [Vulnerabilities addObject:@"WARNING! Somebody is trying to connect via SSH as mobile."];
             [VulnerabilityDetails addObject:@"Somebody is on the login screen right now either typing or trying different passwords to login as mobile via SSH to your device. If this is not you, change your mobile and root password and reboot your device."];
+            [VulnerabilitySeverity addObject: redColor];
         isSSHPasswordVulnerable = true;
             return 2; // attempted mobile
     }
@@ -772,6 +813,7 @@ int checkActiveSSHConnection(){
         printf("An attempted SSH connection as ROOT is going on right now. If it's not you, this is BAD.\n");
             [Vulnerabilities addObject:@"WARNING! Somebody is trying to connect via SSH as ROOT."];
             [VulnerabilityDetails addObject:@"Somebody is on the login screen right now either typing or trying different passwords to login as ROOT via SSH to your device. If this is not you, change your root password and reboot your device."];
+            [VulnerabilitySeverity addObject: redColor];
         isSSHPasswordVulnerable = true;
             return 3; // mobile
     }
@@ -813,5 +855,10 @@ int checkActiveSSHConnection(){
         [self presentViewController:alert animated:YES completion:nil];
     }
     
+}
+- (IBAction)dismissModal12:(id)sender {
+    // Looks like iOS 12 lacks the modals I use that you can just drag down to close, thus making people get stuck on one window. This should fix that.
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

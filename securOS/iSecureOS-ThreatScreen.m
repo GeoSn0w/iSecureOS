@@ -5,7 +5,7 @@
 //  Created by GeoSn0w on 3/21/21.
 //
 
-#import "ThreatScreen.h"
+#import "iSecureOS-ThreatScreen.h"
 #import <AudioToolbox/AudioServices.h>
 
 @interface ThreatScreen ()

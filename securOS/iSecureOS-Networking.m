@@ -22,13 +22,15 @@ int performVPNCheck(){
                 if ([key rangeOfString:@"tap"].location != NSNotFound ||
                     [key rangeOfString:@"tun"].location != NSNotFound ||
                     [key rangeOfString:@"ipsec"].location != NSNotFound ||
+                    [key rangeOfString:@"ipsec0"].location != NSNotFound ||
+                    [key rangeOfString:@"utun1"].location != NSNotFound ||
+                    [key rangeOfString:@"utun2"].location != NSNotFound ||
                     [key rangeOfString:@"ppp"].location != NSNotFound){
                     isVPNConnected = YES;
                     break;
                 }
             }
-        }
-        else {
+        } else {
             struct ifaddrs *interfaces = NULL;
             struct ifaddrs *temp_addr = NULL;
             int success = 0;
@@ -40,8 +42,12 @@ int performVPNCheck(){
                     NSString *string = [NSString stringWithFormat:@"%s" , temp_addr->ifa_name];
                     if ([string rangeOfString:@"tap"].location != NSNotFound ||
                         [string rangeOfString:@"tun"].location != NSNotFound ||
+                        [string rangeOfString:@"ipsec0"].location != NSNotFound ||
+                        [string rangeOfString:@"utun1"].location != NSNotFound ||
+                        [string rangeOfString:@"utun2"].location != NSNotFound ||
                         [string rangeOfString:@"ipsec"].location != NSNotFound ||
-                        [string rangeOfString:@"ppp"].location != NSNotFound) {
+                        [string rangeOfString:@"ppp"].location != NSNotFound)
+                    {
                         isVPNConnected = YES;
                         break;
                     }
