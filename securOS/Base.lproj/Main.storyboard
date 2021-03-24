@@ -25,8 +25,8 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="en2-Jo-urN">
                                 <rect key="frame" x="8" y="91" width="359" height="556"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Thanks for using iSecureOS!
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Thanks for using iSecureOS!
 
 This application has been developed by GeoSn0w (@FCE365).
 When not developing apps, GeoSn0w makes Jailbreak / iOS-related videos on his YouTube channel (iDevice Central) with over 135.000 subscribers. Check it out.
@@ -42,14 +42,14 @@ If you you think this application is useful, follow me.
 
 Twitter: @FCE365
 Twitter: @iSecureOS
-YouTube: iDevice Central</mutableString>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+YouTube: iDevice Central</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xwm-i5-PJh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="en2-Jo-urN" firstAttribute="centerX" secondItem="Bza-wK-QP2" secondAttribute="centerX" id="C69-iI-VnT"/>
                             <constraint firstItem="en2-Jo-urN" firstAttribute="centerX" secondItem="Zsx-1O-v2n" secondAttribute="centerX" id="RDT-il-yBA"/>
@@ -80,11 +80,11 @@ YouTube: iDevice Central</mutableString>
                                     <constraint firstAttribute="height" constant="355" id="eeH-6u-zhP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS v1.00-B1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS v1.08-B1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
                                 <rect key="frame" x="105" y="604.5" width="165" height="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                <color key="textColor" red="0.81568627449999997" green="0.61286604109999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by GeoSn0w (FCE365)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-ci-w8X">
@@ -108,12 +108,12 @@ YouTube: iDevice Central</mutableString>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Perform iSecureOS Scan" backgroundImage="button_mask"/>
                                 <connections>
-                                    <segue destination="01f-sZ-FeH" kind="show" id="c3R-bq-Pxr"/>
+                                    <segue destination="01f-sZ-FeH" kind="presentation" modalPresentationStyle="fullScreen" id="c3R-bq-Pxr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2z-Ik-Lma">
                                 <rect key="frame" x="175" y="572" width="25" height="24"/>
-                                <color key="tintColor" systemColor="systemPurpleColor"/>
+                                <color key="tintColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="7cp-9w-wOn" kind="show" id="KUc-Ki-mlA"/>
                                 </connections>
@@ -127,7 +127,7 @@ YouTube: iDevice Central</mutableString>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.98960442742590438" green="0.97730657663561504" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Eh3-i4-hpt" firstAttribute="centerX" secondItem="p49-tn-Mtp" secondAttribute="centerX" id="21C-XN-YzX"/>
                             <constraint firstItem="0oG-OL-EpH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2HC-uY-rrA"/>
@@ -163,7 +163,7 @@ YouTube: iDevice Central</mutableString>
             <objects>
                 <viewController id="01f-sZ-FeH" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXP-yS-OWE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS is scanning..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="9br-Z9-cbt">
@@ -189,9 +189,9 @@ YouTube: iDevice Central</mutableString>
                                     <constraint firstAttribute="height" constant="43" id="TFj-AE-ak6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                <state key="normal" title="Change ROOT Password" backgroundImage="button_mask"/>
+                                <state key="normal" title="Change SSH Password" backgroundImage="button_mask"/>
                                 <connections>
-                                    <segue destination="G4X-wQ-tZw" kind="show" id="kpP-Pu-swy"/>
+                                    <action selector="changePasswordForSSH:" destination="01f-sZ-FeH" eventType="touchUpInside" id="zhA-jd-L97"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-aN-gJI">
@@ -206,7 +206,7 @@ YouTube: iDevice Central</mutableString>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uc-fE-0Ab">
-                                <rect key="frame" x="127" y="604" width="121" height="33"/>
+                                <rect key="frame" x="127" y="624" width="121" height="33"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -250,7 +250,7 @@ YouTube: iDevice Central</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3B2-Dk-Iqh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="118"/>
+            <point key="canvasLocation" x="868" y="117.39130434782609"/>
         </scene>
         <!--SecuriOS Logging-->
         <scene sceneID="bvW-Ys-bfo">
@@ -346,6 +346,9 @@ YouTube: iDevice Central</mutableString>
                                 <state key="normal" image="diskette">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveLogToFile:" destination="s2z-G4-Ktf" eventType="touchUpInside" id="4uN-1V-T7p"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmS-1o-8Ai">
                                 <rect key="frame" x="260" y="12" width="101" height="28"/>
@@ -380,12 +383,102 @@ YouTube: iDevice Central</mutableString>
             </objects>
             <point key="canvasLocation" x="1596" y="115"/>
         </scene>
-        <!--SecuriOS Logging-->
+        <!--ThreatMenu-->
+        <scene sceneID="m2R-Op-N1z">
+            <objects>
+                <viewController storyboardIdentifier="ThreatMenu" title="ThreatMenu" id="BaC-SH-WIM" customClass="ThreatScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hCs-Me-QCe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="kme-eX-c2P">
+                                <rect key="frame" x="110" y="70" width="155" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="152" id="TPE-Ub-S10"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miT-DX-HIf">
+                                <rect key="frame" x="24" y="549" width="327" height="64"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="3H4-c3-ORl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <state key="normal" title="Change SSH Password">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePasswordThreat:" destination="BaC-SH-WIM" eventType="touchUpInside" id="uvo-Rf-8SO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Urgent Threat has been detected!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-V9-ucp">
+                                <rect key="frame" x="50.5" y="236" width="274" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d2-Wl-48Y">
+                                <rect key="frame" x="24" y="286.5" width="327" height="242.5"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">An active SSH connection has been detected on this device. This means that someone is currently on your device via the network. If it's you, connected from your PC, then that is okay. However, if this is not you, it's crucial to change your SSH password and reboot the device now.</string>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Dh-k5-RRY">
+                                <rect key="frame" x="265" y="10" width="101" height="28"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-ZM-s1c">
+                                <rect key="frame" x="77" y="627" width="221" height="28"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="13"/>
+                                <state key="normal" title="That was me!">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="thatwasMeDismiss:" destination="BaC-SH-WIM" eventType="touchUpInside" id="JI3-pa-8OM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HPN-5A-2oy"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kme-eX-c2P" firstAttribute="top" secondItem="HPN-5A-2oy" secondAttribute="top" constant="70" id="1w6-SA-ZgB"/>
+                            <constraint firstItem="8d2-Wl-48Y" firstAttribute="top" secondItem="ozr-V9-ucp" secondAttribute="bottom" constant="27" id="6GE-D4-M1a"/>
+                            <constraint firstItem="ozr-V9-ucp" firstAttribute="top" secondItem="kme-eX-c2P" secondAttribute="bottom" constant="14" id="7Dj-2G-GVT"/>
+                            <constraint firstItem="eE7-ZM-s1c" firstAttribute="leading" secondItem="HPN-5A-2oy" secondAttribute="leading" constant="77" id="8kS-Jd-CHj"/>
+                            <constraint firstItem="HPN-5A-2oy" firstAttribute="bottom" secondItem="eE7-ZM-s1c" secondAttribute="bottom" constant="12" id="IWs-H8-wIl"/>
+                            <constraint firstItem="8d2-Wl-48Y" firstAttribute="leading" secondItem="HPN-5A-2oy" secondAttribute="leading" constant="24" id="N7H-IZ-6yX"/>
+                            <constraint firstItem="eE7-ZM-s1c" firstAttribute="top" secondItem="miT-DX-HIf" secondAttribute="bottom" constant="14" id="RlK-Eo-FN1"/>
+                            <constraint firstItem="miT-DX-HIf" firstAttribute="trailing" secondItem="8d2-Wl-48Y" secondAttribute="trailing" id="Uio-x6-IGF"/>
+                            <constraint firstItem="ozr-V9-ucp" firstAttribute="centerX" secondItem="8d2-Wl-48Y" secondAttribute="centerX" id="hG5-mP-oLk"/>
+                            <constraint firstItem="miT-DX-HIf" firstAttribute="top" secondItem="8d2-Wl-48Y" secondAttribute="bottom" constant="20" id="hMx-gH-ieG"/>
+                            <constraint firstItem="miT-DX-HIf" firstAttribute="centerX" secondItem="eE7-ZM-s1c" secondAttribute="centerX" id="hvj-fP-fTb"/>
+                            <constraint firstItem="miT-DX-HIf" firstAttribute="leading" secondItem="8d2-Wl-48Y" secondAttribute="leading" id="imb-O6-o9f"/>
+                            <constraint firstItem="ozr-V9-ucp" firstAttribute="centerX" secondItem="hCs-Me-QCe" secondAttribute="centerX" id="kcd-qq-tcs"/>
+                            <constraint firstItem="HPN-5A-2oy" firstAttribute="trailing" secondItem="8Dh-k5-RRY" secondAttribute="trailing" constant="9" id="mud-jf-T6W"/>
+                            <constraint firstItem="kme-eX-c2P" firstAttribute="centerX" secondItem="ozr-V9-ucp" secondAttribute="centerX" id="roO-Ub-KFt"/>
+                            <constraint firstItem="8Dh-k5-RRY" firstAttribute="top" secondItem="HPN-5A-2oy" secondAttribute="top" constant="10" id="u8U-eX-bUK"/>
+                            <constraint firstItem="kme-eX-c2P" firstAttribute="leading" secondItem="HPN-5A-2oy" secondAttribute="leading" constant="110" id="yb4-MH-4Bs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ThreatMessage" destination="8d2-Wl-48Y" id="cra-z1-hSR"/>
+                        <outlet property="changeRootAndMobilePass" destination="miT-DX-HIf" id="uZE-vq-jQY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhd-tr-vO4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2295.6521739130435" y="115.7608695652174"/>
+        </scene>
+        <!--RootPasswd-->
         <scene sceneID="2En-h1-luW">
             <objects>
-                <viewController id="G4X-wQ-tZw" customClass="securiOS_Logging" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootPasswd" title="RootPasswd" id="G4X-wQ-tZw" customClass="iSecureOS_ROOT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="foc-st-Hvl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new ROOT password" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i98-Io-zvP">
@@ -406,8 +499,7 @@ YouTube: iDevice Central</mutableString>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <state key="normal" title="Secure this device" backgroundImage="button_mask"/>
                                 <connections>
-                                    <action selector="changeRootPassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="SEJ-fe-ebf"/>
-                                    <action selector="secureThisDevice:" destination="SJc-vz-8Xb" eventType="touchUpInside" id="0cC-z8-wpk"/>
+                                    <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="pqC-jX-DFR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1q-88-UAZ">
@@ -484,13 +576,12 @@ YouTube: iDevice Central</mutableString>
                     </view>
                     <navigationItem key="navigationItem" id="ADM-iL-6es"/>
                     <connections>
-                        <outlet property="passwordField" destination="xmG-uw-INv" id="590-0t-UjW"/>
-                        <outlet property="passwordVerificationField" destination="EWP-lQ-deQ" id="3Og-q1-iKy"/>
-                        <outlet property="secureThisDevice" destination="cad-Iq-t54" id="Dxk-PB-yGc"/>
+                        <outlet property="changePassword" destination="cad-Iq-t54" id="PNc-nr-XoC"/>
+                        <outlet property="updatedPasswd" destination="xmG-uw-INv" id="Uw7-ec-g8z"/>
+                        <outlet property="updatedPasswdRecheck" destination="EWP-lQ-deQ" id="FEi-hX-XpG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEW-lT-HRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="SJc-vz-8Xb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="866.66666666666674" y="-575.54347826086962"/>
         </scene>
@@ -502,12 +593,7 @@ YouTube: iDevice Central</mutableString>
         <image name="radar" width="128" height="128"/>
         <image name="shield" width="256" height="256"/>
         <image name="shield.slash.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="warning" width="256" height="256"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

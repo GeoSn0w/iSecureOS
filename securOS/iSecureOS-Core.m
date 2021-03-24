@@ -40,6 +40,8 @@
 #include "iSecureOS-Security.h"
 #include "iSecureOS-Networking.h"
 #include "iSecureOS-Signatures.h"
+#include "ThreatScreen.h"
+#include "iSecureOS-Defaulting.h"
 
 #define vm_address_t mach_vm_address_t
 #define tfp0 pwnage.kernel_port
@@ -87,61 +89,42 @@ char *mostLikelyJailbreak;
 int shouldScan = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    printf("iSecureOS v1.0 by GeoSn0w (@FCE365)\n");
+    if (@available(iOS 13.0, *)) {
+            self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
+    printf("iSecureOS v1.05 by GeoSn0w (@FCE365)\n");
     printf("Initializing securiOS...\n", NULL);
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-        [self.view addGestureRecognizer:gestureRecognizer];
+    [self.view addGestureRecognizer:gestureRecognizer];
         gestureRecognizer.cancelsTouchesInView = NO;
+    
     
     // Beginning of UI Button Rounding
     _viewVulnerabilities.layer.cornerRadius = 22;
     _viewVulnerabilities.clipsToBounds = YES;
     _changeRootPassword.layer.cornerRadius = 19;
     _changeRootPassword.clipsToBounds = YES;
-    _secureThisDevice.layer.cornerRadius = 22;
-    _secureThisDevice.clipsToBounds = YES;
     
     // End of UI Rounding
     
     if (shouldScan == 0){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self iSecureOSInitMain];
-        });
-        /*
-        if (performMalwareSignatureUpdate() == 0){
-            if (populateVulnerableReposFromSignatures() == 0){
-                [self iSecureOSInitMain];
+            if (performMalwareSignatureUpdate() == 0){
+                if (populateVulnerableReposFromSignatures() == 0){
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        [self iSecureOSInitMain];
+                    });
+                   
+                } else {
+                    printf("Could not obtain the signatures for iSecureOS.\n");
+                    self.scanningLabel.text = @"Could not get signatures.";
+                }
             } else {
-                printf("Could not populate the signatures for iSecureOS.\n");
+                printf("Failed to get the online version of the signatures. Will default to offline.\n");
+                SecurityRiskRepos = [[iSecureOSDefaultingRepos componentsSeparatedByString:@","] mutableCopy];
+                [self iSecureOSInitMain];
             }
-        } else {
-            printf("Could not obtain the signatures for iSecureOS.\n");
-        }
-         */
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.scannProgressbar setProgress: 0.70f animated:YES];
-    });
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.scannProgressbar setProgress: 0.80f animated:YES];
-    });
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.scannProgressbar setProgress: 1.0f animated:YES];
-    });
-}
-
--(void)updateProgress {
-    float newProgress = [self.scannProgressbar progress] + 0.01666;
-    [self.scannProgressbar setProgress:newProgress animated:YES];
-
-    if (_scannProgressbar.progress == 1) {
-        [uiProgressTime invalidate];
-        uiProgressTime = nil;
-        _viewVulnerabilities.hidden = NO;
-        if (isSSHPasswordVulnerable){
-            _changeRootPassword.hidden = NO;
-        }
-        _scanningLabel.text = @"Finished scanning.";
+        });
     }
 }
 
@@ -152,14 +135,16 @@ int shouldScan = 0;
 int populateVulnerableReposFromSignatures(){
     SecurityRiskRepos = [[NSMutableArray alloc] init];
     NSString *textFilePath = @"/var/mobile/iSecureOS/repo-signatures";
-    NSString *fileContentsUrls = [NSString stringWithContentsOfFile:textFilePath encoding:NSUTF8StringEncoding error:nil];
+    NSError *error;
+    NSString *fileContentsUrls = [NSString stringWithContentsOfFile:textFilePath encoding:NSUTF8StringEncoding error:&error];
     SecurityRiskRepos = [[fileContentsUrls componentsSeparatedByString:@"\n"] mutableCopy];
-    if (SecurityRiskRepos != nil) {
+    if (error == nil) {
         printf("Successfully loaded Repo Signatures into iSecureOS\n");
         return 0;
     } else {
-        printf("Failed to load Repo Signatures into iSecureOS\n");
-        return -1;
+        printf("Failed to get the online version of the signatures. Will default to offline.\n");
+        SecurityRiskRepos = [[iSecureOSDefaultingRepos componentsSeparatedByString:@","] mutableCopy];
+        return 0;
     }
 }
 
@@ -173,81 +158,24 @@ int populateVulnerableReposFromSignatures(){
     [userDefaults setObject:currDate
                      forKey:@"LastScan"];
     [userDefaults synchronize];
-    return;
-}
-- (IBAction)changeRootPassword:(id)sender {
-    if (_passwordField.text && _passwordField.text.length < 1){
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oooops..."
-                                   message:@"The password cannot be empty (unless you wanna brick the jailbreak, that is...)"
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-    } else {
-        if (_passwordField.text && _passwordField.text.length < 6){
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ooops..."
-                                       message:@"The password must be at least 6 characters long. Please try again."
-                                       preferredStyle:UIAlertControllerStyleAlert];
-
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
-                                           handler:^(UIAlertAction * action) {}];
-
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        } else {
-            if ([_passwordField.text isEqualToString: _passwordVerificationField.text]) {
-                NSString *newPassword = _passwordField.text;
-                const char *passwordForFunc = [newPassword UTF8String];
-                    if (hashPasswordAndPrepare(passwordForFunc) == 0){
-                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"ROOT Password Updated!"
-                                                   message:@"Successfully updated the ROOT password to your own. Your device is already more secure now because any attempt of stray SSH via the network would require your password, rather than the default alpine. Congrats!"
-                                                   preferredStyle:UIAlertControllerStyleAlert];
-
-                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thank you!" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {}];
-
-                        [alert addAction:defaultAction];
-                        [self presentViewController:alert animated:YES completion:nil];
-                    } else if (hashPasswordAndPrepare(passwordForFunc) == -1) {
-                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Could not update ROOT Password"
-                                                   message:@"It looks like, for some reason, iSecureOS doesn't run as ROOT or doesn't have access to the master.passwd file."
-                                                   preferredStyle:UIAlertControllerStyleAlert];
-
-                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {}];
-
-                        [alert addAction:defaultAction];
-                        [self presentViewController:alert animated:YES completion:nil];
-                    } else if (hashPasswordAndPrepare(passwordForFunc) == -2) {
-                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Could not update ROOT Password"
-                                                   message:@"While iSecureOS could successfully access the master.passwd file, the system has blocked the attempt to write to it. This is likely a permissions issue."
-                                                   preferredStyle:UIAlertControllerStyleAlert];
-
-                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {}];
-
-                        [alert addAction:defaultAction];
-                        [self presentViewController:alert animated:YES completion:nil];
-                    }
-                } else {
-                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ooops..."
-                                               message:@"Sorry, but the passwords you entered do not match. Please type the same password in both fields. Also, make sure you can remember it later."
-                                               preferredStyle:UIAlertControllerStyleAlert];
-
-                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Let me try again." style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {}];
-
-                    [alert addAction:defaultAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                }
-        }
-    }
     
+    _viewVulnerabilities.hidden = NO;
+    if (isSSHPasswordVulnerable){
+        _changeRootPassword.hidden = NO;
+    }
+    _scanningLabel.text = @"Finished scanning.";
+    
+    NSString *path = @"/var/mobile/iSecureOS";
+    NSURL *url = [NSURL URLWithString:[path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    url = [url URLByAppendingPathComponent:@"ScanResult.json"];
+    NSError *e = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:Vulnerabilities options:NSJSONWritingPrettyPrinted error:&e];
 
+    if (jsonData) {
+        [jsonData writeToFile:url.path atomically:YES];
+    }
+    remove("/var/mobile/iSecureOS/repo-signatures");
+    return;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -258,6 +186,9 @@ int populateVulnerableReposFromSignatures(){
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"secuiOSTableCell"];
     cell.textLabel.text = [Vulnerabilities objectAtIndex:(indexPath.row)];
     cell.detailTextLabel.text = [VulnerabilityDetails objectAtIndex:(indexPath.row)];
+    [[cell textLabel] setNumberOfLines:0];
+    [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+    [[cell textLabel] setFont:[UIFont systemFontOfSize: 13.0]];
     return cell;
     
 }
@@ -273,7 +204,7 @@ int populateVulnerableReposFromSignatures(){
                                    handler:^(UIAlertAction * action) {}];
 
     [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
+    [self presentViewController:alert animated:NO completion:nil];
 
 }
 
@@ -288,9 +219,9 @@ kern_return_t get_kernelport(kernel_data_t* data){
     NSData *data = [[nf userInfo] objectForKey:NSFileHandleNotificationDataItem];
     NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    self.securiOSLoggingWindow.text = [NSString stringWithFormat:@"%@\n%@",self.securiOSLoggingWindow.text, str];
-    NSRange lastLine = NSMakeRange(self.securiOSLoggingWindow.text.length - 1, 1);
-    [self.securiOSLoggingWindow scrollRangeToVisible:lastLine];
+    self.sts.text = [NSString stringWithFormat:@"%@\n%@",self.sts.text, str];
+    NSRange lastLine = NSMakeRange(self.sts.text.length - 1, 1);
+    [self.sts scrollRangeToVisible:lastLine];
     [[nf object] readInBackgroundAndNotify];
 }
 
@@ -328,16 +259,16 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 // Main Scanning Stub
 
 - (void) iSecureOSInitMain {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:1.5 animations:^{
-                    [self.scannProgressbar setProgress:0.05 animated:YES];
-            }];
-        });
         Vulnerabilities = [[NSMutableArray alloc] init];
         VulnerabilityDetails = [[NSMutableArray alloc] init];
         VulnerabilitySeverity = [[NSMutableArray alloc] init];
         kern_return_t oskernfail = KERN_SUCCESS;
         printf("Performing jailbreak probing...\n", NULL);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                    [self.scannProgressbar setProgress:0.05 animated:YES];
+            }];
+        });
         int jailbreakProbing = performJailbreakProbingAtPath();
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -378,8 +309,6 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                     }];
                 });
                 
-                [self checkForOutdatedPackages];
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [UIView animateWithDuration:1.5 animations:^{
                             [self.scannProgressbar setProgress:0.30 animated:YES];
@@ -393,8 +322,8 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                             [self.scannProgressbar setProgress:0.40 animated:YES];
                     }];
                 });
-        }
-        [self checkPasscodeProtectionStatus];
+            }
+           [self checkPasscodeProtectionStatus];
     
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:1.5 animations:^{
@@ -402,12 +331,16 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                 }];
             });
     
+        // After this beta, these will be a database of their own. For now, all jailbreaks are vulnerable to these 3 anyways. Will do better.
+    
         [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27930"];
         [VulnerabilityDetails addObject:@"CVE-2020-27930 is a FontParser vulnerability that can lead to arbitrary code execution. Apple is aware of reports that an exploit for this issue exists in the wild. Pay attention to the apps you install, and websites you visit."];
         [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27918"];
-        [VulnerabilityDetails addObject:@"CVE-2020-27918 is a WebKit vulnerability that can lead to arbitrary code execution. Pay attention to the websites you visit, as a malicious website can trigger an exploit for this vulnerability in order to exfiltrate data."];
+        [VulnerabilityDetails addObject:@"CVE-2020-27918 is a WebKit vulnerability that can lead to arbitrary code execution. Pay attention to the websites you visit, as a malicious website can trigger an exploit for this vulnerability in order to exfiltrate data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
         [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27935"];
-        [VulnerabilityDetails addObject:@"CVE-2020-27935 is an XNU vulnerability that can lead to sandbox escape, and thus reading of personal files. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data."];
+        [VulnerabilityDetails addObject:@"CVE-2020-27935 is an XNU vulnerability that can lead to sandbox escape, and thus reading of personal files. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
+        [Vulnerabilities addObject:@"Vulnerable to CVE-2021-1782 (cicuta_virosa)"];
+        [VulnerabilityDetails addObject:@"CVE-2021-1782 (cicuta_virosa) is a race condition in user_data_get_value() leading to ivac entry uaf. This issue has been actively exploited in the wild with the WebKit exploit. Pay attention to the applications you install, as they wouldn't necessarily require a jailbreak to access your data. There's not much you can do about this, other than updating to the latest iOS which results in losing your jailbreak."];
     
         [self performLocationCheck];
     
@@ -418,7 +351,6 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         });
     
         [self checkIfVPNIsActive];
-        //uiProgressTime = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
     
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:1.5 animations:^{
@@ -426,21 +358,50 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
             }];
         });
     
-        [self performCleanupSegue];
-    
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:1.5 animations:^{
-                    [self.scannProgressbar setProgress:0.80 animated:YES];
-            }];
-        });
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:1.5 animations:^{
                     [self.scannProgressbar setProgress:0.90 animated:YES];
             }];
         });
+       
+        // Threat Level
+        int threatLevel = checkActiveSSHConnection();
+        if (threatLevel == 0){
+            NSString *valueToSave = @"0";
+            [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"ThreatLevel"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        } else if (threatLevel == 1) {
+            NSString *valueToSave = @"1";
+            [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"ThreatLevel"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        } else if (threatLevel == 2) {
+            NSString *valueToSave = @"2";
+            [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"ThreatLevel"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        } else if (threatLevel == 3) {
+            NSString *valueToSave = @"3";
+            [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"ThreatLevel"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    
+        if (threatLevel != -1){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString * storyboardName = @"Main";
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+                UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"ThreatMenu"];
+                [self presentViewController:vc animated:YES completion:nil];
+            });
+        }
+    
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:1.5 animations:^{
                     [self.scannProgressbar setProgress:1.0 animated:YES];
+            }];
+        });
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:1.5 animations:^{
+                [self performCleanupSegue];
             }];
         });
     return;
@@ -454,7 +415,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         case 0:
             printf("Location services are enabled. Unless you really use them, they should be disabled.");
             [Vulnerabilities addObject:@"Location Services are enabled."];
-            [VulnerabilityDetails addObject:@"Unless you really need GPS, you should keep them off to save battery and ensure applications don't have on-demand unfethered access to your position for tracking purposes. Enable Location Services only for when the app is in use, and do not keep them on for more than you need."];
+            [VulnerabilityDetails addObject:@"Unless you really need GPS, you should keep them off to save battery and ensure applications don't have on-demand unfettered access to your position for tracking purposes. Enable Location Services only for when the app is in use, and do not keep them on for more than you need."];
             break;
         case -1:
             printf("Location services are not enabled. Unless you really use them, they should stay disabled.");
@@ -762,7 +723,7 @@ int execprog(const char *prog, const char* args[]) {
                    printf("[ ! ] There are tweaks that need to be upgraded! It's recommended that you always get the latest version of the tweaks.\n");
                    NSString *message = [NSString stringWithFormat:@"You have %d outdated tweaks! Please update them.\n", finalTweakNumber];
                    [Vulnerabilities addObject:message];
-                   [VulnerabilityDetails addObject:@"It's important to keep your tweaks up to date to ensure you get the latest bug fixes and security improvements for your tweaks. Many tweaks get fixed daily and updates are being pushed, especially for stability reasons. Navigate to your favorite Package Manager and update your tweaks.\n"];
+                   [VulnerabilityDetails addObject:@"It's important to keep your tweaks up to date to ensure you get the latest bug fixes and security improvements for your tweaks. Many tweaks get fixed daily and updates are being pushed, especially for stability reasons. Navigate to your favorite Package Manager and update your tweaks."];
                }
            } else {
                printf("Could not parse amount of outdated packages...\n");
@@ -770,6 +731,87 @@ int execprog(const char *prog, const char* args[]) {
     });
 }
 
-- (IBAction)secureThisDevice:(id)sender {
+int checkActiveSSHConnection(){
+    // Check if an active root connection is found
+    int rootAccess = warnaxActiveSSHConnection("sshd: root@ttys");
+    if (rootAccess == 0) {
+        printf("An active ROOT SSH connection is going on right now. If it's not you, this is BAD.\n");
+            [Vulnerabilities addObject:@"WARNING! Active root SSH Connection to this device."];
+            [VulnerabilityDetails addObject:@"An active SSH connection is going on right now. If it's not you, this is BAD. It means that someone is right now connected via the network to this device and can exfiltrate files as they please. Change your root password and reboot your device. As ROOT, the attacker has even more power."];
+        isSSHPasswordVulnerable = true;
+            return 0; // ROOT
+    }
+    
+    // Check if an active mobile connection is found
+    int mobileAccess = warnaxActiveSSHConnection("sshd: mobile@ttys");
+    if (mobileAccess == 0) {
+        printf("An active SSH connection as MOBILE is going on right now. If it's not you, this is BAD.\n");
+            [Vulnerabilities addObject:@"WARNING! Active mobile SSH Connection to this device."];
+            [VulnerabilityDetails addObject:@"An active SSH connection is going on right now. If it's not you, this is BAD. It means that someone is right now connected via the network to this device and can exfiltrate files as they please. Change your root and mobile password and reboot your device."];
+        isSSHPasswordVulnerable = true;
+            return 1; // mobile
+    }
+    
+    /*------------------------------------------------------------*/
+    
+    // Check if an attempted mobile connection is ongoing...
+    int attemptedMobile = warnaxActiveSSHConnection("sshd: mobile");
+    if (attemptedMobile == 0) {
+        printf("An attempted SSH connection as MOBILE is going on right now. If it's not you, this is BAD.\n");
+            [Vulnerabilities addObject:@"WARNING! Somebody is trying to connect via SSH as mobile."];
+            [VulnerabilityDetails addObject:@"Somebody is on the login screen right now either typing or trying different passwords to login as mobile via SSH to your device. If this is not you, change your mobile and root password and reboot your device."];
+        isSSHPasswordVulnerable = true;
+            return 2; // attempted mobile
+    }
+    
+    /*------------------------------------------------------------*/
+    
+    // Check if an attempted ROOT connection is ongoing...
+    int attemptedROOT = warnaxActiveSSHConnection("sshd: root");
+    if (attemptedROOT == 0) {
+        printf("An attempted SSH connection as ROOT is going on right now. If it's not you, this is BAD.\n");
+            [Vulnerabilities addObject:@"WARNING! Somebody is trying to connect via SSH as ROOT."];
+            [VulnerabilityDetails addObject:@"Somebody is on the login screen right now either typing or trying different passwords to login as ROOT via SSH to your device. If this is not you, change your root password and reboot your device."];
+        isSSHPasswordVulnerable = true;
+            return 3; // mobile
+    }
+    return -1;
+}
+- (IBAction)changePasswordForSSH:(id)sender {
+    NSString *valueToSave = @"0";
+    [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"ShouldReboot"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString * storyboardName = @"Main";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"RootPasswd"];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
+}
+- (IBAction)saveLogToFile:(id)sender {
+    
+    NSString *path = @"/var/mobile/iSecureOS";
+    NSURL *url = [NSURL URLWithString:[path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    url = [url URLByAppendingPathComponent:@"ScanResult.json"];
+    NSError *e = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:Vulnerabilities options:NSJSONWritingPrettyPrinted error:&e];
+
+    if (jsonData) {
+        [jsonData writeToFile:url.path atomically:YES];
+    }
+    
+    if (e == nil){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Scan report saved"
+                                                                       message:@"The scan report was saved to /var/mobile/iSecureOS/ScanResult.json"
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
 }
 @end

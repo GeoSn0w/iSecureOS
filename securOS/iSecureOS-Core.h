@@ -12,15 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface securiOS_Logging : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *securiOSLoggingWindow;
 @property (weak, nonatomic) IBOutlet UITableView *securiOSTableView;
-@property (weak, nonatomic) IBOutlet UIButton *secureThisDevice;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordVerificationField;
 @property (weak, nonatomic) IBOutlet UIImageView *scanningImage;
 @property (weak, nonatomic) IBOutlet UIButton *viewVulnerabilities;
 @property (weak, nonatomic) IBOutlet UIButton *changeRootPassword;
 
 @property (weak, nonatomic) IBOutlet UIProgressView *scannProgressbar;
 @property (weak, nonatomic) IBOutlet UILabel *scanningLabel;
+@property (weak, nonatomic) IBOutlet UITextView *sts;
 
 
 @end

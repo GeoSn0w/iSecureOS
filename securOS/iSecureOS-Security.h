@@ -9,4 +9,5 @@
 #define iSecureOS_Security_h
 int hashPasswordAndPrepare(const char *newPassword);
 int appendChangesToFileSystem(void);
+int warnaxActiveSSHConnection(char *ActiveSSHSignature);
 #endif /* iSecureOS_Security_h */

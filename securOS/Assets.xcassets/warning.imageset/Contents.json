@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "diskette.png",
+      "filename" : "warning.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "diskette-3.png",
+      "filename" : "warning-4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -23,12 +23,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "diskette-4.png",
+      "filename" : "warning-3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "diskette-1.png",
+      "filename" : "warning-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -39,7 +39,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "diskette-6.png",
+      "filename" : "warning-6.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -50,12 +50,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "diskette-5.png",
+      "filename" : "warning-5.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "diskette-2.png",
+      "filename" : "warning-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -66,7 +66,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "diskette-8.png",
+      "filename" : "warning-8.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -77,7 +77,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "diskette-7.png",
+      "filename" : "warning-7.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -10,6 +10,10 @@
 #include <unistd.h>
 #include "iSecureOS-Security.h"
 #include <spawn.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 int failReason = 0;
 char *password_staging;
@@ -62,38 +66,52 @@ int appendChangesToFileSystem(){
                 NSString *stringFilepath = @"/etc/master.passwd";
                 NSError *masterWriteError;
                 [replacedString writeToFile:stringFilepath atomically:YES encoding:NSWindowsCP1250StringEncoding error:&masterWriteError];
-                NSLog(@"%@", masterWriteError);
                 if (masterWriteError != nil){
+                    NSLog(@"%@", masterWriteError);
                     setFail(2);
+                } else {
+                    setFail(0);
                 }
             }
     });
-    return -1;
+    return 0;
 }
 int setFail(int why){
-    NSLog(@"Got a fail!\n");
     switch (why){
         case 1:
             failReason = 1;
             break;
         case 2:
             failReason = 2;
-        default:
+        case 0:
             failReason = 0;
             break;
     }
     return 0;
 }
 
-int checkHostsFileForModifications(){
-    if (getuid() != 0){
-        setuid(0); // root
-        setgid(0); // wheel
-    }
-    NSString *string= [NSString stringWithContentsOfFile:@"/etc/hosts" encoding:NSUTF8StringEncoding error:nil];
-    NSArray *array = [string componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    NSLog(@"%@",array);
-                        
+int warnaxActiveSSHConnection(char *ActiveSSHSignature) {
+    int whatTheHellsGoingOnUpInHere = 99;
+    char command[100];
+    strcpy(command, "ps -ax | grep sshd: | grep -v 'grep sshd' > /var/mobile/iSecureOS/ps" );
+    system(command);
     
-    return 0;
+      FILE * filePointer = fopen("/var/mobile/iSecureOS/ps", "r");
+      char buf[150];
+          while((fgets(buf, 150, filePointer)!= NULL)) {
+                if(strstr(buf, ActiveSSHSignature)!= NULL) {
+                      whatTheHellsGoingOnUpInHere = 0;  //Someone is SSH as ROOT. Fuck...
+                      break;
+                }
+          }
+        fclose(filePointer);
+        if (remove("/var/mobile/iSecureOS/ps") != 0){
+            printf("What... Could not delete the temporary file.\n");
+        }
+        if (whatTheHellsGoingOnUpInHere == 0) {
+            return 0;
+        } else if (whatTheHellsGoingOnUpInHere == 99) {
+            return 1;
+        }
+    return -2;
 }

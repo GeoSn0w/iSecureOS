@@ -6,12 +6,78 @@
       "scale" : "1x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "shield_err-3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "shield_err-6.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
       "filename" : "shield_err-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "shield_err-4.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "shield_err-7.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
       "filename" : "shield_err-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "shield_err-5.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "shield_err-8.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

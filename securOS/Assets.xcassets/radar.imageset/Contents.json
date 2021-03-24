@@ -6,12 +6,78 @@
       "scale" : "1x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "radar-3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "radar-4.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
       "filename" : "radar-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "radar-7.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "radar-5.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
       "filename" : "radar-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "radar-8.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "radar-6.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

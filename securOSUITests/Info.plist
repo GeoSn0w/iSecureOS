@@ -20,6 +20,8 @@
 	<string></string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 </dict>
