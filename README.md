@@ -37,6 +37,19 @@ This application should only be downloaded from the official repo (https://isecu
 
 This application was done entirely by GeoSn0w (@FCE365), however, I'd like to credit **sarahh12099** for their bad repos list that is being used in the application.
 
+### FAQ (Frequent Asked Questions)
+
+Q: The app shows me CVE vulnerabilities. How can I fix them?
+A: The CVE shown are informative. You cannot fix them without updating your iOS, which of course, you shouldn't do because you will lose your jailbreak. 
+   These vulnerabilities are part of your iOS version, and many of them are the reason you can jailbreak i the first place. They are vulnerabilities nonetheless, so you should be careful.
+   
+Q: The app says I don't have a VPN. What VPN should I use?
+A: We cannot make any VPN suggestions because that would be endorsement. You should research well which kind of VPN works for you. We can say that you should go for a reputable, no logs, good privacy policy VPN.
+
+Q: What if I wanna keep using pirated repos?
+A: Your choice. The app won't interfere with that and it won't delete anything.
+
+
 ### Legal stuff
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
