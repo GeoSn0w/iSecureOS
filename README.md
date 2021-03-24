@@ -22,6 +22,17 @@ More features are yet to come, this is just Beta 1.
 
 While this application aims to help you improve your jailbreak's security, this application is not an antivirus and it doesn't perform real-time scanning as of Beta 1. Maybe in the future, I might add background scanning, however, you should still use common sense and not install tweaks from unknown sources.
 
+### Privacy policy
+
+This application does not collect any user identifiable data, does not send any logs or reports to my server and does not track you in any way.
+This application also does not include any analytics or advertisements code. 
+
+### Price
+This application is completely free and open-sourced. If you paid for it, you have been scammed.
+
+### Official repo
+This application should only be downloaded from the official repo (https://isecureos.idevicecentral.com/repo) or compiled by yourself.
+
 ### Credits
 
 this application was done entirely by GeoSn0w (@FCE365), however, I'd like to credit **sarahh12099** for their bad repos list that is being used in the application.
