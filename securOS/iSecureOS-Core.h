@@ -18,9 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIProgressView *scannProgressbar;
 @property (weak, nonatomic) IBOutlet UILabel *scanningLabel;
-@property (weak, nonatomic) IBOutlet UITextView *sts;
 @property (weak, nonatomic) IBOutlet UIButton *backButton12;
-
+@property (weak, nonatomic) IBOutlet UITextView *logmeeh;
+@property (weak, nonatomic) IBOutlet UILabel *currentFile;
 
 @end
 NS_ASSUME_NONNULL_END

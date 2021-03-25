@@ -43,6 +43,7 @@
 #include "iSecureOS-ThreatScreen.h"
 #include "iSecureOS-Defaulting.h"
 #include "iSecureOS-Common.h"
+#include <AWFileHash.h>
 
 #define vm_address_t mach_vm_address_t
 #define tfp0 pwnage.kernel_port
@@ -70,16 +71,16 @@ typedef struct kernel_data_t {
 
 // For Signatures
 NSMutableArray * SecurityRiskRepos;
+NSMutableArray *detectedMalware;
 //
 
 // For results
 NSMutableArray * Vulnerabilities;
 NSMutableArray * VulnerabilityDetails;
 NSMutableArray * VulnerabilitySeverity;
+NSMutableArray * MalwareDefinitions;
 NSString *selectedVulnerabilityForDetails;
 //
-NSTimer * uiProgressTime;
-float duration;
 
 char *mostLikelyJailbreak;
 
@@ -115,23 +116,45 @@ int shouldScan = 0;
     
     if (shouldScan == 0){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            if (performMalwareSignatureUpdate() == 0){
-                if (populateVulnerableReposFromSignatures() == 0){
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        [self iSecureOSInitMain];
-                    });
-                   
-                } else {
-                    printf("Could not obtain the signatures for iSecureOS.\n");
-                    self.scanningLabel.text = @"Could not get signatures.";
-                }
+            if ([self updateSignaturesDB] == 0){
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [self iSecureOSInitMain];
+                });
             } else {
-                printf("Failed to get the online version of the signatures. Will default to offline.\n");
-                SecurityRiskRepos = [[iSecureOSDefaultingRepos componentsSeparatedByString:@","] mutableCopy];
-                [self iSecureOSInitMain];
+                printf("Could not obtain the signatures for iSecureOS.\n");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.scanningLabel.text = @"Could not get signatures.";
+                });
             }
         });
     }
+}
+- (int) updateSignaturesDB {
+    if (performRepoSignatureUpdate() == 0){
+        if (populateVulnerableReposFromSignatures() == 0){
+            if (performMalwareSignatureUpdate() == 0){
+                if (populateMalwareDefinitionsFromSignatures() == 0){
+                    NSLog(@"Finished setting up iSecureOS signatures.\n");
+                    return 0;
+                } else {
+                    NSLog(@"Could not populate malware definitons for iSecureOS.\n");
+                    self.scanningLabel.text = @"Could not get signatures.";
+                }
+            } else {
+                NSLog(@"Could not download the malware definitons for iSecureOS.");
+                return -1;
+            }
+           
+        } else {
+            NSLog(@"Could not populate the signatures for iSecureOS.\n");
+            self.scanningLabel.text = @"Could not get signatures.";
+        }
+    } else {
+        NSLog(@"Could not obtain the repo signatures for iSecureOS.\n");
+        return -1;
+    }
+    NSLog(@"Failed to set up iSecureOS signatures.\n");
+    return -1;
 }
 
 - (void) dismissKeyboard {
@@ -143,7 +166,11 @@ int populateVulnerableReposFromSignatures(){
     NSString *textFilePath = @"/var/mobile/iSecureOS/repo-signatures";
     NSError *error;
     NSString *fileContentsUrls = [NSString stringWithContentsOfFile:textFilePath encoding:NSUTF8StringEncoding error:&error];
-    SecurityRiskRepos = [[fileContentsUrls componentsSeparatedByString:@"\n"] mutableCopy];
+    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:fileContentsUrls options: NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *base64DecodedString = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
+    
+    SecurityRiskRepos = [[base64DecodedString componentsSeparatedByString:@"\n"] mutableCopy];
+    NSLog(@"%@", base64DecodedString);
     if (error == nil) {
         printf("Successfully loaded Repo Signatures into iSecureOS\n");
         return 0;
@@ -151,6 +178,21 @@ int populateVulnerableReposFromSignatures(){
         printf("Failed to get the online version of the signatures. Will default to offline.\n");
         SecurityRiskRepos = [[iSecureOSDefaultingRepos componentsSeparatedByString:@","] mutableCopy];
         return 0;
+    }
+}
+
+int populateMalwareDefinitionsFromSignatures(){
+    MalwareDefinitions = [[NSMutableArray alloc] init];
+    NSString *malwareDefinitionsFilePath = @"/var/mobile/iSecureOS/definitions.sec";
+    NSError *error;
+    NSString *fileContentsUrls = [NSString stringWithContentsOfFile:malwareDefinitionsFilePath encoding:NSUTF8StringEncoding error:&error];
+    MalwareDefinitions = [[fileContentsUrls componentsSeparatedByString:@"\n"] mutableCopy];
+    if (error == nil) {
+        printf("Successfully loaded Malware Signatures into iSecureOS\n");
+        return 0;
+    } else {
+        printf("Failed to get the online version of the signatures.\n");
+        return -1;
     }
 }
 
@@ -181,6 +223,7 @@ int populateVulnerableReposFromSignatures(){
         [jsonData writeToFile:url.path atomically:YES];
     }
     remove("/var/mobile/iSecureOS/repo-signatures");
+    remove("/var/mobile/iSecureOS/definitions.sec");
     return;
 }
 
@@ -223,12 +266,13 @@ kern_return_t get_kernelport(kernel_data_t* data){
     return host_get_special_port(mach_host_self(), HOST_LOCAL_NODE, 4, &tfp0);
 }
 - (void)redirectNotificationHandle:(NSNotification *)nf{
+    
     NSData *data = [[nf userInfo] objectForKey:NSFileHandleNotificationDataItem];
     NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    self.sts.text = [NSString stringWithFormat:@"%@\n%@",self.sts.text, str];
-    NSRange lastLine = NSMakeRange(self.sts.text.length - 1, 1);
-    [self.sts scrollRangeToVisible:lastLine];
+    self.logmeeh.text = [NSString stringWithFormat:@"%@\n%@",self.logmeeh.text, str];
+    NSRange lastLine = NSMakeRange(self.logmeeh.text.length - 1, 1);
+    [self.logmeeh scrollRangeToVisible:lastLine];
     [[nf object] readInBackgroundAndNotify];
 }
 
@@ -315,13 +359,13 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                             [self.scannProgressbar setProgress:0.25 animated:YES];
                     }];
                 });
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [UIView animateWithDuration:1.5 animations:^{
-                            [self.scannProgressbar setProgress:0.30 animated:YES];
-                    }];
-                });
-                
+                if ([self scanForMalwareAtPath] ==0){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIView animateWithDuration:1.5 animations:^{
+                                [self.scannProgressbar setProgress:0.30 animated:YES];
+                        }];
+                    });
+                }
                 [self checkPasswordDefaulting];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -422,8 +466,10 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:1.5 animations:^{
                 [self performCleanupSegue];
+                self.currentFile.hidden = YES;
             }];
         });
+        
     return;
 }
 
@@ -856,6 +902,52 @@ int checkActiveSSHConnection(){
     }
     
 }
+-(int) scanForMalwareAtPath{
+    _currentFile.hidden = NO;
+    UIColor *redColor = [UIColor redColor];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *directoryURL = [NSURL URLWithString:@"/Library/MobileSubstrate/DynamicLibraries"];
+    NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
+
+    NSDirectoryEnumerator *enumerator = [fileManager
+        enumeratorAtURL:directoryURL
+        includingPropertiesForKeys:keys
+        options:0
+        errorHandler:^BOOL(NSURL *url, NSError *error) {
+            printf("Something went wrong and the path could not be accessed.\n");
+            return YES;
+    }];
+
+    for (NSURL *url in enumerator) {
+        NSError *error;
+        NSNumber *isDirectory = nil;
+        if (![url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error]) {
+            printf("Could not scan path. It's a directoy.\n");
+        }
+        else if (![isDirectory boolValue]) {
+            NSString *filetocheckpath = url.path;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.currentFile.text = filetocheckpath;
+            });
+            
+            NSString *hashsignature = [AWFileHash sha1HashOfFileAtPath:filetocheckpath];
+            if ([MalwareDefinitions containsObject:hashsignature]){
+                [detectedMalware addObject:url];
+                NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@]", filetocheckpath];
+                NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. It's recommended that you delete the file in cause, and remove any unsafe repos.", filetocheckpath];
+                NSLog(@"%@", malwareMessage);
+                [Vulnerabilities addObject: malwareMessageHeader];
+                [VulnerabilityDetails addObject: malwareMessage];
+                [VulnerabilitySeverity addObject: redColor];
+            }
+        }
+    }
+    return 0;
+    
+}
+
 - (IBAction)dismissModal12:(id)sender {
     // Looks like iOS 12 lacks the modals I use that you can just drag down to close, thus making people get stuck on one window. This should fix that.
     

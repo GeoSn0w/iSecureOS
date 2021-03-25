@@ -7,6 +7,6 @@
 
 #ifndef iSecureOS_Signatures_h
 #define iSecureOS_Signatures_h
+int performRepoSignatureUpdate(void);
 int performMalwareSignatureUpdate(void);
-
 #endif /* iSecureOS_Signatures_h */

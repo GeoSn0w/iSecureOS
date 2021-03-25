@@ -31,6 +31,7 @@
 		D6AE881C25F7E55A0088F23B /* iSecureOS-Core.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */; };
 		D6B5008426058C010073E833 /* iSecureOS-Security.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B5008326058C010073E833 /* iSecureOS-Security.m */; };
 		D6ED8A08260B449F00A44851 /* iSecureOS-Anti-Malware.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ED8A07260B449F00A44851 /* iSecureOS-Anti-Malware.m */; };
+		D6ED8A1F260BE73100A44851 /* iSecureOS-Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ED8A1E260BE73100A44851 /* iSecureOS-Common.m */; };
 		EC80529CF319DE7A227E7308 /* Pods_iSecureOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82615EBEB2639462657CA75 /* Pods_iSecureOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,9 +100,10 @@
 		D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Core.m"; sourceTree = "<group>"; };
 		D6B5008326058C010073E833 /* iSecureOS-Security.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Security.m"; sourceTree = "<group>"; };
 		D6B5008826058D4C0073E833 /* iSecureOS-Security.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Security.h"; sourceTree = "<group>"; };
-		D6EA7365260B21EC009C11E5 /* iSecureOS-Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Common.h"; sourceTree = "<group>"; };
 		D6ED8A06260B449F00A44851 /* iSecureOS-Anti-Malware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Anti-Malware.h"; sourceTree = "<group>"; };
 		D6ED8A07260B449F00A44851 /* iSecureOS-Anti-Malware.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Anti-Malware.m"; sourceTree = "<group>"; };
+		D6ED8A1D260BE73100A44851 /* iSecureOS-Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Common.h"; sourceTree = "<group>"; };
+		D6ED8A1E260BE73100A44851 /* iSecureOS-Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Common.m"; sourceTree = "<group>"; };
 		E1031D6BEE8DA5179A0D7BFC /* Pods-iSecureOS-iSecureOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOS-iSecureOSUITests.release.xcconfig"; path = "Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FB546C208BFE651AF01BC52F /* Pods_iSecureOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -191,9 +193,10 @@
 				D65BF71E25F7B982003242F5 /* SceneDelegate.h */,
 				D65BF71F25F7B982003242F5 /* SceneDelegate.m */,
 				D67095D22607EC6700FC6851 /* SystemReboot.h */,
-				D6EA7365260B21EC009C11E5 /* iSecureOS-Common.h */,
 				D65BF72125F7B982003242F5 /* ViewController.h */,
 				D65BF72225F7B982003242F5 /* ViewController.m */,
+				D6ED8A1D260BE73100A44851 /* iSecureOS-Common.h */,
+				D6ED8A1E260BE73100A44851 /* iSecureOS-Common.m */,
 				D67095CC2607EAC000FC6851 /* iSecureOS-ROOT.h */,
 				D67095CD2607EAC000FC6851 /* iSecureOS-ROOT.m */,
 				D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */,
@@ -493,6 +496,7 @@
 				D67095CE2607EAC000FC6851 /* iSecureOS-ROOT.m in Sources */,
 				D65BF72325F7B982003242F5 /* ViewController.m in Sources */,
 				D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */,
+				D6ED8A1F260BE73100A44851 /* iSecureOS-Common.m in Sources */,
 				D69AD1CC2608762B00FD3840 /* iSecureOS-Defaulting.h in Sources */,
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
 				D67096172608435400FC6851 /* iSecureOS-AppInfo.m in Sources */,
