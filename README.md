@@ -8,7 +8,7 @@ While this tweak aims to aid you in getting a better security strategy on your d
 
 ### Features
 
-As of Beta 1 (v1.09~Beta1), the application has the following features:
+As of Beta 1 (v1.13~Beta1), the application has the following features:
 
 * While scanning, it can detect an active SSH connection, or an attempted SSH connection via the network to your device.
 * It can detect unsafe pirate repos that may have outdated, modified or otherwise not recommended tweaks. This check is done against a built-in list fetched from GitHub for ease of updating. The app does include an in-memory copy of the list to be able to work offline when there's no internet connection.
