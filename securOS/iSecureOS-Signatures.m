@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#include <sys/stat.h>
 
 int signatureDownloadWarnax(int warnax){
     switch (warnax) {
@@ -44,7 +45,7 @@ int performRepoSignatureUpdate(){
 }
 
 int performMalwareSignatureUpdate(){
-        NSString *stringURL = @"https://geosn0w.github.io/iSecureOS/Signatures/definitions.sec";
+        NSString *stringURL = @"https://geosn0w.github.io/iSecureOS/Signatures/definitions.hash";
         NSURL  *url = [NSURL URLWithString:stringURL];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
         if (urlData){

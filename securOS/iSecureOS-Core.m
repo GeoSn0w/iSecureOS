@@ -80,6 +80,7 @@ NSMutableArray * VulnerabilityDetails;
 NSMutableArray * VulnerabilitySeverity;
 NSMutableArray * MalwareDefinitions;
 NSString *selectedVulnerabilityForDetails;
+NSString *tweakInjectionPath;
 //
 
 char *mostLikelyJailbreak;
@@ -348,7 +349,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [UIView animateWithDuration:1.5 animations:^{
-                            [self.scannProgressbar setProgress:0.20 animated:YES];
+                            [self.scannProgressbar setProgress:0.15 animated:YES];
                     }];
                 });
                 
@@ -356,29 +357,134 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [UIView animateWithDuration:1.5 animations:^{
-                            [self.scannProgressbar setProgress:0.25 animated:YES];
+                            [self.scannProgressbar setProgress:0.15 animated:YES];
                     }];
                 });
+                tweakInjectionPath = @"/Library/MobileSubstrate/DynamicLibraries";
+                if ([self scanForMalwareAtPath] ==0){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIView animateWithDuration:1.5 animations:^{
+                                [self.scannProgressbar setProgress:0.20 animated:YES];
+                        }];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIView animateWithDuration:1.5 animations:^{
+                                [self.scannProgressbar setProgress:0.20 animated:YES];
+                        }];
+                    });
+                }
+                tweakInjectionPath = @"/usr/lib/TweakInject";
                 if ([self scanForMalwareAtPath] ==0){
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [UIView animateWithDuration:1.5 animations:^{
                                 [self.scannProgressbar setProgress:0.30 animated:YES];
                         }];
                     });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIView animateWithDuration:1.5 animations:^{
+                                [self.scannProgressbar setProgress:0.30 animated:YES];
+                        }];
+                    });
+                }
+                if (shouldPerformInDepthScan == true){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.scanningLabel.text = @"Now Deep-scanning...";
+                    });
+                    tweakInjectionPath = @"/usr/bin/";
+                    if ([self scanForMalwareAtPath] ==0){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.40 animated:YES];
+                            }];
+                        });
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.40 animated:YES];
+                            }];
+                        });
+                    }
+                    tweakInjectionPath = @"/usr/libexec/";
+                    if ([self scanForMalwareAtPath] ==0){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.40 animated:YES];
+                            }];
+                        });
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.40 animated:YES];
+                            }];
+                        });
+                    }
+                    tweakInjectionPath = @"/usr/sbin/";
+                    if ([self scanForMalwareAtPath] ==0){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.40 animated:YES];
+                            }];
+                        });
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.40 animated:YES];
+                            }];
+                        });
+                    }
+                    tweakInjectionPath = @"/usr/lib/";
+                    if ([self scanForMalwareAtPath] ==0){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.50 animated:YES];
+                            }];
+                        });
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.50 animated:YES];
+                            }];
+                        });
+                    }
+                    tweakInjectionPath = @"/bin/";
+                    if ([self scanForMalwareAtPath] ==0){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.50 animated:YES];
+                            }];
+                        });
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.50 animated:YES];
+                            }];
+                        });
+                    }
+                    tweakInjectionPath = @"/sbin/";
+                    if ([self scanForMalwareAtPath] ==0){
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.50 animated:YES];
+                            }];
+                        });
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIView animateWithDuration:1.5 animations:^{
+                                    [self.scannProgressbar setProgress:0.50 animated:YES];
+                            }];
+                        });
+                    }
                 }
                 [self checkPasswordDefaulting];
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [UIView animateWithDuration:1.5 animations:^{
-                            [self.scannProgressbar setProgress:0.40 animated:YES];
-                    }];
-                });
             }
            [self checkPasscodeProtectionStatus];
     
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:1.5 animations:^{
-                        [self.scannProgressbar setProgress:0.50 animated:YES];
+                        [self.scannProgressbar setProgress:0.70 animated:YES];
                 }];
             });
     
@@ -410,7 +516,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:1.5 animations:^{
-                    [self.scannProgressbar setProgress:0.60 animated:YES];
+                    [self.scannProgressbar setProgress:0.75 animated:YES];
             }];
         });
     
@@ -418,7 +524,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:1.5 animations:^{
-                    [self.scannProgressbar setProgress:0.70 animated:YES];
+                    [self.scannProgressbar setProgress:0.80 animated:YES];
             }];
         });
     
@@ -905,45 +1011,47 @@ int checkActiveSSHConnection(){
 -(int) scanForMalwareAtPath{
     _currentFile.hidden = NO;
     UIColor *redColor = [UIColor redColor];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *directoryURL = [NSURL URLWithString:@"/Library/MobileSubstrate/DynamicLibraries"];
-    NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *directoryURL = [NSURL URLWithString: tweakInjectionPath];
+        NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
 
-    NSDirectoryEnumerator *enumerator = [fileManager
-        enumeratorAtURL:directoryURL
-        includingPropertiesForKeys:keys
-        options:0
-        errorHandler:^BOOL(NSURL *url, NSError *error) {
-            printf("Something went wrong and the path could not be accessed.\n");
-            return YES;
-    }];
+        NSDirectoryEnumerator *enumerator = [fileManager
+            enumeratorAtURL:directoryURL
+            includingPropertiesForKeys:keys
+            options:0
+            errorHandler:^BOOL(NSURL *url, NSError *error) {
+                printf("Something went wrong and the path could not be accessed.\n");
+                return NO;
+        }];
 
-    for (NSURL *url in enumerator) {
-        NSError *error;
-        NSNumber *isDirectory = nil;
-        if (![url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error]) {
-            printf("Could not scan path. It's a directoy.\n");
-        }
-        else if (![isDirectory boolValue]) {
-            NSString *filetocheckpath = url.path;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.currentFile.text = filetocheckpath;
-            });
-            
-            NSString *hashsignature = [AWFileHash sha1HashOfFileAtPath:filetocheckpath];
-            if ([MalwareDefinitions containsObject:hashsignature]){
-                [detectedMalware addObject:url];
-                NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@]", filetocheckpath];
-                NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. It's recommended that you delete the file in cause, and remove any unsafe repos.", filetocheckpath];
-                NSLog(@"%@", malwareMessage);
-                [Vulnerabilities addObject: malwareMessageHeader];
-                [VulnerabilityDetails addObject: malwareMessage];
-                [VulnerabilitySeverity addObject: redColor];
+        for (NSURL *url in enumerator) {
+            NSError *error;
+            NSNumber *isDirectory = nil;
+            if (![url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error]) {
+                printf("Could not scan path. It's a directoy.\n");
+            }
+            else if (![isDirectory boolValue]) {
+                NSString *filetocheckpath = url.path;
+                
+                if (![filetocheckpath containsString:@".plist"]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.currentFile.text = filetocheckpath;
+                        self.scannProgressbar.progress += 0.0001f;
+                        
+                    });
+                    NSString *hashsignature = [AWFileHash md5HashOfFileAtPath:filetocheckpath];
+                    if ([MalwareDefinitions containsObject:hashsignature]){
+                        [detectedMalware addObject:url];
+                        NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@]", filetocheckpath];
+                        NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. It's recommended that you delete the file in cause, and remove any unsafe repos.", filetocheckpath];
+                        NSLog(@"%@", malwareMessage);
+                        [Vulnerabilities addObject: malwareMessageHeader];
+                        [VulnerabilityDetails addObject: malwareMessage];
+                        [VulnerabilitySeverity addObject: redColor];
+                    }
+                }
             }
         }
-    }
     return 0;
     
 }

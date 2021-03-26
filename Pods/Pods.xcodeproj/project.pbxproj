@@ -72,12 +72,12 @@
 		2857F3BFA7C3AA66B68EB8D91E909C99 /* Pods-iSecureOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iSecureOSTests-dummy.m"; sourceTree = "<group>"; };
 		2F4C198D035F7C850A5E749071096FB7 /* Pods-iSecureOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iSecureOS-dummy.m"; sourceTree = "<group>"; };
 		2FFC94F79281246DA834961E7242112B /* Pods-iSecureOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iSecureOS-Info.plist"; sourceTree = "<group>"; };
-		347E4932473858C6BF2B9986F93C09EB /* Pods_iSecureOS_iSecureOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iSecureOS_iSecureOSUITests.framework; path = "Pods-iSecureOS-iSecureOSUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		347E4932473858C6BF2B9986F93C09EB /* Pods_iSecureOS_iSecureOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOS_iSecureOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D854B34D8D941D52E354996F284A4D /* AWFileHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AWFileHash.modulemap; sourceTree = "<group>"; };
 		38656CB266773DB84F2C818523FDD40C /* Pods-iSecureOS-iSecureOSUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iSecureOS-iSecureOSUITests-frameworks.sh"; sourceTree = "<group>"; };
-		3C02F5133EE7F15E8E48C959B3371E79 /* Pods_iSecureOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iSecureOS.framework; path = "Pods-iSecureOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C02F5133EE7F15E8E48C959B3371E79 /* Pods_iSecureOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB962D6470EAAFE7E417134C51CF345 /* AWFileHash-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AWFileHash-prefix.pch"; sourceTree = "<group>"; };
-		50D38CA132718225219085FB1E03D59F /* AWFileHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AWFileHash.framework; path = AWFileHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D38CA132718225219085FB1E03D59F /* AWFileHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AWFileHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5272558CAFA39162C29D03F3917618F6 /* AWFileHash.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWFileHash.m; path = Pod/Classes/AWFileHash.m; sourceTree = "<group>"; };
 		529FB6CDA3E7BA0903C896E1C3C25743 /* Pods-iSecureOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iSecureOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B2C9D4EE0F21F58CCE2999F4F1D39E8 /* Pods-iSecureOS-iSecureOSUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iSecureOS-iSecureOSUITests.modulemap"; sourceTree = "<group>"; };
@@ -85,18 +85,18 @@
 		62DD1FD6FE150CFFDC7637E34BFBE48A /* AWFileHash-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AWFileHash-umbrella.h"; sourceTree = "<group>"; };
 		6E89E2C79402A58A5DC35C8A69BA918D /* Pods-iSecureOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iSecureOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		7375B6CFA9610B0FD6C943EC836B1633 /* Pods-iSecureOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iSecureOS.modulemap"; sourceTree = "<group>"; };
-		7E85C05060A83897950394FFCE5B11EC /* Pods_iSecureOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iSecureOSTests.framework; path = "Pods-iSecureOSTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E85C05060A83897950394FFCE5B11EC /* Pods_iSecureOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82757BAE4BE9E1ABFFAE2F55F0E4A91B /* Pods-iSecureOS-iSecureOSUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iSecureOS-iSecureOSUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		899538A7BBC09934D324ACA01AA620B6 /* Pods-iSecureOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iSecureOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9B427FA0A2A6E5BDD238E6F9FB9EC0D8 /* AWFileHash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWFileHash.h; path = Pod/Classes/AWFileHash.h; sourceTree = "<group>"; };
 		9CA7DC8D707006B72126B9E781E4F839 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A6ED65D526EA0614436C90516A5D52EE /* AWFileHash-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AWFileHash-Info.plist"; sourceTree = "<group>"; };
 		AB47D1A38FB6A5F47ACF4BC6E4D49BD1 /* Pods-iSecureOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iSecureOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AC21D086ED421F4ABDDA2C0794DF0811 /* Pods-iSecureOS-iSecureOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iSecureOS-iSecureOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0158E762C20BC6AD2969C1496D400CF /* Pods-iSecureOS-iSecureOSUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iSecureOS-iSecureOSUITests-Info.plist"; sourceTree = "<group>"; };
 		B4912C225338B44F738C25C5DE314E93 /* crc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crc.h; path = Pod/Classes/crc.h; sourceTree = "<group>"; };
-		BBD22D8C8BCCFA31E8BD6253A8697DEC /* AWFileHash.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AWFileHash.bundle; path = "AWFileHash-AWFileHash.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD22D8C8BCCFA31E8BD6253A8697DEC /* AWFileHash.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AWFileHash.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B2D94AA66962CFEFCBA0B6A5BFF8F3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		C236328DBE135327F969E8231DF8B114 /* Pods-iSecureOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iSecureOS.release.xcconfig"; sourceTree = "<group>"; };
 		C41FA823E0805F5E8B51BE18CA7E1DDB /* Pods-iSecureOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iSecureOS-frameworks.sh"; sourceTree = "<group>"; };
@@ -276,7 +276,6 @@
 				B4912C225338B44F738C25C5DE314E93 /* crc.h */,
 				546B91E6886C8E4F598B52C92B1E926C /* Support Files */,
 			);
-			name = AWFileHash;
 			path = AWFileHash;
 			sourceTree = "<group>";
 		};
@@ -437,7 +436,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -586,7 +585,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/AWFileHash/AWFileHash-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/AWFileHash/AWFileHash-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,7 +619,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,7 +648,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AWFileHash";
 				IBSC_MODULE = AWFileHash;
 				INFOPLIST_FILE = "Target Support Files/AWFileHash/ResourceBundle-AWFileHash-AWFileHash-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = AWFileHash;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -674,7 +673,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -702,7 +701,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AWFileHash";
 				IBSC_MODULE = AWFileHash;
 				INFOPLIST_FILE = "Target Support Files/AWFileHash/ResourceBundle-AWFileHash-AWFileHash-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = AWFileHash;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -727,7 +726,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-iSecureOSTests/Pods-iSecureOSTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -764,7 +763,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-iSecureOS/Pods-iSecureOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -800,7 +799,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/AWFileHash/AWFileHash-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/AWFileHash/AWFileHash-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -835,7 +834,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-iSecureOS/Pods-iSecureOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -907,7 +906,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -935,7 +934,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-iSecureOSTests/Pods-iSecureOSTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1010,7 +1009,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/stat.h>
 
 int failReason = 0;
 char *password_staging;
@@ -50,7 +51,7 @@ int hashPasswordAndPrepare(const char *newPassword){
 int setFail(int why);
 int appendChangesToFileSystem(){
     //Get the obligatory root, master.passwd isn't even visible to mobile...
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *masterPath = @"/etc/master.passwd";
         NSError *masterContentError;
         NSString *originalMaster = [NSString stringWithContentsOfFile:masterPath encoding:NSUTF8StringEncoding error:&masterContentError];
@@ -90,28 +91,38 @@ int setFail(int why){
     return 0;
 }
 
+bool check_file_presence (char *filename) {
+  struct stat   buffer;
+  return (stat (filename, &buffer) == 0);
+}
+
 int warnaxActiveSSHConnection(char *ActiveSSHSignature) {
-    int whatTheHellsGoingOnUpInHere = 99;
-    char command[100];
-    strcpy(command, "ps -ax | grep sshd: | grep -v 'grep sshd' > /var/mobile/iSecureOS/ps" );
-    system(command);
-    
-      FILE * filePointer = fopen("/var/mobile/iSecureOS/ps", "r");
-      char buf[150];
-          while((fgets(buf, 150, filePointer)!= NULL)) {
-                if(strstr(buf, ActiveSSHSignature)!= NULL) {
-                      whatTheHellsGoingOnUpInHere = 0;  //Someone is SSH as ROOT. Fuck...
-                      break;
-                }
-          }
-        fclose(filePointer);
-        if (remove("/var/mobile/iSecureOS/ps") != 0){
-            printf("What... Could not delete the temporary file.\n");
-        }
-        if (whatTheHellsGoingOnUpInHere == 0) {
-            return 0;
-        } else if (whatTheHellsGoingOnUpInHere == 99) {
-            return 1;
-        }
+    if (check_file_presence("/usr/sbin/sshd") == true){
+        int whatTheHellsGoingOnUpInHere = 99;
+        char command[100];
+        strcpy(command, "ps -ax | grep sshd: | grep -v 'grep sshd' > /var/mobile/iSecureOS/ps" );
+        system(command);
+        
+          FILE * filePointer = fopen("/var/mobile/iSecureOS/ps", "r");
+          char buf[150];
+              while((fgets(buf, 150, filePointer)!= NULL)) {
+                    if(strstr(buf, ActiveSSHSignature)!= NULL) {
+                          whatTheHellsGoingOnUpInHere = 0;  //Someone is SSH as ROOT. Fuck...
+                          break;
+                    }
+              }
+            fclose(filePointer);
+            if (remove("/var/mobile/iSecureOS/ps") != 0){
+                printf("What... Could not delete the temporary file.\n");
+            }
+            if (whatTheHellsGoingOnUpInHere == 0) {
+                return 0;
+            } else if (whatTheHellsGoingOnUpInHere == 99) {
+                return 1;
+            }
+    } else {
+        printf("OpenSSH not installed, no point to check.");
+        return 1;
+    }
     return -2;
 }

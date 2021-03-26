@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #include <sys/stat.h>
+#include "iSecureOS-Common.h"
 
 @interface ViewController ()
 
@@ -45,6 +46,15 @@
 bool scanFileExists (char *filename) {
   struct stat   buffer;
   return (stat (filename, &buffer) == 0);
+}
+
+- (IBAction)shouldScanDeep:(id)sender {
+    UISwitch *scanDepth = (UISwitch *)sender;
+        if ([scanDepth isOn]) {
+            shouldPerformInDepthScan = true;
+        } else {
+            shouldPerformInDepthScan = false;
+        }
 }
 
 @end
