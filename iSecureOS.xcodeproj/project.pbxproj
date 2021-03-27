@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44F3022D1E1017CA02246C91 /* Pods_iSecureOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB546C208BFE651AF01BC52F /* Pods_iSecureOSTests.framework */; };
-		94EF7F1E94D1E4B041A91F62 /* Pods_iSecureOS_iSecureOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA87164F6978C5993400194 /* Pods_iSecureOS_iSecureOSUITests.framework */; };
 		D62E05CE26065D4A00C5CDB8 /* iSecureOS-Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E05CD26065D4A00C5CDB8 /* iSecureOS-Networking.m */; };
 		D62E05E826067DFB00C5CDB8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E05E726067DFB00C5CDB8 /* CoreAudio.framework */; };
 		D62E05F1260688F000C5CDB8 /* iSecureOS-Signatures.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */; };
@@ -26,13 +24,11 @@
 		D67095CE2607EAC000FC6851 /* iSecureOS-ROOT.m in Sources */ = {isa = PBXBuildFile; fileRef = D67095CD2607EAC000FC6851 /* iSecureOS-ROOT.m */; };
 		D67096172608435400FC6851 /* iSecureOS-AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D67096162608435400FC6851 /* iSecureOS-AppInfo.m */; };
 		D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */ = {isa = PBXBuildFile; fileRef = D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */; };
-		D69AD1C7260875CC00FD3840 /* repo-signatures in Resources */ = {isa = PBXBuildFile; fileRef = D69AD1C6260875CC00FD3840 /* repo-signatures */; };
 		D69AD1CC2608762B00FD3840 /* iSecureOS-Defaulting.h in Sources */ = {isa = PBXBuildFile; fileRef = D69AD1CB2608762B00FD3840 /* iSecureOS-Defaulting.h */; };
 		D6AE881C25F7E55A0088F23B /* iSecureOS-Core.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */; };
 		D6B5008426058C010073E833 /* iSecureOS-Security.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B5008326058C010073E833 /* iSecureOS-Security.m */; };
 		D6ED8A08260B449F00A44851 /* iSecureOS-Anti-Malware.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ED8A07260B449F00A44851 /* iSecureOS-Anti-Malware.m */; };
 		D6ED8A1F260BE73100A44851 /* iSecureOS-Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ED8A1E260BE73100A44851 /* iSecureOS-Common.m */; };
-		EC80529CF319DE7A227E7308 /* Pods_iSecureOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82615EBEB2639462657CA75 /* Pods_iSecureOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03305B55FFD59981C662C3AC /* Pods-iSecureOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOSTests.release.xcconfig"; path = "Target Support Files/Pods-iSecureOSTests/Pods-iSecureOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		498034BAE858AFBFBA07DEA7 /* Pods-iSecureOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOS.debug.xcconfig"; path = "Target Support Files/Pods-iSecureOS/Pods-iSecureOS.debug.xcconfig"; sourceTree = "<group>"; };
-		85F17A096906C8FDA2D40ADA /* Pods-iSecureOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOS.release.xcconfig"; path = "Target Support Files/Pods-iSecureOS/Pods-iSecureOS.release.xcconfig"; sourceTree = "<group>"; };
-		8E9B33B5994082424D8E7487 /* Pods-iSecureOS-iSecureOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOS-iSecureOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8EA87164F6978C5993400194 /* Pods_iSecureOS_iSecureOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOS_iSecureOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B82615EBEB2639462657CA75 /* Pods_iSecureOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C766859C8978393D255D550B /* Pods-iSecureOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOSTests.debug.xcconfig"; path = "Target Support Files/Pods-iSecureOSTests/Pods-iSecureOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D62E05CD26065D4A00C5CDB8 /* iSecureOS-Networking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Networking.m"; sourceTree = "<group>"; };
 		D62E05D6260660BA00C5CDB8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D62E05DB260661F700C5CDB8 /* iSecureOS-Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Networking.h"; sourceTree = "<group>"; };
@@ -94,7 +83,6 @@
 		D67096162608435400FC6851 /* iSecureOS-AppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-AppInfo.m"; sourceTree = "<group>"; };
 		D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Tampering.m"; sourceTree = "<group>"; };
 		D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Tampering.h"; sourceTree = "<group>"; };
-		D69AD1C6260875CC00FD3840 /* repo-signatures */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "repo-signatures"; sourceTree = "<group>"; };
 		D69AD1CB2608762B00FD3840 /* iSecureOS-Defaulting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Defaulting.h"; sourceTree = "<group>"; };
 		D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Core.h"; sourceTree = "<group>"; };
 		D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Core.m"; sourceTree = "<group>"; };
@@ -104,8 +92,6 @@
 		D6ED8A07260B449F00A44851 /* iSecureOS-Anti-Malware.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Anti-Malware.m"; sourceTree = "<group>"; };
 		D6ED8A1D260BE73100A44851 /* iSecureOS-Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Common.h"; sourceTree = "<group>"; };
 		D6ED8A1E260BE73100A44851 /* iSecureOS-Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Common.m"; sourceTree = "<group>"; };
-		E1031D6BEE8DA5179A0D7BFC /* Pods-iSecureOS-iSecureOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSecureOS-iSecureOSUITests.release.xcconfig"; path = "Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests.release.xcconfig"; sourceTree = "<group>"; };
-		FB546C208BFE651AF01BC52F /* Pods_iSecureOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSecureOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D62E05E826067DFB00C5CDB8 /* CoreAudio.framework in Frameworks */,
-				EC80529CF319DE7A227E7308 /* Pods_iSecureOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44F3022D1E1017CA02246C91 /* Pods_iSecureOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94EF7F1E94D1E4B041A91F62 /* Pods_iSecureOS_iSecureOSUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,12 +123,6 @@
 		477B40F946B697A0DA5E5AC9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				498034BAE858AFBFBA07DEA7 /* Pods-iSecureOS.debug.xcconfig */,
-				85F17A096906C8FDA2D40ADA /* Pods-iSecureOS.release.xcconfig */,
-				8E9B33B5994082424D8E7487 /* Pods-iSecureOS-iSecureOSUITests.debug.xcconfig */,
-				E1031D6BEE8DA5179A0D7BFC /* Pods-iSecureOS-iSecureOSUITests.release.xcconfig */,
-				C766859C8978393D255D550B /* Pods-iSecureOSTests.debug.xcconfig */,
-				03305B55FFD59981C662C3AC /* Pods-iSecureOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,9 +132,6 @@
 			children = (
 				D62E05E726067DFB00C5CDB8 /* CoreAudio.framework */,
 				D62E05D6260660BA00C5CDB8 /* CoreLocation.framework */,
-				B82615EBEB2639462657CA75 /* Pods_iSecureOS.framework */,
-				8EA87164F6978C5993400194 /* Pods_iSecureOS_iSecureOSUITests.framework */,
-				FB546C208BFE651AF01BC52F /* Pods_iSecureOSTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,7 +195,6 @@
 				D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */,
 				D65BF72C25F7B983003242F5 /* Info.plist */,
 				D65BF72D25F7B983003242F5 /* main.m */,
-				D69AD1C6260875CC00FD3840 /* repo-signatures */,
 				D67095BB2607C94600FC6851 /* threat-detection.mp3 */,
 			);
 			path = securOS;
@@ -259,11 +232,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D65BF74725F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOS" */;
 			buildPhases = (
-				4049566F8D046AF795676396 /* [CP] Check Pods Manifest.lock */,
 				D65BF71425F7B982003242F5 /* Sources */,
 				D65BF71525F7B982003242F5 /* Frameworks */,
 				D65BF71625F7B982003242F5 /* Resources */,
-				F614F6AAD83B8B8060DD2B32 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,7 +249,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D65BF74A25F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOSTests" */;
 			buildPhases = (
-				FAA3CD59FC6BC5ED405DCA89 /* [CP] Check Pods Manifest.lock */,
 				D65BF72F25F7B983003242F5 /* Sources */,
 				D65BF73025F7B983003242F5 /* Frameworks */,
 				D65BF73125F7B983003242F5 /* Resources */,
@@ -297,11 +267,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D65BF74D25F7B984003242F5 /* Build configuration list for PBXNativeTarget "iSecureOSUITests" */;
 			buildPhases = (
-				78811D0C5371887F7A47A755 /* [CP] Check Pods Manifest.lock */,
 				D65BF73A25F7B983003242F5 /* Sources */,
 				D65BF73B25F7B983003242F5 /* Frameworks */,
 				D65BF73C25F7B983003242F5 /* Resources */,
-				F202268A5C7EDD18AE79FA23 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,7 +330,6 @@
 				D65BF72B25F7B983003242F5 /* LaunchScreen.storyboard in Resources */,
 				D65BF72825F7B983003242F5 /* Assets.xcassets in Resources */,
 				D67095BC2607C94600FC6851 /* threat-detection.mp3 in Resources */,
-				D69AD1C7260875CC00FD3840 /* repo-signatures in Resources */,
 				D65BF72625F7B982003242F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,109 +349,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4049566F8D046AF795676396 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iSecureOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		78811D0C5371887F7A47A755 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iSecureOS-iSecureOSUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F202268A5C7EDD18AE79FA23 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iSecureOS-iSecureOSUITests/Pods-iSecureOS-iSecureOSUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F614F6AAD83B8B8060DD2B32 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iSecureOS/Pods-iSecureOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iSecureOS/Pods-iSecureOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iSecureOS/Pods-iSecureOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAA3CD59FC6BC5ED405DCA89 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iSecureOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D65BF71425F7B982003242F5 /* Sources */ = {
@@ -674,12 +538,11 @@
 		};
 		D65BF74825F7B984003242F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 498034BAE858AFBFBA07DEA7 /* Pods-iSecureOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 423J45LL22;
 				INFOPLIST_FILE = securOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -687,7 +550,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.iSecureOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -696,12 +559,11 @@
 		};
 		D65BF74925F7B984003242F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85F17A096906C8FDA2D40ADA /* Pods-iSecureOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 423J45LL22;
 				INFOPLIST_FILE = securOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -709,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.geosn0w.iSecureOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -718,7 +580,6 @@
 		};
 		D65BF74B25F7B984003242F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C766859C8978393D255D550B /* Pods-iSecureOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -739,7 +600,6 @@
 		};
 		D65BF74C25F7B984003242F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03305B55FFD59981C662C3AC /* Pods-iSecureOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -760,7 +620,6 @@
 		};
 		D65BF74E25F7B984003242F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E9B33B5994082424D8E7487 /* Pods-iSecureOS-iSecureOSUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2H8LW73G9;
@@ -779,7 +638,6 @@
 		};
 		D65BF74F25F7B984003242F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1031D6BEE8DA5179A0D7BFC /* Pods-iSecureOS-iSecureOSUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2H8LW73G9;

@@ -16,7 +16,7 @@
 #include <errno.h>
 #include <dlfcn.h>
 #include <string.h>
-
+#include <CommonCrypto/CommonDigest.h>
 #include <spawn.h>
 #include <sys/stat.h>
 #include <sys/proc.h>
@@ -43,7 +43,6 @@
 #include "iSecureOS-ThreatScreen.h"
 #include "iSecureOS-Defaulting.h"
 #include "iSecureOS-Common.h"
-#include <AWFileHash.h>
 
 #define vm_address_t mach_vm_address_t
 #define tfp0 pwnage.kernel_port
@@ -225,6 +224,7 @@ int populateMalwareDefinitionsFromSignatures(){
     }
     remove("/var/mobile/iSecureOS/repo-signatures");
     remove("/var/mobile/iSecureOS/definitions.sec");
+    remove("/Applications/iSecureOS.app/repo-signatures");
     return;
 }
 
@@ -754,6 +754,31 @@ int potentiallyMalwareRepoCheck(const char *repoToCheck) {
         fclose(filepointer);
         printf("[ ! ] Zebra's sources list isn't present. Will skip checking that one.\n");
     }
+    
+    filepointer = fopen("/var/mobile/Library/Application Support/Installer/APT/sources.list", "r");
+    if (filepointer){
+        fclose(filepointer);
+        filepointer = fopen("/var/mobile/Library/Application Support/Installer/APT/sources.list", "r");
+        char buf[200];
+            if (filepointer){
+                
+                while((fgets(buf, 100, filepointer)!=NULL)) {
+                    if(strstr(buf, repoToCheck)!=NULL) {
+                        NSString * actual_vulnerability = [NSString stringWithCString:repoToCheck encoding:NSASCIIStringEncoding];
+                        [Vulnerabilities addObject:[actual_vulnerability stringByAppendingString:@" is an unsafe pirate repo. [In Installer]"]];
+                        [VulnerabilityDetails addObject:@"Pirate repos contain old, outdated and even modified or weaponized tweaks."];
+                        [VulnerabilitySeverity addObject:redColor];
+                        fclose(filepointer);
+                        return 0;
+                        break;
+                    }
+                }
+                fclose(filepointer);
+            }
+    } else {
+        fclose(filepointer);
+        printf("[ ! ] Installer's sources list isn't present. Will skip checking that one.\n");
+    }
     return -1;
 }
 bool file_exists (char *filename) {
@@ -1008,6 +1033,7 @@ int checkActiveSSHConnection(){
     }
     
 }
+
 -(int) scanForMalwareAtPath{
     _currentFile.hidden = NO;
     UIColor *redColor = [UIColor redColor];
@@ -1033,13 +1059,24 @@ int checkActiveSSHConnection(){
             else if (![isDirectory boolValue]) {
                 NSString *filetocheckpath = url.path;
                 
-                if (![filetocheckpath containsString:@".plist"]) {
+                if (![filetocheckpath containsString:@".plist"] && ![filetocheckpath containsString:@".png"] && ![filetocheckpath containsString:@".strings"] && ![filetocheckpath containsString:@".jpg"] && ![filetocheckpath containsString:@".db"] && ![filetocheckpath containsString:@".gif"] && ![filetocheckpath containsString:@".wav"] && ![filetocheckpath containsString:@".txt"] && ![filetocheckpath containsString:@".mp3"] && ![filetocheckpath containsString:@".xml"] && ![filetocheckpath containsString:@".json"] && ![filetocheckpath containsString:@".jpeg"] && ![filetocheckpath containsString:@".tiff"]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.currentFile.text = filetocheckpath;
                         self.scannProgressbar.progress += 0.0001f;
                         
                     });
-                    NSString *hashsignature = [AWFileHash md5HashOfFileAtPath:filetocheckpath];
+                    
+                    NSData *data = [NSData dataWithContentsOfFile:filetocheckpath];
+                    uint8_t digest[CC_SHA512_DIGEST_LENGTH];
+                    CC_SHA512(data.bytes, (CC_LONG)data.length, digest);
+             
+                    NSMutableString* shaoutput = [NSMutableString  stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
+             
+                    for(int i = 0; i < CC_SHA512_DIGEST_LENGTH; i++) {
+                        [shaoutput appendFormat:@"%02x", digest[i]];
+                    }
+                    
+                    NSString *hashsignature = shaoutput;
                     if ([MalwareDefinitions containsObject:hashsignature]){
                         [detectedMalware addObject:url];
                         NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@]", filetocheckpath];
