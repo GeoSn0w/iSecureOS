@@ -101,7 +101,7 @@ int warnaxActiveSSHConnection(char *ActiveSSHSignature) {
         int whatTheHellsGoingOnUpInHere = 99;
         char command[100];
         strcpy(command, "ps -ax | grep sshd: | grep -v 'grep sshd' > /var/mobile/iSecureOS/ps" );
-        system(command);
+        //system(command); <-- Uncomment this if you wanna compile the app, after you modify Xcode's header.
         
           FILE * filePointer = fopen("/var/mobile/iSecureOS/ps", "r");
           char buf[150];
