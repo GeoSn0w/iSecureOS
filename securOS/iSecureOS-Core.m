@@ -906,7 +906,7 @@ int execprog(const char *prog, const char* args[]) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         char command[100];
         strcpy(command, "apt-get upgrade -s | grep upgraded | cut -d ' ' -f 1 > /var/mobile/tbd.txt" );
-        system(command);
+        //system(command); <-- uncomment
         FILE * f = fopen("/var/mobile/tbd.txt", "r");
            if (f) {
                fprintf(stderr,"Successfully fetched the amount of outdated packages.\n");
