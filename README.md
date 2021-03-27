@@ -8,7 +8,7 @@ This tweaks is currently in Beta 1 and it is expected to get much better with ti
 
 While this tweak aims to aid you in getting a better security strategy on your device, **this is not a real-time antivirus**.
 
-### Features
+### Features 
 
 As of Beta 1 (v1.13~Beta1), the application has the following features:
 
