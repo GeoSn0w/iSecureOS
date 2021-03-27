@@ -69,3 +69,4 @@ SOFTWARE.
 ### License particularities
 
 WE STRICTLY PROHIBIT CLONES WITH MODIFIED UI AND BASICALLY NO FEATURES ADDED, OR MINOR FEATURES. If your fork is a reskin and it does not contribute in any way to the iSecureOS project with features, improvements or any other user beneficial changes, it might be taken down.
+
