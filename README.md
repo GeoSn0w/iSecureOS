@@ -1,5 +1,7 @@
 # iSecureOS Beta 1
 
+[![Build Status](https://travis-ci.com/GeoSn0w/iSecureOS.svg?branch=main)](https://travis-ci.com/GeoSn0w/iSecureOS)
+
 An iOS Security Application for Jailbroken devices. It does basic checks for repos you shouldn't trust, allows one to change the ROOT and mobile password, and provides general security information about vulnerabilities you may have on your device.
 
 This tweaks is currently in Beta 1 and it is expected to get much better with time.
