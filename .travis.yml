@@ -1,9 +1,5 @@
-before_install:
-  - gem install cocoapods
-install:
-  - pod install
 language: objective-c
 osx_image: xcode12.4
-xcode_workspace: iSecureOS.xcworkspace
+xcode_project: iSecureOS.xcodeproj
 xcode_scheme: iSecureOS
 xcode_destination: platform=iOS Simulator,OS=14.3,name=iPhone 8
