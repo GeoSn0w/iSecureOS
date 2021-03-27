@@ -50,6 +50,9 @@ A: We cannot make any VPN suggestions because that would be endorsement. You sho
 Q: What if I wanna keep using pirated repos?
 A: Your choice. The app won't interfere with that and it won't delete anything.
 
+### Compiling:
+
+To compile properly, you need to modify Xcode to allow you to call system() on iOS. After you modify the header, uncomment the line in iSecureOS-Security.m
 
 ### Legal stuff
 
