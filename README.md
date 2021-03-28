@@ -10,14 +10,15 @@ While this tweak aims to aid you in getting a better security strategy on your d
 
 ### Features 
 
-As of Beta 1 (v1.13~Beta1), the application has the following features:
+As of Beta 1 (v1.16~Beta1), the application has the following features:
 
+* Detects the MainRepo Backdoor malware, right now there are two separate malware occurences in the wild.
 * While scanning, it can detect an active SSH connection, or an attempted SSH connection via the network to your device.
 * It can detect unsafe pirate repos that may have outdated, modified or otherwise not recommended tweaks. This check is done against a built-in list fetched from GitHub for ease of updating. The app does include an in-memory copy of the list to be able to work offline when there's no internet connection.
 * Tells you some basic information about the overal security of the device: VPN, Location, Passcode, etc.
 * Allows you to change the default ROOT and Mobile SSH password from the app itself.
 * Lists major CVEs for your device / version that are actively exploited in the wild - This needs to be redone as a much larger database and it's in the PoC stage.
-* Detects the MainRepo Backdoor malware.
+* Uses SHA-256 malware hashing and performs fast deep-scans which go system-wide.
 
 More features are yet to come, this is just Beta 1.
 
