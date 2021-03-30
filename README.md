@@ -32,7 +32,9 @@ This application does not collect any user identifiable data, does not send any 
 This application also does not include any analytics or advertisements code. 
 
 ### Price
-This application is completely free and open-sourced. If you paid for it, you have been scammed.
+This application is completely. It's also Open-Source, but certain re-distribution rules apply. However, if you compile it for your own use, or if you wanna integrate parts of it into a bigger project of yours, feel free to. Reskins with the pure intention to redistribute the app under a different name and logo are not allowed. 
+
+If you paid for it, you have been scammed.
 
 ### Official repo
 This application should only be downloaded from the official repo (https://isecureos.idevicecentral.com/repo) or compiled by yourself.
@@ -69,5 +71,8 @@ SOFTWARE.
 
 ### License particularities
 
-WE STRICTLY PROHIBIT CLONES WITH MODIFIED UI AND BASICALLY NO FEATURES ADDED, OR MINOR FEATURES. If your fork is a reskin and it does not contribute in any way to the iSecureOS project with features, improvements or any other user beneficial changes, it might be taken down.
+WE STRICTLY DISALLOW CLONES WITH MODIFIED UI AND BASICALLY NO FEATURES ADDED, OR MINOR FEATURES. If your fork is a reskin and it does not contribute in any way to the iSecureOS project with features, improvements or any other user beneficial changes, it might be taken down. 
+
+In other words, if you intend to change the name of the app and the logo and slap your name in the credits, it won't cut it.
+If you wanna actually help with the project, open a pull request. Spawning clones of the app with different names won't help the project.
 
