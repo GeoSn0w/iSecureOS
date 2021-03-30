@@ -126,3 +126,8 @@ int warnaxActiveSSHConnection(char *ActiveSSHSignature) {
     }
     return -2;
 }
+
+int printFailReason(char * reason){
+    printf("[!] Error: %s\n", reason);
+    return 0;
+}
