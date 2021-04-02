@@ -82,11 +82,9 @@
 #define RB_INITNAME    0x10    /* name given for /etc/init */
 #define RB_DFLTROOT    0x20    /* use compiled-in rootdev */
 #define RB_ALTBOOT    0x40    /* use /boot.old vs /boot */
-#define RB_UNIPROC    0x80    /* don't start slaves */
 #define RB_SAFEBOOT    0x100    /* booting safe */
 #define RB_UPSDELAY 0x200   /* Delays restart by 5 minutes */
 #define RB_QUICK    0x400    /* quick and ungraceful reboot with file system caches flushed*/
-#define RB_PANIC    0x800   /* panic the kernel */
 
 #ifndef KERNEL
 __BEGIN_DECLS
