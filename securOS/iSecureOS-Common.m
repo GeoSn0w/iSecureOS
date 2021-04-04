@@ -7,6 +7,4 @@
 
 #import "iSecureOS-Common.h"
 bool shouldPerformInDepthScan = false;
-@implementation iSecureOS_Common
-
-@end
+int sharedThreatLevel;

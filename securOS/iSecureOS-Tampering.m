@@ -13,8 +13,7 @@
 
 #define A(c)            (c) - 0x19
 
-const char* checklibPresence(const char* X, const char* Y)
-{
+const char* checklibPresence (const char* X, const char* Y) {
     if (*Y == '\0')
         return X;
 

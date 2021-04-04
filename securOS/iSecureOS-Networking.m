@@ -12,7 +12,7 @@
 #include <ifaddrs.h>
 #include "iSecureOS-Networking.h"
 
-int performVPNCheck(){
+int performVPNCheck() {
     BOOL isVPNConnected = NO;
     NSString *version = [UIDevice currentDevice].systemVersion;
         if (version.doubleValue >= 9.0) {
@@ -64,7 +64,7 @@ int performVPNCheck(){
     return -2;
 }
 
-int checkLocationServices(){
+int checkLocationServices() {
     if ([CLLocationManager locationServicesEnabled]) {
         return 0;
     }
