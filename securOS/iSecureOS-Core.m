@@ -66,6 +66,9 @@ NSMutableArray * VulnerabilitySeverity;
 NSMutableArray * MalwareDefinitions;
 NSString *selectedVulnerabilityForDetails;
 NSString *tweakInjectionPath;
+UIColor *redColor;
+UIColor *yellowColor;
+UIColor *orangeColor;
 
 typedef struct kernel_data_t {
     mach_port_t kernel_port;
@@ -105,6 +108,10 @@ BOOL shouldScan = false;
     _changeRootPassword.layer.cornerRadius = 19;
     _changeRootPassword.clipsToBounds = YES;
     // End of UI Rounding
+    
+    redColor = [UIColor redColor];
+    yellowColor = [UIColor yellowColor];
+    orangeColor = [UIColor orangeColor];
     
     if (shouldScan == true){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -262,29 +269,6 @@ kern_return_t get_kernelport(kernel_data_t* data){
     return host_get_special_port(mach_host_self(), HOST_LOCAL_NODE, 4, &tfp0);
 }
 
-- (void) redirectNotificationHandle: (NSNotification *)nf {
-    NSData *data = [[nf userInfo] objectForKey:NSFileHandleNotificationDataItem];
-    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    self.logmeeh.text = [NSString stringWithFormat:@"%@\n%@",self.logmeeh.text, str];
-    NSRange lastLine = NSMakeRange(self.logmeeh.text.length - 1, 1);
-    [self.logmeeh scrollRangeToVisible:lastLine];
-    [[nf object] readInBackgroundAndNotify];
-}
-
-- (void) redirectSTD: (int)fd {
-    setvbuf(stdout, nil, _IONBF, 0);
-    NSPipe * pipe = [NSPipe pipe] ;
-    NSFileHandle *pipeReadHandle = [pipe fileHandleForReading] ;
-    dup2([[pipe fileHandleForWriting] fileDescriptor], fd) ;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(redirectNotificationHandle:)
-                                               name:NSFileHandleReadCompletionNotification
-                                               object:pipeReadHandle];
-    [pipeReadHandle readInBackgroundAndNotify];
-}
-
 typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     DevicePasscodeActive  = 1,
     DeviceNoPasscode  = 2
@@ -306,7 +290,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 - (void) updateUIProgressBar: (float) progress {
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:1.5 animations:^{
-                [self.scannProgressbar setProgress:progress animated:YES];
+            [self.scannProgressbar setProgress:progress animated:YES];
         }];
     });
     return;
@@ -317,7 +301,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     VulnerabilityDetails = [[NSMutableArray alloc] init];
     VulnerabilitySeverity = [[NSMutableArray alloc] init];
     
-    kern_return_t oskernfail = KERN_SUCCESS;
+    kern_return_t kernelPortResult = KERN_SUCCESS;
     printf("Performing jailbreak probing...\n", NULL);
     
     [self updateUIProgressBar: 0.1];
@@ -326,11 +310,11 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     
     [self updateUIProgressBar: 0.5];
 
-    oskernfail = get_kernelport(&pwnage);
+    kernelPortResult = get_kernelport(&pwnage);
         printf("[ i ] Testing to see if tfp0 / hsp4 is exported...\n");
             
-    if (oskernfail) {
-        printf("[ ! ] Failed to get kernel taskport: %s. Good.\n", mach_error_string(oskernfail));
+    if (kernelPortResult) {
+        printf("[ ! ] Failed to get kernel taskport: %s. Good.\n", mach_error_string(kernelPortResult));
     } else {
         printf("[VULNERABILITY] Kernel Task Port IS Exported. Disable it after running securiOS.\n\n");
         printf("[ i ] Kernel Task Port is 0x%x\n", tfp0);
@@ -339,8 +323,8 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     [self updateUIProgressBar: 0.15];
     performSuspectRepoScanning();
     checkForUnsafeTweaks();
+    
     tweakInjectionPath = @"/Library/MobileSubstrate/DynamicLibraries";
-        
     [self scanForMalwareAtPath];
     [self updateUIProgressBar: 0.20];
         
@@ -408,7 +392,6 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 }
 
 - (void) performLocationCheck {
-    UIColor *yellowColor = [UIColor yellowColor];
     int retval = checkLocationServices();
     switch (retval) {
         case 0:
@@ -425,8 +408,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 }
 
 - (void) checkIfVPNIsActive {
-    UIColor *yellowColor = [UIColor yellowColor];
-    int retval = performVPNCheck(); //Calls the function iSecureOS-Networking
+    int retval = performVPNCheck();
     switch (retval) {
         case 0:
             printf("Detected an enabled VPN. Great!");
@@ -444,7 +426,6 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 // Passcode / FaceID / TouchID
 
 - (void) checkPasscodeProtectionStatus {
-    UIColor *orangeColor = [UIColor orangeColor];
     securiOS_Device_Security passcodeRetval = [self extractPasscodeStatusWithKeychain];
     
     switch (passcodeRetval) {
@@ -475,8 +456,9 @@ void printUnsafeTweakWarning (const char *problematicTweak) {
     printf("[VULNERABILITY] %s is a problematic tweak which can contain malware. Tweaks used to pirate Cydia tweaks, like CyDown, create botnets on your device to attempt to grab tweaks and share them with pirates from your UDID. In the case of LocaliAPStore, many applications detect this and may refuze to work and may ban you.\n\n", problematicTweak);
     return;
 }
+
 - (int) checkPasswordDefaulting {
-    UIColor *redColor = [UIColor redColor];
+    // Change our own permissions to be able to access /etc/master.passwd which is ROOT owned.
     setuid(0);
     setgid(0);
     
@@ -507,8 +489,18 @@ void printUnsafeTweakWarning (const char *problematicTweak) {
     return (0);
 }
 
-int checkRepoInCydia(const char *whereToCheck, const char *repoToCheck, int packageManager) {
-    UIColor *redColor = [UIColor redColor];
+/*
+ checkRepoInPackageManagerDB(...) takes a final int packageManager argument.
+ It's:
+ 1 = Cydia
+ 2 = Sileo
+ 3 = Installer
+ 4 = Zebra
+ Depending on which package manager you specify, the vulnerability message changes to tell the user in which package
+ manager they have the bad repo.
+ */
+
+int checkRepoInPackageManagerDB(const char *whereToCheck, const char *repoToCheck, int packageManager) {
     FILE *filepointer;
     filepointer = fopen(whereToCheck, "r");
     char buf[100];
@@ -544,39 +536,34 @@ int checkRepoInCydia(const char *whereToCheck, const char *repoToCheck, int pack
 }
 
 int potentiallyMalwareRepoCheck (const char *repoToCheck) {
-    checkRepoInCydia("/etc/apt/sources.list.d/cydia.list", repoToCheck, 1);
-    checkRepoInCydia("/etc/apt/sources.list.d/sileo.sources", repoToCheck, 2);
-    checkRepoInCydia("/var/mobile/Library/Application Support/Installer/APT/sources.list", repoToCheck, 3);
-    checkRepoInCydia("/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list", repoToCheck, 4);
+    checkRepoInPackageManagerDB("/etc/apt/sources.list.d/cydia.list", repoToCheck, 1);
+    checkRepoInPackageManagerDB("/etc/apt/sources.list.d/sileo.sources", repoToCheck, 2);
+    checkRepoInPackageManagerDB("/var/mobile/Library/Application Support/Installer/APT/sources.list", repoToCheck, 3);
+    checkRepoInPackageManagerDB("/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list", repoToCheck, 4);
     return 0;
 }
 
 bool file_exists (char *filename) {
-    struct stat   buffer;
+    struct stat  buffer;
     return (stat (filename, &buffer) == 0);
 }
 
 int performJailbreakProbingAtPath() {
-    int result = 0;
-    
     printf("Attempting to detect if the device is jailbroken...\n");
     FILE * filepath = fopen("/var/mobile/iSecureOS-Sandbox", "w");
-       if (!filepath) {
-           fclose(filepath);
-           fprintf(stderr,"Random processes are running sandboxed. Will attempt to check further.\n");
-           return -2;
-       } else {
-           printf("Detected sandbox escape. This device is likely jailbroken.\n");
-           result = 0;
-           fclose(filepath);
-           return result;
-       }
     
-    return result;
+    if (!filepath) {
+        fclose(filepath);
+        fprintf(stderr,"Random processes are running sandboxed. Will attempt to check further.\n");
+        return -2;
+    }
+    
+    printf("Detected sandbox escape. This device is likely jailbroken.\n");
+    fclose(filepath);
+    return 0;
 }
 
 int checkForUnsafeTweaks() {
-    UIColor *redColor = [UIColor redColor];
     if(file_exists("/Library/MobileSubstrate/DynamicLibraries/CyDown.dylib" )) {
         printUnsafeTweakWarning("CyDown");
         [Vulnerabilities addObject:@"CyDown is an unsafe pirate tweak / Botnet."];
@@ -648,7 +635,6 @@ int execprog(const char *prog, const char* args[]) {
 
 int checkActiveSSHConnection() {
     // Check if an active root connection is found
-    UIColor *redColor = [UIColor redColor];
     int rootAccess = warnaxActiveSSHConnection("sshd: root@ttys");
     
     if (rootAccess == 0) {
@@ -687,7 +673,6 @@ int checkActiveSSHConnection() {
 }
 
 - (IBAction)saveLogToFile:(id)sender {
-    
     NSString *path = @"/var/mobile/iSecureOS";
     NSURL *url = [NSURL URLWithString:[path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
     url = [url URLByAppendingPathComponent:@"ScanResult.json"];
@@ -714,71 +699,70 @@ int checkActiveSSHConnection() {
 
 - (int) scanForMalwareAtPath {
     _currentFile.hidden = NO;
-    UIColor *redColor = [UIColor redColor];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *directoryURL = [NSURL URLWithString: tweakInjectionPath];
-        NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *directoryURL = [NSURL URLWithString: tweakInjectionPath];
+    NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
 
-        NSDirectoryEnumerator *enumerator = [fileManager
-            enumeratorAtURL:directoryURL
-            includingPropertiesForKeys:keys
-            options:0
-            errorHandler:^BOOL(NSURL *url, NSError *error) {
-                printf("Something went wrong and the path could not be accessed.\n");
-                return NO;
-        }];
+    NSDirectoryEnumerator *enumerator = [fileManager
+                                         enumeratorAtURL:directoryURL
+                                         includingPropertiesForKeys:keys
+                                         options:0
+                                         errorHandler:^BOOL(NSURL *url, NSError *error) {
+        printf("Something went wrong and the path could not be accessed.\n");
+        return NO;
+    }];
 
-        for (NSURL *url in enumerator) {
-            NSError *error;
-            NSNumber *isDirectory = nil;
-            if (![url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error]) {
-                printf("Could not scan path. It's a directoy.\n");
-            }
-            else if (![isDirectory boolValue]) {
-                NSString *filetocheckpath = url.path;
+    for (NSURL *url in enumerator) {
+        NSError *error;
+        NSNumber *isDirectory = nil;
+        if (![url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error]) {
+            printf("Could not scan path. It's a directoy.\n");
+        }
+        else if (![isDirectory boolValue]) {
+            NSString *filetocheckpath = url.path;
     
-                if ([self filePathSanityCheck: filetocheckpath] != -1) {
+            if ([self filePathSanityCheck: filetocheckpath] != -1) {
                     
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.currentFile.text = filetocheckpath;
-                        self.scannProgressbar.progress += 0.0001f;
-                    });
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.currentFile.text = filetocheckpath;
+                    self.scannProgressbar.progress += 0.0001f;
+                });
                     
-                    NSData *data = [NSData dataWithContentsOfFile:filetocheckpath];
-                    uint8_t digest[CC_SHA512_DIGEST_LENGTH];
-                    CC_SHA512(data.bytes, (CC_LONG)data.length, digest);
+                NSData *data = [NSData dataWithContentsOfFile:filetocheckpath];
+                uint8_t digest[CC_SHA512_DIGEST_LENGTH];
+                CC_SHA512(data.bytes, (CC_LONG)data.length, digest);
              
-                    NSMutableString* shaoutput = [NSMutableString  stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
+                NSMutableString* shaoutput = [NSMutableString  stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
              
-                    for(int i = 0; i < CC_SHA512_DIGEST_LENGTH; i++) {
-                        [shaoutput appendFormat:@"%02x", digest[i]];
-                    }
+                for(int i = 0; i < CC_SHA512_DIGEST_LENGTH; i++) {
+                    [shaoutput appendFormat:@"%02x", digest[i]];
+                }
                     
-                    NSString *hashsignature = shaoutput;
-                    if ([MalwareDefinitions containsObject:hashsignature]){
-                        [detectedMalware addObject:url];
-                        NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@]", filetocheckpath];
-                        NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. It's recommended that you delete the file in cause, and remove any unsafe repos.", filetocheckpath];
-                        NSLog(@"%@", malwareMessage);
-                        [Vulnerabilities addObject: malwareMessageHeader];
-                        [VulnerabilityDetails addObject: malwareMessage];
-                        [VulnerabilitySeverity addObject: redColor];
-                    }
+                NSString *hashsignature = shaoutput;
+                if ([MalwareDefinitions containsObject:hashsignature]){
+                    [detectedMalware addObject:url];
+                    NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@", filetocheckpath];
+                    NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. It's recommended that you delete the file in cause, and remove any unsafe repos.", filetocheckpath];
+                    NSLog(@"%@", malwareMessage);
+                    [Vulnerabilities addObject: malwareMessageHeader];
+                    [VulnerabilityDetails addObject: malwareMessage];
+                    [VulnerabilitySeverity addObject: redColor];
                 }
             }
         }
-    return 0;
+    }
     
+    return 0;
 }
 
 - (IBAction)dismissModal12:(id)sender {
-    // Looks like iOS 12 lacks the modals I use that you can just drag down to close, thus making people get stuck on one window. This should fix that.
+    // Looks like iOS 12 lacks the modals I use that you can just drag down to close,
+    // thus making people get stuck on one window. This should fix that.
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 int getCVEsForVersion() {
-    UIColor *orangeColor = [UIColor orangeColor];
     if (SYSTEM_VERSION_LESS_THAN(@"14.2")){
         [Vulnerabilities addObject:@"Vulnerable to CVE-2020-27930"];
         [VulnerabilityDetails addObject:@"CVE-2020-27930 is a FontParser vulnerability that can lead to arbitrary code execution. Apple is aware of reports that an exploit for this issue exists in the wild. Pay attention to the apps you install, and websites you visit."];
@@ -802,6 +786,29 @@ int getCVEsForVersion() {
         [VulnerabilitySeverity addObject:orangeColor];
     }
     return 0;
+}
+
+- (void) redirectNotificationHandle: (NSNotification *)nf {
+    NSData *data = [[nf userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    self.logmeeh.text = [NSString stringWithFormat:@"%@\n%@",self.logmeeh.text, str];
+    NSRange lastLine = NSMakeRange(self.logmeeh.text.length - 1, 1);
+    [self.logmeeh scrollRangeToVisible:lastLine];
+    [[nf object] readInBackgroundAndNotify];
+}
+
+- (void) redirectSTD: (int)fd {
+    setvbuf(stdout, nil, _IONBF, 0);
+    NSPipe * pipe = [NSPipe pipe] ;
+    NSFileHandle *pipeReadHandle = [pipe fileHandleForReading] ;
+    dup2([[pipe fileHandleForWriting] fileDescriptor], fd) ;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(redirectNotificationHandle:)
+                                               name:NSFileHandleReadCompletionNotification
+                                               object:pipeReadHandle];
+    [pipeReadHandle readInBackgroundAndNotify];
 }
 
 - (int) filePathSanityCheck: (NSString*) filetocheckpath {
