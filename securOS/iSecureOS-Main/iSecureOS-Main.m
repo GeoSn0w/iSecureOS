@@ -38,7 +38,7 @@
     bool shouldUpdate = checkForAppUpdate();
     if (shouldUpdate) {
         _secureOS_Load_Btn.enabled = NO;
-        [_secureOS_Load_Btn setTitle:@"App version outdated" forState: UIControlStateDisabled];
+        [_secureOS_Load_Btn setTitle:@"Please update iSecureOS" forState: UIControlStateDisabled];
         
     } else if (CANT_CHK_VER) {
         _secureOS_Load_Btn.enabled = NO;

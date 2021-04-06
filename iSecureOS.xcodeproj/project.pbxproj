@@ -10,6 +10,7 @@
 		D62E05CE26065D4A00C5CDB8 /* iSecureOS-Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E05CD26065D4A00C5CDB8 /* iSecureOS-Networking.m */; };
 		D62E05E826067DFB00C5CDB8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62E05E726067DFB00C5CDB8 /* CoreAudio.framework */; };
 		D62E05F1260688F000C5CDB8 /* iSecureOS-Signatures.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */; };
+		D648A4F4261CAE5C0013A7E6 /* iSecureOS-Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = D648A4F3261CAE5C0013A7E6 /* iSecureOS-Settings.m */; };
 		D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF71C25F7B982003242F5 /* AppDelegate.m */; };
 		D65BF72025F7B982003242F5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF71F25F7B982003242F5 /* SceneDelegate.m */; };
 		D65BF72325F7B982003242F5 /* iSecureOS-Main.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF72225F7B982003242F5 /* iSecureOS-Main.m */; };
@@ -54,6 +55,8 @@
 		D62E05E726067DFB00C5CDB8 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Signatures.m"; sourceTree = "<group>"; };
 		D62E05F5260689A300C5CDB8 /* iSecureOS-Signatures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Signatures.h"; sourceTree = "<group>"; };
+		D648A4F2261CAE5C0013A7E6 /* iSecureOS-Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Settings.h"; sourceTree = "<group>"; };
+		D648A4F3261CAE5C0013A7E6 /* iSecureOS-Settings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Settings.m"; sourceTree = "<group>"; };
 		D65BF71825F7B982003242F5 /* iSecureOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSecureOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65BF71B25F7B982003242F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D65BF71C25F7B982003242F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,6 +129,117 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D648A4F8261CAE7B0013A7E6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */,
+				D65BF72425F7B982003242F5 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D648A4FA261CAE970013A7E6 /* iSecureOS-Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D648A4F2261CAE5C0013A7E6 /* iSecureOS-Settings.h */,
+				D648A4F3261CAE5C0013A7E6 /* iSecureOS-Settings.m */,
+			);
+			path = "iSecureOS-Settings";
+			sourceTree = "<group>";
+		};
+		D648A4FE261CAEB80013A7E6 /* iSecureOS-Core */ = {
+			isa = PBXGroup;
+			children = (
+				D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */,
+				D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */,
+			);
+			path = "iSecureOS-Core";
+			sourceTree = "<group>";
+		};
+		D648A4FF261CAEC20013A7E6 /* iSecureOS-Root */ = {
+			isa = PBXGroup;
+			children = (
+				D67095CC2607EAC000FC6851 /* iSecureOS-ROOT.h */,
+				D67095CD2607EAC000FC6851 /* iSecureOS-ROOT.m */,
+			);
+			path = "iSecureOS-Root";
+			sourceTree = "<group>";
+		};
+		D648A503261CAED00013A7E6 /* iSecureOS-Signatures */ = {
+			isa = PBXGroup;
+			children = (
+				D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */,
+				D62E05F5260689A300C5CDB8 /* iSecureOS-Signatures.h */,
+			);
+			path = "iSecureOS-Signatures";
+			sourceTree = "<group>";
+		};
+		D648A50A261CAEDC0013A7E6 /* iSecureOS-AppInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D67096152608435400FC6851 /* iSecureOS-AppInfo.h */,
+				D67096162608435400FC6851 /* iSecureOS-AppInfo.m */,
+			);
+			path = "iSecureOS-AppInfo";
+			sourceTree = "<group>";
+		};
+		D648A50B261CAEEC0013A7E6 /* iSecureOS-Common */ = {
+			isa = PBXGroup;
+			children = (
+				D67095D22607EC6700FC6851 /* SystemReboot.h */,
+				D69AD1CB2608762B00FD3840 /* iSecureOS-Defaulting.h */,
+				D6ED8A1D260BE73100A44851 /* iSecureOS-Common.h */,
+				D6A0EC9826195A3A0057C6FE /* iSecureOS-Common.m */,
+			);
+			path = "iSecureOS-Common";
+			sourceTree = "<group>";
+		};
+		D648A512261CAF010013A7E6 /* iSecureOS-Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D62E05DB260661F700C5CDB8 /* iSecureOS-Networking.h */,
+				D62E05CD26065D4A00C5CDB8 /* iSecureOS-Networking.m */,
+			);
+			path = "iSecureOS-Networking";
+			sourceTree = "<group>";
+		};
+		D648A516261CAF0E0013A7E6 /* iSecureOS-Security */ = {
+			isa = PBXGroup;
+			children = (
+				D6B5008326058C010073E833 /* iSecureOS-Security.m */,
+				D6B5008826058D4C0073E833 /* iSecureOS-Security.h */,
+			);
+			path = "iSecureOS-Security";
+			sourceTree = "<group>";
+		};
+		D648A51A261CAF1C0013A7E6 /* iSecureOS-Tampering */ = {
+			isa = PBXGroup;
+			children = (
+				D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */,
+				D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */,
+			);
+			path = "iSecureOS-Tampering";
+			sourceTree = "<group>";
+		};
+		D648A521261CAF2A0013A7E6 /* iSecureOS-ThreatScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D67095B62607C7D900FC6851 /* iSecureOS-ThreatScreen.m */,
+				D67095B52607C7D900FC6851 /* iSecureOS-ThreatScreen.h */,
+				D67095BB2607C94600FC6851 /* threat-detection.mp3 */,
+			);
+			path = "iSecureOS-ThreatScreen";
+			sourceTree = "<group>";
+		};
+		D648A522261CAF580013A7E6 /* iSecureOS-Main */ = {
+			isa = PBXGroup;
+			children = (
+				D65BF72125F7B982003242F5 /* iSecureOS-Main.h */,
+				D65BF72225F7B982003242F5 /* iSecureOS-Main.m */,
+			);
+			path = "iSecureOS-Main";
+			sourceTree = "<group>";
+		};
 		D65BF70F25F7B982003242F5 = {
 			isa = PBXGroup;
 			children = (
@@ -151,38 +265,25 @@
 			isa = PBXGroup;
 			children = (
 				D65BF75625F7BAFB003242F5 /* securOS */,
+				D65BF72725F7B983003242F5 /* Assets.xcassets */,
 				D65BF71B25F7B982003242F5 /* AppDelegate.h */,
 				D65BF71C25F7B982003242F5 /* AppDelegate.m */,
 				D65BF71E25F7B982003242F5 /* SceneDelegate.h */,
 				D65BF71F25F7B982003242F5 /* SceneDelegate.m */,
-				D67095D22607EC6700FC6851 /* SystemReboot.h */,
-				D65BF72125F7B982003242F5 /* iSecureOS-Main.h */,
-				D65BF72225F7B982003242F5 /* iSecureOS-Main.m */,
-				D6ED8A1D260BE73100A44851 /* iSecureOS-Common.h */,
-				D6A0EC9826195A3A0057C6FE /* iSecureOS-Common.m */,
-				D67095CC2607EAC000FC6851 /* iSecureOS-ROOT.h */,
-				D67095CD2607EAC000FC6851 /* iSecureOS-ROOT.m */,
-				D6AE881A25F7E55A0088F23B /* iSecureOS-Core.h */,
-				D6AE881B25F7E55A0088F23B /* iSecureOS-Core.m */,
-				D69AD1CB2608762B00FD3840 /* iSecureOS-Defaulting.h */,
-				D67096152608435400FC6851 /* iSecureOS-AppInfo.h */,
-				D67096162608435400FC6851 /* iSecureOS-AppInfo.m */,
-				D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */,
-				D62E05F5260689A300C5CDB8 /* iSecureOS-Signatures.h */,
-				D62E05CD26065D4A00C5CDB8 /* iSecureOS-Networking.m */,
-				D62E05DB260661F700C5CDB8 /* iSecureOS-Networking.h */,
-				D6B5008326058C010073E833 /* iSecureOS-Security.m */,
-				D6B5008826058D4C0073E833 /* iSecureOS-Security.h */,
-				D678EB8D25FC48D300464879 /* iSecureOS-Tampering.m */,
-				D678EB9225FC48E700464879 /* iSecureOS-Tampering.h */,
-				D67095B62607C7D900FC6851 /* iSecureOS-ThreatScreen.m */,
-				D67095B52607C7D900FC6851 /* iSecureOS-ThreatScreen.h */,
-				D65BF72725F7B983003242F5 /* Assets.xcassets */,
-				D65BF72425F7B982003242F5 /* Main.storyboard */,
-				D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */,
+				D648A522261CAF580013A7E6 /* iSecureOS-Main */,
+				D648A50B261CAEEC0013A7E6 /* iSecureOS-Common */,
+				D648A4FA261CAE970013A7E6 /* iSecureOS-Settings */,
+				D648A4FF261CAEC20013A7E6 /* iSecureOS-Root */,
+				D648A4FE261CAEB80013A7E6 /* iSecureOS-Core */,
+				D648A503261CAED00013A7E6 /* iSecureOS-Signatures */,
+				D648A50A261CAEDC0013A7E6 /* iSecureOS-AppInfo */,
+				D648A512261CAF010013A7E6 /* iSecureOS-Networking */,
+				D648A516261CAF0E0013A7E6 /* iSecureOS-Security */,
+				D648A51A261CAF1C0013A7E6 /* iSecureOS-Tampering */,
+				D648A521261CAF2A0013A7E6 /* iSecureOS-ThreatScreen */,
+				D648A4F8261CAE7B0013A7E6 /* Storyboards */,
 				D65BF72C25F7B983003242F5 /* Info.plist */,
 				D65BF72D25F7B983003242F5 /* main.m */,
-				D67095BB2607C94600FC6851 /* threat-detection.mp3 */,
 			);
 			path = securOS;
 			sourceTree = "<group>";
@@ -348,6 +449,7 @@
 				D65BF72325F7B982003242F5 /* iSecureOS-Main.m in Sources */,
 				D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */,
 				D69AD1CC2608762B00FD3840 /* iSecureOS-Defaulting.h in Sources */,
+				D648A4F4261CAE5C0013A7E6 /* iSecureOS-Settings.m in Sources */,
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
 				D67096172608435400FC6851 /* iSecureOS-AppInfo.m in Sources */,
 				D678EB8E25FC48D300464879 /* iSecureOS-Tampering.m in Sources */,
