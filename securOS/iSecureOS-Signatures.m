@@ -7,6 +7,23 @@
 
 #import <Foundation/Foundation.h>
 #include <sys/stat.h>
+#include "iSecureOS-Common.h"
+
+#define CURRENT_VERSION 1.16
+
+bool checkForAppUpdate() {
+    NSString *appVersionPlist = @"http://geosn0w.github.io/iSecureOS-Definitions/Isabella/SystemVersion.plist";
+    NSURL  *appVersionURL = [NSURL URLWithString: appVersionPlist];
+    NSError *AppVersionError = nil;
+    NSMutableDictionary *propertyListDict = [[NSMutableDictionary alloc] initWithContentsOfURL: appVersionURL error: &AppVersionError];
+    if (AppVersionError != nil){
+        NSLog(@"iSecureOS could not check for version status. Will assume no new version is available for now, but will trip the CANT_CHK_VER fuse.");
+        CANT_CHK_VER = true;
+        return false;
+    }
+    double NewestVersion = [[propertyListDict objectForKey:@"AppVersion"] intValue];
+    return (fabs(CURRENT_VERSION - NewestVersion) < 0.01);
+}
 
 int performRepoSignatureUpdate() {
         NSString *stringURL = @"https://geosn0w.github.io/iSecureOS/Signatures/repo-signatures";

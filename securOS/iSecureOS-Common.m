@@ -8,3 +8,4 @@
 #import "iSecureOS-Common.h"
 bool shouldPerformInDepthScan = false;
 int sharedThreatLevel;
+bool CANT_CHK_VER = false;

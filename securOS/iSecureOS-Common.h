@@ -15,5 +15,5 @@ NS_ASSUME_NONNULL_BEGIN
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 extern bool shouldPerformInDepthScan;
 extern int sharedThreatLevel;
-
+extern bool CANT_CHK_VER;
 NS_ASSUME_NONNULL_END

@@ -11,5 +11,6 @@
 int performRepoSignatureUpdate(void);
 int performMalwareSignatureUpdate(void);
 int initializeDefinitionsAtPath(void);
+bool checkForAppUpdate(void);
 
 #endif /* iSecureOS_Signatures_h */
