@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  iSecureOS-Main.h
 //  securOS
 //
 //  Created by GeoSn0w on 3/9/21.

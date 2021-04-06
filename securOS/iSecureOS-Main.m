@@ -1,13 +1,14 @@
 //
-//  ViewController.m
+//  iSecureOS-Main.m
 //  securiOS
 //
 //  Created by GeoSn0w on 3/9/21.
 //
 
-#import "ViewController.h"
+#import "iSecureOS-Main.h"
 #include <sys/stat.h>
 #include "iSecureOS-Common.h"
+#include "iSecureOS-Signatures.h"
 
 @interface ViewController ()
 
@@ -34,12 +35,23 @@
     _secureOS_Load_Btn.layer.cornerRadius = 22;
     _secureOS_Load_Btn.clipsToBounds = YES;
     
-    setuid(0);
-    setgid(0);
-    
-    if (getuid() != 0){
+    bool shouldUpdate = checkForAppUpdate();
+    if (shouldUpdate) {
         _secureOS_Load_Btn.enabled = NO;
-        [_secureOS_Load_Btn setTitle:@"Not running as ROOT" forState:UIControlStateDisabled];
+        [_secureOS_Load_Btn setTitle:@"App version outdated" forState: UIControlStateDisabled];
+        
+    } else if (CANT_CHK_VER) {
+        _secureOS_Load_Btn.enabled = NO;
+        [_secureOS_Load_Btn setTitle:@"Can't check version" forState: UIControlStateDisabled];
+        
+    } else {
+        setuid(0);
+        setgid(0);
+        
+        if (getuid() != 0){
+            _secureOS_Load_Btn.enabled = NO;
+            [_secureOS_Load_Btn setTitle:@"Not running as ROOT" forState:UIControlStateDisabled];
+        }
     }
 }
 

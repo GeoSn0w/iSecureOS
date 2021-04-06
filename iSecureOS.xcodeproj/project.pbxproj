@@ -12,7 +12,7 @@
 		D62E05F1260688F000C5CDB8 /* iSecureOS-Signatures.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */; };
 		D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF71C25F7B982003242F5 /* AppDelegate.m */; };
 		D65BF72025F7B982003242F5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF71F25F7B982003242F5 /* SceneDelegate.m */; };
-		D65BF72325F7B982003242F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF72225F7B982003242F5 /* ViewController.m */; };
+		D65BF72325F7B982003242F5 /* iSecureOS-Main.m in Sources */ = {isa = PBXBuildFile; fileRef = D65BF72225F7B982003242F5 /* iSecureOS-Main.m */; };
 		D65BF72625F7B982003242F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65BF72425F7B982003242F5 /* Main.storyboard */; };
 		D65BF72825F7B983003242F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65BF72725F7B983003242F5 /* Assets.xcassets */; };
 		D65BF72B25F7B983003242F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65BF72925F7B983003242F5 /* LaunchScreen.storyboard */; };
@@ -59,8 +59,8 @@
 		D65BF71C25F7B982003242F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D65BF71E25F7B982003242F5 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		D65BF71F25F7B982003242F5 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		D65BF72125F7B982003242F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D65BF72225F7B982003242F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D65BF72125F7B982003242F5 /* iSecureOS-Main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSecureOS-Main.h"; sourceTree = "<group>"; };
+		D65BF72225F7B982003242F5 /* iSecureOS-Main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iSecureOS-Main.m"; sourceTree = "<group>"; };
 		D65BF72525F7B982003242F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D65BF72725F7B983003242F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D65BF72A25F7B983003242F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 				D65BF71E25F7B982003242F5 /* SceneDelegate.h */,
 				D65BF71F25F7B982003242F5 /* SceneDelegate.m */,
 				D67095D22607EC6700FC6851 /* SystemReboot.h */,
-				D65BF72125F7B982003242F5 /* ViewController.h */,
-				D65BF72225F7B982003242F5 /* ViewController.m */,
+				D65BF72125F7B982003242F5 /* iSecureOS-Main.h */,
+				D65BF72225F7B982003242F5 /* iSecureOS-Main.m */,
 				D6ED8A1D260BE73100A44851 /* iSecureOS-Common.h */,
 				D6A0EC9826195A3A0057C6FE /* iSecureOS-Common.m */,
 				D67095CC2607EAC000FC6851 /* iSecureOS-ROOT.h */,
@@ -345,7 +345,7 @@
 				D62E05CE26065D4A00C5CDB8 /* iSecureOS-Networking.m in Sources */,
 				D6AE881C25F7E55A0088F23B /* iSecureOS-Core.m in Sources */,
 				D67095CE2607EAC000FC6851 /* iSecureOS-ROOT.m in Sources */,
-				D65BF72325F7B982003242F5 /* ViewController.m in Sources */,
+				D65BF72325F7B982003242F5 /* iSecureOS-Main.m in Sources */,
 				D65BF71D25F7B982003242F5 /* AppDelegate.m in Sources */,
 				D69AD1CC2608762B00FD3840 /* iSecureOS-Defaulting.h in Sources */,
 				D65BF72E25F7B983003242F5 /* main.m in Sources */,
