@@ -80,7 +80,7 @@ YouTube: iDevice Central</string>
                                     <constraint firstAttribute="height" constant="355" id="eeH-6u-zhP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS v1.16-B1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS v1.17-B1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
                                 <rect key="frame" x="126" y="673.66666666666663" width="162" height="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -603,6 +603,17 @@ YouTube: iDevice Central</string>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-lA-j7u">
                                 <rect key="frame" x="345" y="158" width="51" height="31"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVp-lR-pHR">
+                                <rect key="frame" x="36" y="227" width="342" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VVp-lR-pHR" secondAttribute="height" multiplier="57:11" id="C1X-Yk-tBY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title="Remove quarantined items" backgroundImage="button_mask"/>
+                                <connections>
+                                    <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="1Es-2A-Qyx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lcs-ZU-HmD"/>
                         <color key="backgroundColor" red="0.08767491645728076" green="0.088542984937055813" blue="0.088542984937055813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -610,16 +621,19 @@ YouTube: iDevice Central</string>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="bottom" secondItem="3QN-dD-v6j" secondAttribute="bottom" constant="38" id="0RN-e1-ih9"/>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="leading" secondItem="XyZ-Bh-cOl" secondAttribute="leading" id="4Xu-ur-IEb"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="centerX" secondItem="XgD-tA-b2p" secondAttribute="centerX" id="7by-Bc-t8i"/>
+                            <constraint firstItem="VVp-lR-pHR" firstAttribute="trailing" secondItem="3QN-dD-v6j" secondAttribute="trailing" id="8Zt-s4-E1x"/>
                             <constraint firstItem="6g1-lA-j7u" firstAttribute="top" secondItem="3EY-to-a8a" secondAttribute="bottom" constant="9" id="9uv-oa-yv8"/>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="top" secondItem="XyZ-Bh-cOl" secondAttribute="bottom" constant="8" id="HsT-Wr-yqk"/>
                             <constraint firstItem="XgD-tA-b2p" firstAttribute="centerX" secondItem="xi7-Dd-cK5" secondAttribute="centerX" id="LD4-un-hqD"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="leading" secondItem="xi7-Dd-cK5" secondAttribute="leadingMargin" id="Lmz-go-vN3"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="top" secondItem="XgD-tA-b2p" secondAttribute="bottom" constant="22" id="SDm-KY-opy"/>
+                            <constraint firstItem="VVp-lR-pHR" firstAttribute="top" secondItem="6g1-lA-j7u" secondAttribute="bottom" constant="38" id="iYs-dG-CmQ"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="leading" secondItem="lcs-ZU-HmD" secondAttribute="leading" constant="36" id="jov-NW-MoM"/>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="trailing" secondItem="6g1-lA-j7u" secondAttribute="trailing" constant="20" id="lSN-aB-945"/>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="trailing" secondItem="3EY-to-a8a" secondAttribute="trailing" constant="20" id="oHh-eb-1Bx"/>
                             <constraint firstItem="XgD-tA-b2p" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="60" id="of9-kz-dc7"/>
                             <constraint firstItem="3EY-to-a8a" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="118" id="tAM-BH-HHe"/>
+                            <constraint firstItem="VVp-lR-pHR" firstAttribute="leading" secondItem="3QN-dD-v6j" secondAttribute="leading" id="uwX-Wr-ND0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GMV-D0-YiK"/>

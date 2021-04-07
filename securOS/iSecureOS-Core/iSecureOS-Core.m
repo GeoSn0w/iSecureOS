@@ -784,29 +784,19 @@ int checkActiveSSHConnection() {
     // Replace the Magic number of the file with ours. The system won't be able to recognize it's an executable.
     // Normal Magic is 0xFEEDFACF || 0xFEEDFACE || 0xCAFEBABE || 0xCFFAEDFE || 0xCEFAEDFE
     
-    NSMutableData *malwarefile = [NSMutableData dataWithContentsOfFile: pathOfMalware];
-    char *fileLLBytes = [malwarefile mutableBytes];
-    fileLLBytes[0] = 69;
-    fileLLBytes[1] = 53;
-    fileLLBytes[2] = 51;
-    fileLLBytes[3] = 41;
-    NSError *quarantine_error = nil;
-    
-    if (![malwarefile writeToFile: pathOfMalware options:NSDataWritingAtomic error:&quarantine_error]) {
-        NSLog(@"Could not replace the magic number. Error: %@", quarantine_error);
-        return -2;
-    }
-    
     const char *malwarePath = [pathOfMalware UTF8String];
+    
+    FILE *malwareFilePath = fopen(malwarePath, "r+b" );
+    fseek(malwareFilePath, 0, SEEK_SET);
+    unsigned char newMagic[] = {0x69, 0x53, 0x51, 0x41};
+    fwrite(&newMagic, sizeof(newMagic), 1, malwareFilePath);
+    fclose(malwareFilePath);
+    
     chmod(malwarePath, 666); // Change the malware permission to be Readable, Writable, but not Executable.
     
     NSError *moveToQuarantineErr = nil;
     [[NSFileManager defaultManager] moveItemAtPath:pathOfMalware toPath:@"/var/mobile/iSecureOS/Quarantine" error:&moveToQuarantineErr];
     
-    if (moveToQuarantineErr != nil) {
-        NSLog(@"Could move the file to quarantine. Error: %@", quarantine_error);
-        return -3;
-    }
     NSLog(@"Successfully quarantined %@", pathOfMalware);
     
     return 0;
