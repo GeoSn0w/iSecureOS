@@ -16,4 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 extern bool shouldPerformInDepthScan;
 extern int sharedThreatLevel;
 extern bool CANT_CHK_VER;
+extern bool shouldNotScanCVE;
+extern bool shouldNotScanVPN;
 NS_ASSUME_NONNULL_END

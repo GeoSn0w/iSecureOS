@@ -6,6 +6,7 @@
 //
 
 #import "iSecureOS-Settings.h"
+#include "iSecureOS-Common.h"
 
 @interface iSecureOS_Settings ()
 
@@ -15,17 +16,98 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    shouldNotScanCVE = false;
+    shouldNotScanVPN = false;
+    
+    _saveSettingsbutton.layer.cornerRadius = 22;
+    _saveSettingsbutton.clipsToBounds = YES;
+    _removeQuarantinedItemsButton.layer.cornerRadius = 18;
+    _removeQuarantinedItemsButton.clipsToBounds = YES;
+    [self fetchSettingsFromDefaults];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)removeQuarantinedObjects:(id)sender {
+    int removalStatus = 0;
+    NSFileManager *quarantineManager = [NSFileManager defaultManager];
+    NSError *fileListingError;
+    NSArray *quarantinedFiles = [quarantineManager contentsOfDirectoryAtPath:@"/var/iSecureOS/Quarantine"   error:&fileListingError];
+    
+    if (fileListingError == nil) {
+        NSError *removeMalwareErr;
+        for (NSString *malware in quarantinedFiles)  {
+            [quarantineManager removeItemAtPath:[@"@/var/iSecureOS/Quarantine" stringByAppendingPathComponent:malware] error:&removeMalwareErr];
+            if (removeMalwareErr != nil) {
+                removalStatus = -1;
+            }
+        }
+    } else {
+        removalStatus = -2;
+        NSLog(@"Could not access the quarantine path.");
+    }
+    
+    _removeQuarantinedItemsButton.enabled = NO;
+    if (removalStatus == 0){
+        [_removeQuarantinedItemsButton setTitle:@"Quarantine cleaned!" forState:UIControlStateDisabled];
+    } else {
+        [_removeQuarantinedItemsButton setTitle:@"Quarantine is empty" forState:UIControlStateDisabled];
+    }
+    
 }
-*/
 
+- (void) fetchSettingsFromDefaults {
+    NSString * ignoreVPNState = [[NSUserDefaults standardUserDefaults] objectForKey: @"VPN"];
+    if ([ignoreVPNState isEqualToString:@"0"]){
+        [_ignoreVPNToggle setOn:NO animated:YES];
+        shouldNotScanVPN = false;
+        
+    } else if ([ignoreVPNState isEqualToString:@"1"]){
+        [_ignoreVPNToggle setOn:YES animated:YES];
+        shouldNotScanVPN = true;
+    }
+    
+    NSString * ignoreCVEState = [[NSUserDefaults standardUserDefaults] objectForKey: @"CVE"];
+    if ([ignoreCVEState isEqualToString:@"0"]){
+        [_ignoreCVEsToggle setOn:NO animated:YES];
+        shouldNotScanCVE = false;
+    } else if ([ignoreCVEState isEqualToString:@"1"]){
+        [_ignoreCVEsToggle setOn:YES animated:YES];
+        shouldNotScanCVE = true;
+    }
+}
+
+- (IBAction)saveSettingsAction:(id)sender {
+    if (shouldNotScanVPN == true){
+        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"VPN"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"VPN"];
+    }
+    
+    if (shouldNotScanCVE == true){
+        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"CVE"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"CVE"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _saveSettingsbutton.enabled = false;
+    [_saveSettingsbutton setTitle:@"Successfully saved!" forState:UIControlStateDisabled];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)cveIgnoreSwitch:(id)sender {
+    UISwitch *cveIgnoreSwitchState = (UISwitch *)sender;
+        if ([cveIgnoreSwitchState isOn]) {
+            shouldNotScanCVE = true;
+        } else {
+            shouldNotScanCVE = false;
+        }
+}
+
+- (IBAction)vpnIgnoreSwitch:(id)sender {
+    UISwitch *vpnIgnoreSwitchState = (UISwitch *)sender;
+        if ([vpnIgnoreSwitchState isOn]) {
+            shouldNotScanVPN = true;
+        } else {
+            shouldNotScanVPN = false;
+        }
+}
 @end

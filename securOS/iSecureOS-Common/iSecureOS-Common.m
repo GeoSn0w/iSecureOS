@@ -9,3 +9,5 @@
 bool shouldPerformInDepthScan = false;
 int sharedThreatLevel;
 bool CANT_CHK_VER = false;
+bool shouldNotScanCVE;
+bool shouldNotScanVPN;

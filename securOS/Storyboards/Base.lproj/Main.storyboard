@@ -148,10 +148,10 @@ YouTube: iDevice Central</string>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IR7-jV-rWl">
-                                <rect key="frame" x="363" y="11" width="31" height="31"/>
+                                <rect key="frame" x="367" y="20" width="31" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="aaa-CQ-pWn"/>
-                                    <constraint firstAttribute="width" constant="31" id="qrD-sq-xJA"/>
+                                    <constraint firstAttribute="height" constant="31" id="eI7-Ez-sKj"/>
+                                    <constraint firstAttribute="width" constant="31" id="fcZ-Cd-hHx"/>
                                 </constraints>
                                 <color key="tintColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="settings"/>
@@ -169,24 +169,23 @@ YouTube: iDevice Central</string>
                             <constraint firstItem="0oG-OL-EpH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2HC-uY-rrA"/>
                             <constraint firstItem="5eV-ci-w8X" firstAttribute="top" secondItem="aEp-Bv-fsT" secondAttribute="bottom" constant="1.3333333333333712" id="38q-q5-tmQ"/>
                             <constraint firstItem="Eh3-i4-hpt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="104" id="8tK-By-o6Z"/>
-                            <constraint firstItem="IR7-jV-rWl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="Bp5-oG-T79"/>
                             <constraint firstItem="EuY-zj-fjy" firstAttribute="top" secondItem="Eh3-i4-hpt" secondAttribute="bottom" constant="14" id="Bup-Pk-m8h"/>
                             <constraint firstItem="0oG-OL-EpH" firstAttribute="top" secondItem="p49-tn-Mtp" secondAttribute="bottom" constant="35" id="CAR-Rp-fTU"/>
                             <constraint firstItem="xVl-e4-s8s" firstAttribute="top" secondItem="0oG-OL-EpH" secondAttribute="bottom" constant="18" id="D6F-md-gCM"/>
                             <constraint firstItem="p49-tn-Mtp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="DNt-3D-myA"/>
                             <constraint firstItem="v2z-Ik-Lma" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FjD-Nc-8cl"/>
                             <constraint firstItem="Eh3-i4-hpt" firstAttribute="centerX" secondItem="EuY-zj-fjy" secondAttribute="centerX" id="GCv-XI-1Ka"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IR7-jV-rWl" secondAttribute="trailing" constant="20" id="Gg2-g7-dtQ"/>
                             <constraint firstItem="xVl-e4-s8s" firstAttribute="leading" secondItem="N9k-s2-h3Z" secondAttribute="trailing" constant="8" id="N5i-8D-tQF"/>
                             <constraint firstItem="Eh3-i4-hpt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="72" id="OH4-8M-oYF"/>
-                            <constraint firstItem="IR7-jV-rWl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="363" id="OS0-2T-thq"/>
                             <constraint firstItem="aEp-Bv-fsT" firstAttribute="top" secondItem="v2z-Ik-Lma" secondAttribute="bottom" constant="8.6666666666666288" id="Til-DJ-iAk"/>
                             <constraint firstItem="aEp-Bv-fsT" firstAttribute="centerX" secondItem="0oG-OL-EpH" secondAttribute="centerX" id="WT0-Td-OOf"/>
                             <constraint firstItem="aEp-Bv-fsT" firstAttribute="centerX" secondItem="5eV-ci-w8X" secondAttribute="centerX" id="Y6u-R7-Jdw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5eV-ci-w8X" secondAttribute="bottom" constant="20" id="gYX-Dg-ppG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IR7-jV-rWl" secondAttribute="trailing" constant="16" id="iFM-2J-2gV"/>
                             <constraint firstItem="0oG-OL-EpH" firstAttribute="centerX" secondItem="EuY-zj-fjy" secondAttribute="centerX" id="jGQ-jU-jsY"/>
                             <constraint firstItem="N9k-s2-h3Z" firstAttribute="leading" secondItem="0oG-OL-EpH" secondAttribute="leading" id="jqi-6P-kKq"/>
                             <constraint firstItem="0oG-OL-EpH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="ned-nV-0oQ"/>
+                            <constraint firstItem="IR7-jV-rWl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="uka-vb-931"/>
                             <constraint firstItem="p49-tn-Mtp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wZz-2Y-HnT"/>
                             <constraint firstItem="N9k-s2-h3Z" firstAttribute="top" secondItem="0oG-OL-EpH" secondAttribute="bottom" constant="17" id="xVl-HF-ojb"/>
                             <constraint firstItem="xVl-e4-s8s" firstAttribute="trailing" secondItem="0oG-OL-EpH" secondAttribute="trailing" id="xw5-iI-JBS"/>
@@ -560,35 +559,26 @@ YouTube: iDevice Central</string>
             </objects>
             <point key="canvasLocation" x="2295" y="115.14084507042254"/>
         </scene>
-        <!--View Controller-->
+        <!--SecureOS Settings-->
         <scene sceneID="7Wd-i5-gzx">
             <objects>
-                <viewController id="17g-RM-E4K" sceneMemberID="viewController">
+                <viewController id="17g-RM-E4K" customClass="iSecureOS_Settings" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xi7-Dd-cK5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgD-tA-b2p">
-                                <rect key="frame" x="82" y="60" width="250" height="38"/>
+                                <rect key="frame" x="82" y="20" width="250" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ignore CVEs for iOS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XyZ-Bh-cOl">
-                                <rect key="frame" x="20" y="120" width="213" height="30"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ignore VPN from results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoF-F9-agn">
-                                <rect key="frame" x="19.999999999999986" y="158" width="248.66666666666663" height="30"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
+                                <rect key="frame" x="20" y="130" width="205.33333333333334" height="25"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-to-a8a">
-                                <rect key="frame" x="345" y="118" width="51" height="31"/>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-dD-v6j">
                                 <rect key="frame" x="36" y="614" width="342" height="64"/>
                                 <constraints>
@@ -598,13 +588,17 @@ YouTube: iDevice Central</string>
                                 <state key="normal" title="Save Settings" backgroundImage="button_mask"/>
                                 <connections>
                                     <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="37W-EP-gJI"/>
+                                    <action selector="saveSettingsAction:" destination="17g-RM-E4K" eventType="touchUpInside" id="MxH-AJ-OpK"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-lA-j7u">
-                                <rect key="frame" x="345" y="158" width="51" height="31"/>
+                                <rect key="frame" x="345" y="127" width="51" height="31"/>
+                                <connections>
+                                    <action selector="vpnIgnoreSwitch:" destination="17g-RM-E4K" eventType="valueChanged" id="iEm-my-BZI"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVp-lR-pHR">
-                                <rect key="frame" x="36" y="227" width="342" height="66"/>
+                                <rect key="frame" x="36" y="196" width="342" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VVp-lR-pHR" secondAttribute="height" multiplier="57:11" id="C1X-Yk-tBY"/>
                                 </constraints>
@@ -612,8 +606,21 @@ YouTube: iDevice Central</string>
                                 <state key="normal" title="Remove quarantined items" backgroundImage="button_mask"/>
                                 <connections>
                                     <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="1Es-2A-Qyx"/>
+                                    <action selector="removeQuarantinedObjects:" destination="17g-RM-E4K" eventType="touchUpInside" id="lfF-XE-bfX"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-to-a8a">
+                                <rect key="frame" x="345" y="85" width="51" height="31"/>
+                                <connections>
+                                    <action selector="cveIgnoreSwitch:" destination="17g-RM-E4K" eventType="valueChanged" id="V3T-aJ-iz8"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ignore CVEs for iOS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XyZ-Bh-cOl">
+                                <rect key="frame" x="20" y="88" width="176" height="25"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lcs-ZU-HmD"/>
                         <color key="backgroundColor" red="0.08767491645728076" green="0.088542984937055813" blue="0.088542984937055813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -622,21 +629,27 @@ YouTube: iDevice Central</string>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="leading" secondItem="XyZ-Bh-cOl" secondAttribute="leading" id="4Xu-ur-IEb"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="centerX" secondItem="XgD-tA-b2p" secondAttribute="centerX" id="7by-Bc-t8i"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="trailing" secondItem="3QN-dD-v6j" secondAttribute="trailing" id="8Zt-s4-E1x"/>
-                            <constraint firstItem="6g1-lA-j7u" firstAttribute="top" secondItem="3EY-to-a8a" secondAttribute="bottom" constant="9" id="9uv-oa-yv8"/>
-                            <constraint firstItem="aoF-F9-agn" firstAttribute="top" secondItem="XyZ-Bh-cOl" secondAttribute="bottom" constant="8" id="HsT-Wr-yqk"/>
+                            <constraint firstItem="6g1-lA-j7u" firstAttribute="top" secondItem="3EY-to-a8a" secondAttribute="bottom" constant="11" id="9uv-oa-yv8"/>
+                            <constraint firstItem="aoF-F9-agn" firstAttribute="top" secondItem="XyZ-Bh-cOl" secondAttribute="bottom" constant="17" id="HsT-Wr-yqk"/>
                             <constraint firstItem="XgD-tA-b2p" firstAttribute="centerX" secondItem="xi7-Dd-cK5" secondAttribute="centerX" id="LD4-un-hqD"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="leading" secondItem="xi7-Dd-cK5" secondAttribute="leadingMargin" id="Lmz-go-vN3"/>
-                            <constraint firstItem="XyZ-Bh-cOl" firstAttribute="top" secondItem="XgD-tA-b2p" secondAttribute="bottom" constant="22" id="SDm-KY-opy"/>
+                            <constraint firstItem="XyZ-Bh-cOl" firstAttribute="top" secondItem="XgD-tA-b2p" secondAttribute="bottom" constant="30" id="SDm-KY-opy"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="top" secondItem="6g1-lA-j7u" secondAttribute="bottom" constant="38" id="iYs-dG-CmQ"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="leading" secondItem="lcs-ZU-HmD" secondAttribute="leading" constant="36" id="jov-NW-MoM"/>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="trailing" secondItem="6g1-lA-j7u" secondAttribute="trailing" constant="20" id="lSN-aB-945"/>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="trailing" secondItem="3EY-to-a8a" secondAttribute="trailing" constant="20" id="oHh-eb-1Bx"/>
-                            <constraint firstItem="XgD-tA-b2p" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="60" id="of9-kz-dc7"/>
-                            <constraint firstItem="3EY-to-a8a" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="118" id="tAM-BH-HHe"/>
+                            <constraint firstItem="XgD-tA-b2p" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="20" id="of9-kz-dc7"/>
+                            <constraint firstItem="3EY-to-a8a" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="85" id="tAM-BH-HHe"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="leading" secondItem="3QN-dD-v6j" secondAttribute="leading" id="uwX-Wr-ND0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GMV-D0-YiK"/>
+                    <connections>
+                        <outlet property="ignoreCVEsToggle" destination="3EY-to-a8a" id="JcJ-P0-fID"/>
+                        <outlet property="ignoreVPNToggle" destination="6g1-lA-j7u" id="0Es-9b-74S"/>
+                        <outlet property="removeQuarantinedItemsButton" destination="VVp-lR-pHR" id="a87-b4-8SB"/>
+                        <outlet property="saveSettingsbutton" destination="3QN-dD-v6j" id="qIc-RA-lvh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W66-Zu-5CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

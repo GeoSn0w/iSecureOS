@@ -9,7 +9,8 @@
 #include <sys/stat.h>
 #include "iSecureOS-Common.h"
 
-#define CURRENT_VERSION 1.16
+#define kFloatFormat2(x) [NSString stringWithFormat:@"%.2f", [x floatValue]]
+NSString *app_ver = @"1.17";
 
 bool checkForAppUpdate() {
     NSString *appVersionPlist = @"https://geosn0w.github.io/iSecureOS-Definitions/Isabella/SystemVersion.plist";
@@ -21,13 +22,16 @@ bool checkForAppUpdate() {
         CANT_CHK_VER = true;
         return false;
     }
-    double NewestVersion = [[propertyListDict objectForKey:@"CurrentVersion"] floatValue];
-    NSLog(@"%f", NewestVersion);
-    return (fabs(CURRENT_VERSION - NewestVersion) < 0.01);
+    NSString * NewestVersion = [propertyListDict objectForKey:@"CurrentVersion"];
+
+    if ([NewestVersion isEqualToString:app_ver]) {
+        return false;
+    }
+    return true;
 }
 
 int performRepoSignatureUpdate() {
-        NSString *stringURL = @"https://geosn0w.github.io/iSecureOS/Signatures/repo-signatures";
+        NSString *stringURL = @"https://geosn0w.github.io/iSecureOS-Definitions/Definitions/repo-signatures";
         NSURL  *url = [NSURL URLWithString:stringURL];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
         
@@ -50,7 +54,7 @@ int performRepoSignatureUpdate() {
 }
 
 int performMalwareSignatureUpdate() {
-        NSString *stringURL = @"https://geosn0w.github.io/iSecureOS/Signatures/definitions.hash";
+        NSString *stringURL = @"https://geosn0w.github.io/iSecureOS-Definitions/Definitions/definitions.hash";
         NSURL  *url = [NSURL URLWithString:stringURL];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
     

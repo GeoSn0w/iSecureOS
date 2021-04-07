@@ -96,8 +96,8 @@ BOOL shouldScan = false;
     }
     
     printf("iSecureOS v1.17 by GeoSn0w (@FCE365)\n");
-    printf("Initializing securiOS...\n", NULL);
-    
+    printf("Initializing iSecureOS...\n", NULL);
+    shouldScan = true;
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
         gestureRecognizer.cancelsTouchesInView = NO;
@@ -115,8 +115,12 @@ BOOL shouldScan = false;
     
     if (shouldScan == true){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.scanningLabel.text = @"Downloading definitons";
+            });
             if ([self updateSignaturesDB] == 0){
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    fetchUserSettings();
                     [self iSecureOSInitMain];
                 });
             } else {
@@ -127,6 +131,23 @@ BOOL shouldScan = false;
             }
         });
     }
+}
+
+void fetchUserSettings() {
+    NSString * ignoreVPNState = [[NSUserDefaults standardUserDefaults] objectForKey: @"VPN"];
+    if ([ignoreVPNState isEqualToString:@"0"]){
+        shouldNotScanVPN = false;
+    } else if ([ignoreVPNState isEqualToString:@"1"]){
+        shouldNotScanVPN = true;
+    }
+    
+    NSString * ignoreCVEState = [[NSUserDefaults standardUserDefaults] objectForKey: @"CVE"];
+    if ([ignoreCVEState isEqualToString:@"0"]){
+        shouldNotScanCVE = false;
+    } else if ([ignoreCVEState isEqualToString:@"1"]){
+        shouldNotScanCVE = true;
+    }
+    return;
 }
 
 int populateDefinitionsToArrays() {
@@ -365,18 +386,23 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     [self performLocationCheck];
     
     [self updateUIProgressBar: 0.75];
-    [self checkIfVPNIsActive];
+    if (shouldNotScanVPN != true){
+        [self checkIfVPNIsActive];
+    }
     
     sharedThreatLevel = checkActiveSSHConnection();
+    if (sharedThreatLevel == 0 || sharedThreatLevel == 1){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString * storyboardName = @"Main";
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"ThreatMenu"];
+            [self presentViewController:vc animated:YES completion:nil];
+        });
+    }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString * storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"ThreatMenu"];
-        [self presentViewController:vc animated:YES completion:nil];
-    });
-    
-    getCVEsForVersion();
+    if (shouldNotScanCVE != true){
+        getCVEsForVersion();
+    }
     [self updateUIProgressBar: 0.90];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -731,13 +757,13 @@ int checkActiveSSHConnection() {
                 NSData *data = [NSData dataWithContentsOfFile:filetocheckpath];
                 uint8_t digest[CC_SHA256_DIGEST_LENGTH];
                 CC_SHA256(data.bytes, (CC_LONG)data.length, digest);
-             
+                             
                 NSMutableString* shaoutput = [NSMutableString  stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
-             
+                             
                 for(int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
                     [shaoutput appendFormat:@"%02x", digest[i]];
                 }
-                    
+                
                 NSString *hashsignature = shaoutput;
                 if ([MalwareDefinitions containsObject:hashsignature]){
                     [detectedMalware addObject:url];
@@ -751,7 +777,7 @@ int checkActiveSSHConnection() {
                     } else {
                        malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. \n\n We could not quarantine the file automatically. \n\nIt's recommended that you delete the file in cause, and remove any unsafe repos. A ROOT FS restore may also be indicated.", filetocheckpath];
                     }
-                    
+    
                     [Vulnerabilities addObject: malwareMessageHeader];
                     [VulnerabilityDetails addObject: malwareMessage];
                     [VulnerabilitySeverity addObject: redColor];
@@ -775,7 +801,7 @@ int checkActiveSSHConnection() {
     if (quarantineDirectory) {
         closedir(quarantineDirectory);
     } else if (ENOENT == errno) {
-        mkdir("/var/mobile/iSecureOS/Quarantine", 666); // Create the quarantine with Read-Write, but no Execute perms.
+        mkdir("/var/mobile/iSecureOS/Quarantine", 0666); // Create the quarantine with Read-Write, but no Execute perms.
     } else {
         NSLog(@"Cannot check Quarantine directory. Aborting...");
         return -1;
@@ -789,16 +815,35 @@ int checkActiveSSHConnection() {
     FILE *malwareFilePath = fopen(malwarePath, "r+b" );
     fseek(malwareFilePath, 0, SEEK_SET);
     unsigned char newMagic[] = {0x69, 0x53, 0x51, 0x41};
-    fwrite(&newMagic, sizeof(newMagic), 1, malwareFilePath);
+    fwrite(&newMagic, sizeof(char), sizeof(newMagic), malwareFilePath);
     fclose(malwareFilePath);
+
+    chmod(malwarePath, 0666); // Change the malware permission to be Readable, Writable, but not Executable.
     
-    chmod(malwarePath, 666); // Change the malware permission to be Readable, Writable, but not Executable.
+    NSFileManager *fsManager = [NSFileManager defaultManager];
+    NSString *malwareFileName = [[[NSFileManager defaultManager] displayNameAtPath:pathOfMalware] stringByResolvingSymlinksInPath];
+    NSURL *malwareFileToMove = [NSURL fileURLWithPath:pathOfMalware];
+    NSString *malwareNewName = [NSString stringWithFormat:@"%@.quarantine", malwareFileName];
+    NSString *newmalwarepath = [NSString stringWithFormat:@"/var/mobile/iSecureOS/Quarantine/%@", malwareNewName];
+    NSURL *quarantinePath = [NSURL fileURLWithPath:newmalwarepath];
+    NSError *QuarantineMoveError;
     
-    NSError *moveToQuarantineErr = nil;
-    [[NSFileManager defaultManager] moveItemAtPath:pathOfMalware toPath:@"/var/mobile/iSecureOS/Quarantine" error:&moveToQuarantineErr];
+    NSError *error;
+    if ([[NSFileManager defaultManager] isDeletableFileAtPath: quarantinePath.path]) {
+        BOOL success = [[NSFileManager defaultManager] removeItemAtPath: quarantinePath.path error:&error];
+        if (!success) {
+            NSLog(@"Error removing file at path: %@", error.localizedDescription);
+        }
+    }
+    
+    [fsManager moveItemAtURL: malwareFileToMove toURL: quarantinePath error: &QuarantineMoveError];
+    
+    if (QuarantineMoveError != nil){
+        NSLog(@"An error has occured while moving the file to quarantine. Error: %@", QuarantineMoveError);
+        return -1;
+    }
     
     NSLog(@"Successfully quarantined %@", pathOfMalware);
-    
     return 0;
 }
 
