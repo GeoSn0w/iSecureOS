@@ -741,9 +741,17 @@ int checkActiveSSHConnection() {
                 NSString *hashsignature = shaoutput;
                 if ([MalwareDefinitions containsObject:hashsignature]){
                     [detectedMalware addObject:url];
+                    int quarantineResult = [self quarantineMalwareAtPath: filetocheckpath];
+            
                     NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@", filetocheckpath];
-                    NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. It's recommended that you delete the file in cause, and remove any unsafe repos.", filetocheckpath];
-                    NSLog(@"%@", malwareMessage);
+                    NSString *malwareMessage;
+                    
+                    if (quarantineResult == 0){
+                       malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. The file has automatically been quarantined for you and it's no longer executable. It's recommended that you remove any unsafe repos.", filetocheckpath];
+                    } else {
+                       malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. \n\n We could not quarantine the file automatically. \n\nIt's recommended that you delete the file in cause, and remove any unsafe repos. A ROOT FS restore may also be indicated.", filetocheckpath];
+                    }
+                    
                     [Vulnerabilities addObject: malwareMessageHeader];
                     [VulnerabilityDetails addObject: malwareMessage];
                     [VulnerabilitySeverity addObject: redColor];
@@ -757,12 +765,26 @@ int checkActiveSSHConnection() {
 
 
 - (int) quarantineMalwareAtPath: (NSString *) pathOfMalware {
-    NSMutableData *malwarefile = [NSMutableData dataWithContentsOfFile: pathOfMalware];
-    
     // Replace the Mach-O header with 0x69 0x53 0x51 0x41 (iSQA) (iSecureOS Quarantine).
     // This way the system can't open the binary by mistake (unrecognized file type).
     // It's still recommended that the file is deleted permanently, but if the user wants to keep it, this is safer.
+    // New magic should look like 0x69, 0x53, 0x51, 0x51, 0x41
     
+    // Set up the quarantine directory
+    DIR* quarantineDirectory = opendir("/var/mobile/iSecureOS/Quarantine");
+    if (quarantineDirectory) {
+        closedir(quarantineDirectory);
+    } else if (ENOENT == errno) {
+        mkdir("/var/mobile/iSecureOS/Quarantine", 666); // Create the quarantine with Read-Write, but no Execute perms.
+    } else {
+        NSLog(@"Cannot create Quarantine directory. Aborting...");
+        return -1;
+    }
+    
+    // Replace the Magic number of the file with ours. The system won't be able to recognize it's an executable.
+    // Normal Magic is 0xFEEDFACF || 0xFEEDFACE || 0xCAFEBABE || 0xCFFAEDFE || 0xCEFAEDFE
+    
+    NSMutableData *malwarefile = [NSMutableData dataWithContentsOfFile: pathOfMalware];
     char *fileLLBytes = [malwarefile mutableBytes];
     fileLLBytes[0] = 69;
     fileLLBytes[1] = 53;
@@ -771,9 +793,22 @@ int checkActiveSSHConnection() {
     NSError *quarantine_error = nil;
     
     if (![malwarefile writeToFile: pathOfMalware options:NSDataWritingAtomic error:&quarantine_error]) {
-        NSLog(@"Could not quarantine the file. Error: %@", quarantine_error);
-        return -1;
+        NSLog(@"Could not replace the magic number. Error: %@", quarantine_error);
+        return -2;
     }
+    
+    const char *malwarePath = [pathOfMalware UTF8String];
+    chmod(malwarePath, 666); // Change the malware permission to be Readable, Writable, but not Executable.
+    
+    NSError *moveToQuarantineErr = nil;
+    [[NSFileManager defaultManager] moveItemAtPath:pathOfMalware toPath:@"/var/mobile/iSecureOS/Quarantine" error:&moveToQuarantineErr];
+    
+    if (moveToQuarantineErr != nil) {
+        NSLog(@"Could move the file to quarantine. Error: %@", quarantine_error);
+        return -3;
+    }
+    NSLog(@"Successfully quarantined %@", pathOfMalware);
+    
     return 0;
 }
 
