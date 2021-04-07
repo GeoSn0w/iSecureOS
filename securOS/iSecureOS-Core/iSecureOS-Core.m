@@ -729,12 +729,12 @@ int checkActiveSSHConnection() {
                 });
                     
                 NSData *data = [NSData dataWithContentsOfFile:filetocheckpath];
-                uint8_t digest[CC_SHA512_DIGEST_LENGTH];
-                CC_SHA512(data.bytes, (CC_LONG)data.length, digest);
+                uint8_t digest[CC_SHA256_DIGEST_LENGTH];
+                CC_SHA256(data.bytes, (CC_LONG)data.length, digest);
              
-                NSMutableString* shaoutput = [NSMutableString  stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
+                NSMutableString* shaoutput = [NSMutableString  stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
              
-                for(int i = 0; i < CC_SHA512_DIGEST_LENGTH; i++) {
+                for(int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
                     [shaoutput appendFormat:@"%02x", digest[i]];
                 }
                     
@@ -752,6 +752,28 @@ int checkActiveSSHConnection() {
         }
     }
     
+    return 0;
+}
+
+
+- (int) quarantineMalwareAtPath: (NSString *) pathOfMalware {
+    NSMutableData *malwarefile = [NSMutableData dataWithContentsOfFile: pathOfMalware];
+    
+    // Replace the Mach-O header with 0x69 0x53 0x51 0x41 (iSQA) (iSecureOS Quarantine).
+    // This way the system can't open the binary by mistake (unrecognized file type).
+    // It's still recommended that the file is deleted permanently, but if the user wants to keep it, this is safer.
+    
+    char *fileLLBytes = [malwarefile mutableBytes];
+    fileLLBytes[0] = 69;
+    fileLLBytes[1] = 53;
+    fileLLBytes[2] = 51;
+    fileLLBytes[2] = 41;
+    NSError *quarantine_error = nil;
+    
+    if (![malwarefile writeToFile: pathOfMalware options:NSDataWritingAtomic error:&quarantine_error]) {
+        NSLog(@"Could not quarantine the file. Error: %@", quarantine_error);
+        return -1;
+    }
     return 0;
 }
 

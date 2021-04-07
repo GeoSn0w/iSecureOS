@@ -12,7 +12,7 @@
 #define CURRENT_VERSION 1.16
 
 bool checkForAppUpdate() {
-    NSString *appVersionPlist = @"http://geosn0w.github.io/iSecureOS-Definitions/Isabella/SystemVersion.plist";
+    NSString *appVersionPlist = @"https://geosn0w.github.io/iSecureOS-Definitions/Isabella/SystemVersion.plist";
     NSURL  *appVersionURL = [NSURL URLWithString: appVersionPlist];
     NSError *AppVersionError = nil;
     NSMutableDictionary *propertyListDict = [[NSMutableDictionary alloc] initWithContentsOfURL: appVersionURL error: &AppVersionError];
@@ -21,7 +21,8 @@ bool checkForAppUpdate() {
         CANT_CHK_VER = true;
         return false;
     }
-    double NewestVersion = [[propertyListDict objectForKey:@"AppVersion"] intValue];
+    double NewestVersion = [[propertyListDict objectForKey:@"CurrentVersion"] floatValue];
+    NSLog(@"%f", NewestVersion);
     return (fabs(CURRENT_VERSION - NewestVersion) < 0.01);
 }
 

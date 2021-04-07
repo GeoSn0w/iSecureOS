@@ -13,6 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shieldStatus;
 @property (weak, nonatomic) IBOutlet UISwitch *shouldScanDeep;
 
-
 @end
 

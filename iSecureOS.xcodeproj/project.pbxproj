@@ -168,8 +168,8 @@
 		D648A503261CAED00013A7E6 /* iSecureOS-Signatures */ = {
 			isa = PBXGroup;
 			children = (
-				D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */,
 				D62E05F5260689A300C5CDB8 /* iSecureOS-Signatures.h */,
+				D62E05F0260688F000C5CDB8 /* iSecureOS-Signatures.m */,
 			);
 			path = "iSecureOS-Signatures";
 			sourceTree = "<group>";
