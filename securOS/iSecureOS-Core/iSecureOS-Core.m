@@ -777,7 +777,7 @@ int checkActiveSSHConnection() {
     } else if (ENOENT == errno) {
         mkdir("/var/mobile/iSecureOS/Quarantine", 666); // Create the quarantine with Read-Write, but no Execute perms.
     } else {
-        NSLog(@"Cannot create Quarantine directory. Aborting...");
+        NSLog(@"Cannot check Quarantine directory. Aborting...");
         return -1;
     }
     
@@ -789,7 +789,7 @@ int checkActiveSSHConnection() {
     fileLLBytes[0] = 69;
     fileLLBytes[1] = 53;
     fileLLBytes[2] = 51;
-    fileLLBytes[2] = 41;
+    fileLLBytes[3] = 41;
     NSError *quarantine_error = nil;
     
     if (![malwarefile writeToFile: pathOfMalware options:NSDataWritingAtomic error:&quarantine_error]) {
