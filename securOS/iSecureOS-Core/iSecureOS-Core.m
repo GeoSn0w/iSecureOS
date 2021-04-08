@@ -769,18 +769,19 @@ int checkActiveSSHConnection() {
                     [detectedMalware addObject:url];
                     int quarantineResult = [self quarantineMalwareAtPath: filetocheckpath];
             
-                    NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@", filetocheckpath];
-                    NSString *malwareMessage;
-                    
                     if (quarantineResult == 0){
-                       malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. The file has automatically been quarantined for you and it's no longer executable. It's recommended that you remove any unsafe repos.", filetocheckpath];
+                        NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@ [QUARANTINED]", filetocheckpath];
+                        NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. The file has automatically been quarantined for you and it's no longer executable. It's recommended that you remove any unsafe repos.", filetocheckpath];
+                        [Vulnerabilities addObject: malwareMessageHeader];
+                        [VulnerabilityDetails addObject: malwareMessage];
+                        [VulnerabilitySeverity addObject: redColor];
                     } else {
-                       malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. \n\n We could not quarantine the file automatically. \n\nIt's recommended that you delete the file in cause, and remove any unsafe repos. A ROOT FS restore may also be indicated.", filetocheckpath];
+                        NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@ [NOT-QUARANTINED]", filetocheckpath];
+                        NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. \n\n We could not quarantine the file automatically. \n\nIt's recommended that you delete the file in cause, and remove any unsafe repos. A ROOT FS restore may also be indicated.", filetocheckpath];
+                        [Vulnerabilities addObject: malwareMessageHeader];
+                        [VulnerabilityDetails addObject: malwareMessage];
+                        [VulnerabilitySeverity addObject: redColor];
                     }
-    
-                    [Vulnerabilities addObject: malwareMessageHeader];
-                    [VulnerabilityDetails addObject: malwareMessage];
-                    [VulnerabilitySeverity addObject: redColor];
                 }
             }
         }
