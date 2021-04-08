@@ -82,7 +82,7 @@ typedef struct kernel_data_t {
 
 @implementation securiOS_Logging
 
-BOOL shouldScan = false;
+BOOL shouldScan = true;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -97,7 +97,6 @@ BOOL shouldScan = false;
     
     printf("iSecureOS v1.17 by GeoSn0w (@FCE365)\n");
     printf("Initializing iSecureOS...\n", NULL);
-    shouldScan = true;
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
         gestureRecognizer.cancelsTouchesInView = NO;
@@ -344,7 +343,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     [self updateUIProgressBar: 0.15];
     performSuspectRepoScanning();
     checkForUnsafeTweaks();
-    
+    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
     tweakInjectionPath = @"/Library/MobileSubstrate/DynamicLibraries";
     [self scanForMalwareAtPath];
     [self updateUIProgressBar: 0.20];
@@ -352,7 +351,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     tweakInjectionPath = @"/usr/lib/TweakInject";
     [self scanForMalwareAtPath];
     [self updateUIProgressBar: 0.30];
-        
+    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
     if (shouldPerformInDepthScan == true){
         dispatch_async(dispatch_get_main_queue(), ^{
             self.scanningLabel.text = @"Now Deep-scanning...";
@@ -381,10 +380,10 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 
     [self checkPasswordDefaulting];
     [self checkPasscodeProtectionStatus];
-    
+    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
     [self updateUIProgressBar: 0.70];
     [self performLocationCheck];
-    
+    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
     [self updateUIProgressBar: 0.75];
     if (shouldNotScanVPN != true){
         [self checkIfVPNIsActive];
@@ -455,19 +454,15 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     securiOS_Device_Security passcodeRetval = [self extractPasscodeStatusWithKeychain];
     
     switch (passcodeRetval) {
-        case 0:
-            printf("[ ! ] Could not detect if the device has a passcode!\n\n");
-            [Vulnerabilities addObject:@"Cannot detect if passcode is set."];
-            [VulnerabilityDetails addObject:@"This device may not have a Passcode set. Data may be accessible to anybody with physical access."];
-            [VulnerabilitySeverity addObject:orangeColor];
-            break;
         case 1:
             printf("[ i ] Passcode is active on the device. Great!\n\n");
+            break;
         case 2:
             printf("[VULNERABILITY] Passcode is NOT enabled on this device. That's BAD.\n\n");
             [Vulnerabilities addObject:@"Passcode not set!"];
             [VulnerabilityDetails addObject:@"This device does not have a Passcode set. Data is accessible to anybody with physical access."];
             [VulnerabilitySeverity addObject:orangeColor];
+            break;
     }
     
     return;
@@ -765,8 +760,7 @@ int checkActiveSSHConnection() {
                 }
                 
                 NSString *hashsignature = shaoutput;
-                if ([MalwareDefinitions containsObject:hashsignature]){
-                    [detectedMalware addObject:url];
+                if ([MalwareDefinitions containsObject:hashsignature]) {
                     int quarantineResult = [self quarantineMalwareAtPath: filetocheckpath];
             
                     if (quarantineResult == 0){
@@ -775,18 +769,20 @@ int checkActiveSSHConnection() {
                         [Vulnerabilities addObject: malwareMessageHeader];
                         [VulnerabilityDetails addObject: malwareMessage];
                         [VulnerabilitySeverity addObject: redColor];
+                        NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
                     } else {
-                        NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@ [NOT-QUARANTINED]", filetocheckpath];
+                        NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@ [QUARANTINED]", filetocheckpath];
                         NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. \n\n We could not quarantine the file automatically. \n\nIt's recommended that you delete the file in cause, and remove any unsafe repos. A ROOT FS restore may also be indicated.", filetocheckpath];
                         [Vulnerabilities addObject: malwareMessageHeader];
                         [VulnerabilityDetails addObject: malwareMessage];
                         [VulnerabilitySeverity addObject: redColor];
+                        NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
                     }
                 }
             }
         }
     }
-    
+    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
     return 0;
 }
 
