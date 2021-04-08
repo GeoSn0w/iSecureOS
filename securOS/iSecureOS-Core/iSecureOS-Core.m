@@ -69,6 +69,7 @@ NSString *tweakInjectionPath;
 UIColor *redColor;
 UIColor *yellowColor;
 UIColor *orangeColor;
+UIColor *greenColor;
 
 typedef struct kernel_data_t {
     mach_port_t kernel_port;
@@ -111,6 +112,7 @@ BOOL shouldScan = true;
     redColor = [UIColor redColor];
     yellowColor = [UIColor yellowColor];
     orangeColor = [UIColor orangeColor];
+    greenColor = [UIColor greenColor];
     
     if (shouldScan == true){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -343,7 +345,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     [self updateUIProgressBar: 0.15];
     performSuspectRepoScanning();
     checkForUnsafeTweaks();
-    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
+
     tweakInjectionPath = @"/Library/MobileSubstrate/DynamicLibraries";
     [self scanForMalwareAtPath];
     [self updateUIProgressBar: 0.20];
@@ -351,7 +353,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     tweakInjectionPath = @"/usr/lib/TweakInject";
     [self scanForMalwareAtPath];
     [self updateUIProgressBar: 0.30];
-    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
+    
     if (shouldPerformInDepthScan == true){
         dispatch_async(dispatch_get_main_queue(), ^{
             self.scanningLabel.text = @"Now Deep-scanning...";
@@ -380,10 +382,10 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
 
     [self checkPasswordDefaulting];
     [self checkPasscodeProtectionStatus];
-    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
+
     [self updateUIProgressBar: 0.70];
     [self performLocationCheck];
-    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
+    
     [self updateUIProgressBar: 0.75];
     if (shouldNotScanVPN != true){
         [self checkIfVPNIsActive];
@@ -403,6 +405,12 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         getCVEsForVersion();
     }
     [self updateUIProgressBar: 0.90];
+    
+    if ([Vulnerabilities count] == 0) {
+        [Vulnerabilities addObject:@"There's nothing wrong! Yay!"];
+        [VulnerabilityDetails addObject:@"The scan hasn't found anything suspicious, and according to the filters set in the app, you don't seem to have major vulnerabilities. Keep up!"];
+        [VulnerabilitySeverity addObject: greenColor];
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:1.5 animations:^{
@@ -441,7 +449,7 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         case -1:
             printf("There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device.");
             [Vulnerabilities addObject:@"You're not using a VPN"];
-            [VulnerabilityDetails addObject:@"There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device. Be sure to get a quality, no LOGS VPN with preferably a transparent user data collection policies. Not all VPN providers are honest and you may end up worse than without one."];
+            [VulnerabilityDetails addObject:@"There doesn't seem to be a VPN active on this device right now. You should consider a quality one, or build one yourself. These greatly improve the security of your device. Be sure to get a quality, no LOGS VPN with preferably a transparent user data collection policies. Not all VPN providers are honest and you may end up worse than without one. Avoid free VPNs at all costs, as if the VPN is free, your data is usually the product being sold. Do your research first and don't just download whatever is on top on App Store."];
             [VulnerabilitySeverity addObject:yellowColor];
         default:
             break;
@@ -769,20 +777,17 @@ int checkActiveSSHConnection() {
                         [Vulnerabilities addObject: malwareMessageHeader];
                         [VulnerabilityDetails addObject: malwareMessage];
                         [VulnerabilitySeverity addObject: redColor];
-                        NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
                     } else {
                         NSString *malwareMessageHeader = [NSString stringWithFormat:@"[Malware] File: %@ [QUARANTINED]", filetocheckpath];
                         NSString *malwareMessage = [NSString stringWithFormat:@"The file: %@ is a known malware binary file in the Jailbreak community and it can be used to remotely control, damage or otherwise affect your device. \n\n We could not quarantine the file automatically. \n\nIt's recommended that you delete the file in cause, and remove any unsafe repos. A ROOT FS restore may also be indicated.", filetocheckpath];
                         [Vulnerabilities addObject: malwareMessageHeader];
                         [VulnerabilityDetails addObject: malwareMessage];
                         [VulnerabilitySeverity addObject: redColor];
-                        NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
                     }
                 }
             }
         }
     }
-    NSLog(@"CONTENT OF DICT: %@", Vulnerabilities);
     return 0;
 }
 
