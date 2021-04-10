@@ -661,7 +661,7 @@ YouTube: iDevice Central</string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <state key="normal" title="Reset SSH Password "/>
                                 <connections>
-                                    <action selector="resetSSHPasswordsToAlpine:" destination="17g-RM-E4K" eventType="touchUpInside" id="xld-mC-mo1"/>
+                                    <action selector="resetSSHPasswordStat:" destination="17g-RM-E4K" eventType="touchUpInside" id="EH0-gr-QR3"/>
                                 </connections>
                             </button>
                         </subviews>

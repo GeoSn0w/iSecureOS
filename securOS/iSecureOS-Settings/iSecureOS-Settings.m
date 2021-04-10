@@ -119,9 +119,47 @@
             shouldNotScanVPN = false;
         }
 }
+- (IBAction)resetSSHPasswordStat:(id)sender {
+    setuid(0);
+    setgid(0);
+    bool operationSuccess = false;
+    NSError *masterPasswdAccessErr = nil;
+    NSString *masterPasswdFile = [NSString stringWithContentsOfFile:@"/etc/master.passwd" encoding:NSUTF8StringEncoding error:&masterPasswdAccessErr];
 
-- (IBAction)resetSSHPasswordsToAlpine:(id)sender {
-    
+        if (masterPasswdAccessErr != nil) {
+            _resetSSHPasswords.enabled = NO;
+            [_resetSSHPasswords setTitle:@"Failed: Permissions" forState:UIControlStateDisabled];
+        }
+
+        NSMutableArray *masterPasswdFileContent = [NSMutableArray arrayWithArray:[masterPasswdFile componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
+
+        for (int i = 0; i < masterPasswdFileContent.count; i++) {
+            NSString *userEntry = masterPasswdFileContent[i];
+
+            if ([userEntry hasPrefix:@"root"] || [userEntry hasPrefix:@"mobile"]) {
+                NSMutableArray *userEntryFromFile = [NSMutableArray arrayWithArray:[userEntry componentsSeparatedByString:@":"]];
+            
+                if (userEntryFromFile.count == 10) {
+                    userEntryFromFile[1] = @"/smx7MYTQIi2M";
+                    masterPasswdFileContent[i] = [userEntryFromFile componentsJoinedByString:@":"];
+                    operationSuccess = true;
+                } else {
+                    _resetSSHPasswords.enabled = NO;
+                    [_resetSSHPasswords setTitle:@"Failed: Missing user" forState:UIControlStateDisabled];
+                }
+                break;
+            }
+        }
+    if (operationSuccess == true) {
+        NSError *masterPasswdComponentWriteErr = nil;
+        [[masterPasswdFileContent componentsJoinedByString:@"\n"] writeToFile:@"/etc/master.passwd" atomically:YES encoding:NSUTF8StringEncoding error:&masterPasswdComponentWriteErr];
+        _resetSSHPasswords.enabled = NO;
+        [_resetSSHPasswords setTitle:@"Successfully reverted" forState:UIControlStateDisabled];
+    } else {
+        _resetSSHPasswords.enabled = NO;
+        [_resetSSHPasswords setTitle:@"Failed: Write error" forState:UIControlStateDisabled];
+    }
 }
+
 
 @end
