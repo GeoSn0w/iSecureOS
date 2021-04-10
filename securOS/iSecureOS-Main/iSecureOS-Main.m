@@ -19,10 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _secureOS_Load_Btn.layer.cornerRadius = 22;
+    _secureOS_Load_Btn.clipsToBounds = YES;
     
     if ([self canAccessGitHubPages] != true) {
         _secureOS_Load_Btn.enabled = false;
-        [_secureOS_Load_Btn setTitle:@"No connection." forState:UIControlStateDisabled];
+        [_secureOS_Load_Btn setTitle:@"No internet connection." forState:UIControlStateDisabled];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString * storyboardName = @"Main";
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+            UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NoInternetConnection"];
+            [self presentViewController:vc animated:YES completion:nil];
+        });
     } else {
         if (@available(iOS 13.0, *)) {
                 self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
@@ -37,9 +45,6 @@
             _currentStatus.text = @"You have scanned before.";
             _shieldStatus.image = [UIImage imageNamed: @"shield.png"];
         }
-         
-        _secureOS_Load_Btn.layer.cornerRadius = 22;
-        _secureOS_Load_Btn.clipsToBounds = YES;
         
         bool shouldUpdate = checkForAppUpdate();
         if (shouldUpdate) {
@@ -48,7 +53,7 @@
             
         } else if (CANT_CHK_VER) {
             _secureOS_Load_Btn.enabled = NO;
-            [_secureOS_Load_Btn setTitle:@"Can't check version" forState: UIControlStateDisabled];
+            [_secureOS_Load_Btn setTitle:@"GitHub is blocked?" forState: UIControlStateDisabled];
             
         } else {
             setuid(0);
