@@ -27,14 +27,14 @@
     
     _saveSettingsbutton.layer.cornerRadius = 22;
     _saveSettingsbutton.clipsToBounds = YES;
-    _resetSSHPasswords.layer.cornerRadius = 22;
-    _resetSSHPasswords.clipsToBounds = YES;
+    _resetPasswordsBtn.layer.cornerRadius = 22;
+    _resetPasswordsBtn.clipsToBounds = YES;
     _removeQuarantinedItemsButton.layer.cornerRadius = 18;
     _removeQuarantinedItemsButton.clipsToBounds = YES;
     [self fetchSettingsFromDefaults];
     
     if (getuid() != 0){
-        _resetSSHPasswords.enabled = NO;
+        _resetPasswordsBtn.enabled = NO;
     }
     
 }
@@ -124,7 +124,8 @@
             shouldNotScanVPN = false;
         }
 }
-- (IBAction)resetSSHPasswordStat:(id)sender {
+
+- (IBAction)resetPasswordsAction:(id)sender {
     setuid(0);
     setgid(0);
     bool operationSuccess = false;
@@ -132,8 +133,8 @@
     NSString *masterPasswdFile = [NSString stringWithContentsOfFile:@"/etc/master.passwd" encoding:NSUTF8StringEncoding error:&masterPasswdAccessErr];
 
         if (masterPasswdAccessErr != nil) {
-            _resetSSHPasswords.enabled = NO;
-            [_resetSSHPasswords setTitle:@"Failed: Permissions" forState:UIControlStateDisabled];
+            _resetPasswordsBtn.enabled = NO;
+            [_resetPasswordsBtn setTitle:@"Failed: Permissions" forState:UIControlStateDisabled];
         }
 
         NSMutableArray *masterPasswdFileContent = [NSMutableArray arrayWithArray:[masterPasswdFile componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
@@ -149,8 +150,8 @@
                     masterPasswdFileContent[i] = [userEntryFromFile componentsJoinedByString:@":"];
                     operationSuccess = true;
                 } else {
-                    _resetSSHPasswords.enabled = NO;
-                    [_resetSSHPasswords setTitle:@"Failed: Missing user" forState:UIControlStateDisabled];
+                    _resetPasswordsBtn.enabled = NO;
+                    [_resetPasswordsBtn setTitle:@"Failed: Missing user" forState:UIControlStateDisabled];
                 }
                 break;
             }
@@ -158,8 +159,8 @@
     if (operationSuccess == true) {
         NSError *masterPasswdComponentWriteErr = nil;
         [[masterPasswdFileContent componentsJoinedByString:@"\n"] writeToFile:@"/etc/master.passwd" atomically:YES encoding:NSUTF8StringEncoding error:&masterPasswdComponentWriteErr];
-        _resetSSHPasswords.enabled = NO;
-        [_resetSSHPasswords setTitle:@"Successfully reverted" forState:UIControlStateDisabled];
+        _resetPasswordsBtn.enabled = NO;
+        [_resetPasswordsBtn setTitle:@"Successfully reverted" forState:UIControlStateDisabled];
         
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"iSecureOS Security Manager"
                                                                        message:@"The SSH password for ROOT and MOBILE users has been reverted back to the default, alpine. Please do a scan with iSecureOS and change it to a new one that you will remember."
@@ -172,10 +173,9 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     } else {
-        _resetSSHPasswords.enabled = NO;
-        [_resetSSHPasswords setTitle:@"Failed: Write error" forState:UIControlStateDisabled];
+        _resetPasswordsBtn.enabled = NO;
+        [_resetPasswordsBtn setTitle:@"Failed: Write error" forState:UIControlStateDisabled];
     }
 }
-
 
 @end

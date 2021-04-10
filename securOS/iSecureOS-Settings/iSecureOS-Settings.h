@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *saveSettingsbutton;
 @property (weak, nonatomic) IBOutlet UISwitch *ignoreCVEsToggle;
 @property (weak, nonatomic) IBOutlet UISwitch *ignoreVPNToggle;
-@property (weak, nonatomic) IBOutlet UIButton *resetSSHPasswords;
+@property (weak, nonatomic) IBOutlet UIButton *resetPasswordsBtn;
+
 
 @end
 
