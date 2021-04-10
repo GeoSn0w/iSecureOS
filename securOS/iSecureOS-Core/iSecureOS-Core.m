@@ -190,15 +190,12 @@ int populateDefinitionsToArrays() {
 
 int populateVulnerableReposFromSignatures() {
     SecurityRiskRepos = [[NSMutableArray alloc] init];
-    NSString *textFilePath = @"/var/mobile/iSecureOS/repo-signatures";
-    NSError *error;
-    NSString *fileContentsUrls = [NSString stringWithContentsOfFile:textFilePath encoding:NSUTF8StringEncoding error:&error];
-    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:fileContentsUrls options: NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSString *base64DecodedString = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
+    NSString *repoDefinitionsPath = @"/var/mobile/iSecureOS/repo-signatures";
+    NSError *repoFileErr;
+    NSString *fileContentsUrls = [NSString stringWithContentsOfFile:repoDefinitionsPath encoding:NSUTF8StringEncoding error: &repoFileErr];
+    SecurityRiskRepos = [[fileContentsUrls componentsSeparatedByString:@"\n"] mutableCopy];
     
-    SecurityRiskRepos = [[base64DecodedString componentsSeparatedByString:@"\n"] mutableCopy];
-    NSLog(@"%@", base64DecodedString);
-    if (error == nil) {
+    if (repoFileErr == nil) {
         printf("Successfully loaded Repo Signatures into iSecureOS\n");
         return 0;
     } else {
@@ -628,6 +625,7 @@ void performSuspectRepoScanning() {
         printf("[ i ] You do not seem to have problematic repos installed. GREAT!\n\n");
     }
 }
+
 int execprog(const char *prog, const char* args[]) {
     if (args == NULL) {
         args = (const char **)&(const char*[]){ prog, NULL };
@@ -660,6 +658,12 @@ int execprog(const char *prog, const char* args[]) {
     int status;
     waitpid(pd, &status, 0);
     return 0;
+}
+
+void respringDeviceNow() {
+    const char * arguments = "backboardd";
+    execprog("killall", &arguments);
+    return;
 }
 
 int checkActiveSSHConnection() {

@@ -108,7 +108,7 @@ YouTube: iDevice Central</string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Perform iSecureOS Scan" backgroundImage="button_mask"/>
                                 <connections>
-                                    <segue destination="01f-sZ-FeH" kind="presentation" modalPresentationStyle="fullScreen" id="c3R-bq-Pxr"/>
+                                    <action selector="performScanNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jKq-hC-GYx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2z-Ik-Lma">
@@ -203,10 +203,10 @@ YouTube: iDevice Central</string>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="116.49175412293854"/>
         </scene>
-        <!--SecuriOS Logging-->
+        <!--ScanView-->
         <scene sceneID="uAH-On-fBx">
             <objects>
-                <viewController id="01f-sZ-FeH" customClass="securiOS_Logging" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SscanView" title="ScanView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="01f-sZ-FeH" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXP-yS-OWE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -95,4 +95,17 @@ bool scanFileExists (char *filename) {
     return isConnected;
 }
 
+- (IBAction)performScanNow:(id)sender {
+    _currentStatus.text = @"You have never scanned.";
+    _shieldStatus.image = [UIImage imageNamed: @"shielderr.png"];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString * storyboardName = @"Main";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"ScanView"];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
+    [_secureOS_Load_Btn setTitle:@"Re-Scan" forState:UIControlStateNormal];
+}
+
 @end

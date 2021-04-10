@@ -13,6 +13,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include "iSecureOS-Core.h"
 
 @interface iSecureOS_Settings ()
 
@@ -168,8 +169,10 @@
                                                                        message:@"The SSH password for ROOT and MOBILE users has been reverted back to the default, alpine. Please do a scan with iSecureOS and change it to a new one that you will remember."
                                    preferredStyle:UIAlertControllerStyleAlert];
 
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thank you" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action) {
+            respringDeviceNow();
+        }];
 
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];

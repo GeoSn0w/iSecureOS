@@ -21,6 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *backButton12;
 @property (weak, nonatomic) IBOutlet UITextView *logmeeh;
 @property (weak, nonatomic) IBOutlet UILabel *currentFile;
-
+void respringDeviceNow(void);
 @end
 NS_ASSUME_NONNULL_END
