@@ -32,6 +32,11 @@
     _removeQuarantinedItemsButton.layer.cornerRadius = 18;
     _removeQuarantinedItemsButton.clipsToBounds = YES;
     [self fetchSettingsFromDefaults];
+    
+    if (getuid() != 0){
+        _resetSSHPasswords.enabled = NO;
+    }
+    
 }
 
 - (IBAction)removeQuarantinedObjects:(id)sender {
@@ -155,6 +160,17 @@
         [[masterPasswdFileContent componentsJoinedByString:@"\n"] writeToFile:@"/etc/master.passwd" atomically:YES encoding:NSUTF8StringEncoding error:&masterPasswdComponentWriteErr];
         _resetSSHPasswords.enabled = NO;
         [_resetSSHPasswords setTitle:@"Successfully reverted" forState:UIControlStateDisabled];
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"iSecureOS Security Manager"
+                                                                       message:@"The SSH password for ROOT and MOBILE users has been reverted back to the default, alpine. Please do a scan with iSecureOS and change it to a new one that you will remember."
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thank you" style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
     } else {
         _resetSSHPasswords.enabled = NO;
         [_resetSSHPasswords setTitle:@"Failed: Write error" forState:UIControlStateDisabled];
