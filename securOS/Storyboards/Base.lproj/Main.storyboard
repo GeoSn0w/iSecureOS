@@ -617,11 +617,10 @@ YouTube: iDevice Central</string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
                                 <state key="normal" title="Save Settings" backgroundImage="button_mask"/>
                                 <connections>
-                                    <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="37W-EP-gJI"/>
                                     <action selector="saveSettingsAction:" destination="17g-RM-E4K" eventType="touchUpInside" id="MxH-AJ-OpK"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-lA-j7u">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-lA-j7u">
                                 <rect key="frame" x="306" y="127" width="51" height="31"/>
                                 <color key="onTintColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -636,11 +635,10 @@ YouTube: iDevice Central</string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <state key="normal" title="Remove quarantined items" backgroundImage="button_mask"/>
                                 <connections>
-                                    <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="1Es-2A-Qyx"/>
                                     <action selector="removeQuarantinedObjects:" destination="17g-RM-E4K" eventType="touchUpInside" id="lfF-XE-bfX"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-to-a8a">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-to-a8a">
                                 <rect key="frame" x="306" y="85" width="51" height="31"/>
                                 <color key="tintColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="onTintColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -655,7 +653,7 @@ YouTube: iDevice Central</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg5-zl-tMz">
-                                <rect key="frame" x="36" y="292" width="303" height="59"/>
+                                <rect key="frame" x="36" y="324" width="303" height="59"/>
                                 <color key="backgroundColor" red="1" green="0.28996187060795675" blue="0.40549791047453787" alpha="0.82975706335616439" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Z0w-lg-eln"/>
@@ -663,8 +661,6 @@ YouTube: iDevice Central</string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <state key="normal" title="Reset SSH Password "/>
                                 <connections>
-                                    <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="CCw-xl-b7S"/>
-                                    <action selector="removeQuarantinedObjects:" destination="17g-RM-E4K" eventType="touchUpInside" id="HZA-Wg-rzk"/>
                                     <action selector="resetSSHPasswordsToAlpine:" destination="17g-RM-E4K" eventType="touchUpInside" id="xld-mC-mo1"/>
                                 </connections>
                             </button>
@@ -676,12 +672,12 @@ YouTube: iDevice Central</string>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="leading" secondItem="XyZ-Bh-cOl" secondAttribute="leading" id="4Xu-ur-IEb"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="centerX" secondItem="XgD-tA-b2p" secondAttribute="centerX" id="7by-Bc-t8i"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="trailing" secondItem="3QN-dD-v6j" secondAttribute="trailing" id="8Zt-s4-E1x"/>
-                            <constraint firstItem="dg5-zl-tMz" firstAttribute="top" secondItem="xi7-Dd-cK5" secondAttribute="top" constant="292" id="9Ro-PW-Tnj"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="top" secondItem="xi7-Dd-cK5" secondAttribute="top" constant="324" id="9Ro-PW-Tnj"/>
                             <constraint firstItem="6g1-lA-j7u" firstAttribute="top" secondItem="3EY-to-a8a" secondAttribute="bottom" constant="11" id="9uv-oa-yv8"/>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="top" secondItem="XyZ-Bh-cOl" secondAttribute="bottom" constant="17" id="HsT-Wr-yqk"/>
                             <constraint firstItem="XgD-tA-b2p" firstAttribute="centerX" secondItem="xi7-Dd-cK5" secondAttribute="centerX" id="LD4-un-hqD"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="leading" secondItem="xi7-Dd-cK5" secondAttribute="leadingMargin" id="Lmz-go-vN3"/>
-                            <constraint firstItem="dg5-zl-tMz" firstAttribute="top" secondItem="VVp-lR-pHR" secondAttribute="bottom" constant="37.333333333333343" id="N91-vf-y07"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="top" secondItem="VVp-lR-pHR" secondAttribute="bottom" constant="69.5" id="N91-vf-y07"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="top" secondItem="XgD-tA-b2p" secondAttribute="bottom" constant="30" id="SDm-KY-opy"/>
                             <constraint firstItem="dg5-zl-tMz" firstAttribute="leading" secondItem="VVp-lR-pHR" secondAttribute="leading" id="Tx6-U2-xDG"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="top" secondItem="6g1-lA-j7u" secondAttribute="bottom" constant="38" id="iYs-dG-CmQ"/>
