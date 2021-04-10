@@ -76,17 +76,25 @@
 
 - (IBAction)saveSettingsAction:(id)sender {
     if (shouldNotScanVPN == true){
-        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"VPN"];
+        NSUserDefaults *iSecureOSSettings = [NSUserDefaults standardUserDefaults];
+        [iSecureOSSettings setObject:@"1" forKey:@"VPN"];
+        [iSecureOSSettings synchronize];
+        
     } else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"VPN"];
+        NSUserDefaults *iSecureOSSettings = [NSUserDefaults standardUserDefaults];
+        [iSecureOSSettings setObject:@"0" forKey:@"VPN"];
+        [iSecureOSSettings synchronize];
     }
     
     if (shouldNotScanCVE == true){
-        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"CVE"];
+        NSUserDefaults *iSecureOSSettings = [NSUserDefaults standardUserDefaults];
+        [iSecureOSSettings setObject:@"1" forKey:@"CVE"];
+        [iSecureOSSettings synchronize];
     } else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"CVE"];
+        NSUserDefaults *iSecureOSSettings = [NSUserDefaults standardUserDefaults];
+        [iSecureOSSettings setObject:@"0" forKey:@"CVE"];
+        [iSecureOSSettings synchronize];
     }
-    [[NSUserDefaults standardUserDefaults] synchronize];
     _saveSettingsbutton.enabled = false;
     [_saveSettingsbutton setTitle:@"Successfully saved!" forState:UIControlStateDisabled];
     [self dismissViewControllerAnimated:YES completion:nil];
