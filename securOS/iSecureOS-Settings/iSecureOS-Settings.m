@@ -27,6 +27,8 @@
     
     _saveSettingsbutton.layer.cornerRadius = 22;
     _saveSettingsbutton.clipsToBounds = YES;
+    _resetSSHPasswords.layer.cornerRadius = 22;
+    _resetSSHPasswords.clipsToBounds = YES;
     _removeQuarantinedItemsButton.layer.cornerRadius = 18;
     _removeQuarantinedItemsButton.clipsToBounds = YES;
     [self fetchSettingsFromDefaults];
@@ -116,6 +118,10 @@
         } else {
             shouldNotScanVPN = false;
         }
+}
+
+- (IBAction)resetSSHPasswordsToAlpine:(id)sender {
+    
 }
 
 @end

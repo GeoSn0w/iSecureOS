@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,17 +14,17 @@
             <objects>
                 <viewController id="7cp-9w-wOn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bza-wK-QP2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsx-1O-v2n">
-                                <rect key="frame" x="106" y="28" width="202" height="55"/>
+                                <rect key="frame" x="86.5" y="28" width="202" height="55"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="42"/>
                                 <color key="textColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="en2-Jo-urN">
-                                <rect key="frame" x="8" y="91" width="398" height="625"/>
+                                <rect key="frame" x="8" y="91" width="359" height="556"/>
                                 <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Thanks for using iSecureOS!
 
@@ -70,38 +70,38 @@ YouTube: iDevice Central</string>
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p49-tn-Mtp">
-                                <rect key="frame" x="0.0" y="-44" width="414" height="355"/>
+                                <rect key="frame" x="0.0" y="-44" width="375" height="355"/>
                                 <color key="backgroundColor" red="0.76470588235294112" green="0.49019607843137253" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="355" id="eeH-6u-zhP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS v1.17-B1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-Bv-fsT">
-                                <rect key="frame" x="126" y="673.66666666666663" width="162" height="24"/>
+                                <rect key="frame" x="106.5" y="604.5" width="162" height="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by GeoSn0w (FCE365)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-ci-w8X">
-                                <rect key="frame" x="137.66666666666666" y="699" width="138.99999999999997" height="17"/>
+                                <rect key="frame" x="118" y="630" width="139" height="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.61286604109999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="Eh3-i4-hpt">
-                                <rect key="frame" x="104" y="72" width="206" height="114"/>
+                                <rect key="frame" x="104" y="72" width="167" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="wDn-Nh-F0J"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-OL-EpH">
-                                <rect key="frame" x="38" y="346" width="338" height="51"/>
+                                <rect key="frame" x="38" y="346" width="299" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="7YD-68-gnu"/>
                                 </constraints>
@@ -112,14 +112,14 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2z-Ik-Lma">
-                                <rect key="frame" x="194.66666666666666" y="641" width="25" height="24"/>
+                                <rect key="frame" x="175" y="572" width="25" height="24"/>
                                 <color key="tintColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="7cp-9w-wOn" kind="modal" id="KUc-Ki-mlA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You scanned recently." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EuY-zj-fjy">
-                                <rect key="frame" x="103.66666666666669" y="200" width="207" height="28"/>
+                                <rect key="frame" x="84" y="200" width="207" height="28"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -138,7 +138,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Should perform in-depth scan" lineBreakMode="tailTruncation" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVl-e4-s8s">
-                                <rect key="frame" x="95" y="415" width="281" height="28"/>
+                                <rect key="frame" x="95" y="415" width="242" height="28"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="fzO-2X-k99"/>
@@ -148,7 +148,7 @@ YouTube: iDevice Central</string>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IR7-jV-rWl">
-                                <rect key="frame" x="367" y="20" width="31" height="31"/>
+                                <rect key="frame" x="328" y="20" width="31" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="eI7-Ez-sKj"/>
                                     <constraint firstAttribute="width" constant="31" id="fcZ-Cd-hHx"/>
@@ -208,28 +208,28 @@ YouTube: iDevice Central</string>
             <objects>
                 <viewController id="01f-sZ-FeH" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXP-yS-OWE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS is scanning..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9br-Z9-cbt">
-                                <rect key="frame" x="77" y="267.66666666666669" width="260" height="26"/>
+                                <rect key="frame" x="77" y="233" width="221" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-aN-gJI">
-                                <rect key="frame" x="21" y="312.66666666666669" width="372" height="4"/>
+                                <rect key="frame" x="21" y="278" width="333" height="4"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.52120530610000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uc-fE-0Ab">
-                                <rect key="frame" x="146.66666666666666" y="693" width="120.99999999999997" height="33"/>
+                                <rect key="frame" x="127" y="624" width="121" height="33"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P0-r0-MoM">
-                                <rect key="frame" x="52" y="405.66666666666669" width="310" height="57"/>
+                                <rect key="frame" x="52" y="371" width="271" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="nNa-W8-J9k"/>
                                 </constraints>
@@ -240,7 +240,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBp-IH-ymr">
-                                <rect key="frame" x="72" y="492.66666666666674" width="270" height="43"/>
+                                <rect key="frame" x="72" y="458" width="231" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="TFj-AE-ak6"/>
                                 </constraints>
@@ -251,14 +251,14 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-us-GcX">
-                                <rect key="frame" x="101" y="45" width="212" height="196"/>
+                                <rect key="frame" x="101" y="45" width="173" height="161.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lEf-us-GcX" secondAttribute="height" multiplier="145:128" constant="-10.140625" id="MLi-9Y-d4A"/>
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File: /var/mobile/temp/nofile/wtf/nope/test/test/test/test/test" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r9x-DC-m1U">
-                                <rect key="frame" x="21" y="333.66666666666669" width="372" height="15"/>
+                                <rect key="frame" x="21" y="299" width="333" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -315,23 +315,23 @@ YouTube: iDevice Central</string>
             <objects>
                 <viewController storyboardIdentifier="NoInternetConnection" title="NoInternetConnection" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="dark" id="9vg-SR-JMH" customClass="iSecureOS_No_Connection" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="we9-2Y-wmv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJW-Hg-gM2">
-                                <rect key="frame" x="256" y="334" width="0.0" height="0.0"/>
+                                <rect key="frame" x="236.5" y="334" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-wifi" translatesAutoresizingMaskIntoConstraints="NO" id="KKg-Bu-0jX">
-                                <rect key="frame" x="50" y="32" width="314" height="265"/>
+                                <rect key="frame" x="50" y="32" width="275" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KKg-Bu-0jX" secondAttribute="height" multiplier="32:27" id="Iob-nz-eUx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could not connect to GitHub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFw-3G-Azs">
-                                <rect key="frame" x="55" y="371" width="309" height="69"/>
+                                <rect key="frame" x="55" y="302" width="270" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="ZVI-ky-sm5"/>
                                 </constraints>
@@ -340,7 +340,7 @@ YouTube: iDevice Central</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtJ-Cq-Bt2">
-                                <rect key="frame" x="20" y="421" width="374" height="182"/>
+                                <rect key="frame" x="16" y="352" width="343" height="182"/>
                                 <color key="backgroundColor" red="0.087674916460000002" green="0.08854298494" blue="0.08854298494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="182" id="phB-Mu-tWD"/>
@@ -379,39 +379,39 @@ YouTube: iDevice Central</string>
             <objects>
                 <viewController id="s2z-G4-Ktf" customClass="securiOS_Logging" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IMW-W7-U9V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jKa-R3-uq9">
-                                <rect key="frame" x="0.0" y="70" width="414" height="646"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="577"/>
                                 <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="secuiOSTableCell" textLabel="gSy-Ci-qyz" detailTextLabel="gve-9G-JkI" imageView="6ht-4s-bDQ" style="IBUITableViewCellStyleSubtitle" id="Cew-IY-h0i">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cew-IY-h0i" id="aoh-Lu-8Vg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSy-Ci-qyz">
-                                                    <rect key="frame" x="59" y="8.9999999999999982" width="33" height="20.333333333333332"/>
+                                                    <rect key="frame" x="55" y="10" width="33" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gve-9G-JkI">
-                                                    <rect key="frame" x="59" y="31.333333333333332" width="32.666666666666664" height="14.333333333333334"/>
+                                                    <rect key="frame" x="55" y="31.5" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="shield.slash.fill" catalog="system" id="6ht-4s-bDQ">
-                                                    <rect key="frame" x="22" y="18.333333333333332" width="20" height="19"/>
+                                                    <rect key="frame" x="18" y="18" width="20" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" systemColor="systemRedColor"/>
                                                 </imageView>
@@ -439,7 +439,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmS-1o-8Ai">
-                                <rect key="frame" x="299" y="12" width="101" height="28"/>
+                                <rect key="frame" x="260" y="12" width="101" height="28"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -458,7 +458,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap vulnerabilities for details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-kb-uom">
-                                <rect key="frame" x="122.66666666666669" y="45" width="169" height="17"/>
+                                <rect key="frame" x="103" y="45" width="169" height="17"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -504,17 +504,17 @@ YouTube: iDevice Central</string>
             <objects>
                 <viewController storyboardIdentifier="ThreatMenu" title="ThreatMenu" id="BaC-SH-WIM" customClass="ThreatScreen" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hCs-Me-QCe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="kme-eX-c2P">
-                                <rect key="frame" x="110" y="44" width="194" height="110"/>
+                                <rect key="frame" x="110" y="44" width="155" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="TPE-Ub-S10"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miT-DX-HIf">
-                                <rect key="frame" x="24" y="618" width="366" height="64"/>
+                                <rect key="frame" x="24" y="549" width="327" height="64"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="3H4-c3-ORl"/>
@@ -528,13 +528,13 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Dh-k5-RRY">
-                                <rect key="frame" x="304" y="10" width="101" height="28"/>
+                                <rect key="frame" x="265" y="10" width="101" height="28"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-ZM-s1c">
-                                <rect key="frame" x="77" y="696" width="260" height="28"/>
+                                <rect key="frame" x="77" y="627" width="221" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="13"/>
                                 <state key="normal" title="That was me!">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -544,7 +544,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d2-Wl-48Y">
-                                <rect key="frame" x="24" y="213" width="366" height="367"/>
+                                <rect key="frame" x="24" y="213" width="327" height="298"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">An active SSH connection has been detected on this device. This means that someone is currently on your device via the network. If it's you, connected from your PC, then that is okay. However, if this is not you, it's crucial to change your SSH password and reboot the device now.</string>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -552,7 +552,7 @@ YouTube: iDevice Central</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Urgent Threat has been detected!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-V9-ucp">
-                                <rect key="frame" x="71" y="168" width="274" height="23.666666666666657"/>
+                                <rect key="frame" x="51.5" y="168" width="274" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -594,42 +594,42 @@ YouTube: iDevice Central</string>
             <objects>
                 <viewController id="17g-RM-E4K" customClass="iSecureOS_Settings" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xi7-Dd-cK5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgD-tA-b2p">
-                                <rect key="frame" x="82" y="20" width="250" height="38"/>
+                                <rect key="frame" x="62.5" y="20" width="250" height="38"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ignore VPN from results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoF-F9-agn">
-                                <rect key="frame" x="20" y="130" width="205.66666666666666" height="25"/>
+                                <rect key="frame" x="16" y="130" width="205.5" height="25"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-dD-v6j">
-                                <rect key="frame" x="36" y="614" width="342" height="64"/>
+                                <rect key="frame" x="36" y="545" width="303" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="MZR-Pe-Nmv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
                                 <state key="normal" title="Save Settings" backgroundImage="button_mask"/>
                                 <connections>
                                     <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="37W-EP-gJI"/>
                                     <action selector="saveSettingsAction:" destination="17g-RM-E4K" eventType="touchUpInside" id="MxH-AJ-OpK"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-lA-j7u">
-                                <rect key="frame" x="345" y="127" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-lA-j7u">
+                                <rect key="frame" x="306" y="127" width="51" height="31"/>
                                 <color key="onTintColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="vpnIgnoreSwitch:" destination="17g-RM-E4K" eventType="valueChanged" id="iEm-my-BZI"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVp-lR-pHR">
-                                <rect key="frame" x="36" y="196" width="342" height="66"/>
+                                <rect key="frame" x="36" y="196" width="303" height="58.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VVp-lR-pHR" secondAttribute="height" multiplier="57:11" id="C1X-Yk-tBY"/>
                                 </constraints>
@@ -640,8 +640,8 @@ YouTube: iDevice Central</string>
                                     <action selector="removeQuarantinedObjects:" destination="17g-RM-E4K" eventType="touchUpInside" id="lfF-XE-bfX"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-to-a8a">
-                                <rect key="frame" x="345" y="85" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3EY-to-a8a">
+                                <rect key="frame" x="306" y="85" width="51" height="31"/>
                                 <color key="tintColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="onTintColor" red="0.68504917620000005" green="0.50869542359999997" blue="0.83579152820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -649,11 +649,25 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ignore CVEs for iOS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XyZ-Bh-cOl">
-                                <rect key="frame" x="20" y="88" width="176" height="25"/>
+                                <rect key="frame" x="16" y="88" width="176" height="25"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg5-zl-tMz">
+                                <rect key="frame" x="36" y="292" width="303" height="59"/>
+                                <color key="backgroundColor" red="1" green="0.28996187060795675" blue="0.40549791047453787" alpha="0.82975706335616439" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Z0w-lg-eln"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title="Reset SSH Password "/>
+                                <connections>
+                                    <action selector="changePassword:" destination="G4X-wQ-tZw" eventType="touchUpInside" id="CCw-xl-b7S"/>
+                                    <action selector="removeQuarantinedObjects:" destination="17g-RM-E4K" eventType="touchUpInside" id="HZA-Wg-rzk"/>
+                                    <action selector="resetSSHPasswordsToAlpine:" destination="17g-RM-E4K" eventType="touchUpInside" id="xld-mC-mo1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lcs-ZU-HmD"/>
                         <color key="backgroundColor" red="0.08767491645728076" green="0.088542984937055813" blue="0.088542984937055813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -662,16 +676,21 @@ YouTube: iDevice Central</string>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="leading" secondItem="XyZ-Bh-cOl" secondAttribute="leading" id="4Xu-ur-IEb"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="centerX" secondItem="XgD-tA-b2p" secondAttribute="centerX" id="7by-Bc-t8i"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="trailing" secondItem="3QN-dD-v6j" secondAttribute="trailing" id="8Zt-s4-E1x"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="top" secondItem="xi7-Dd-cK5" secondAttribute="top" constant="292" id="9Ro-PW-Tnj"/>
                             <constraint firstItem="6g1-lA-j7u" firstAttribute="top" secondItem="3EY-to-a8a" secondAttribute="bottom" constant="11" id="9uv-oa-yv8"/>
                             <constraint firstItem="aoF-F9-agn" firstAttribute="top" secondItem="XyZ-Bh-cOl" secondAttribute="bottom" constant="17" id="HsT-Wr-yqk"/>
                             <constraint firstItem="XgD-tA-b2p" firstAttribute="centerX" secondItem="xi7-Dd-cK5" secondAttribute="centerX" id="LD4-un-hqD"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="leading" secondItem="xi7-Dd-cK5" secondAttribute="leadingMargin" id="Lmz-go-vN3"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="top" secondItem="VVp-lR-pHR" secondAttribute="bottom" constant="37.333333333333343" id="N91-vf-y07"/>
                             <constraint firstItem="XyZ-Bh-cOl" firstAttribute="top" secondItem="XgD-tA-b2p" secondAttribute="bottom" constant="30" id="SDm-KY-opy"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="leading" secondItem="VVp-lR-pHR" secondAttribute="leading" id="Tx6-U2-xDG"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="top" secondItem="6g1-lA-j7u" secondAttribute="bottom" constant="38" id="iYs-dG-CmQ"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="trailing" secondItem="VVp-lR-pHR" secondAttribute="trailing" id="idr-4G-alt"/>
                             <constraint firstItem="3QN-dD-v6j" firstAttribute="leading" secondItem="lcs-ZU-HmD" secondAttribute="leading" constant="36" id="jov-NW-MoM"/>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="trailing" secondItem="6g1-lA-j7u" secondAttribute="trailing" constant="20" id="lSN-aB-945"/>
                             <constraint firstItem="lcs-ZU-HmD" firstAttribute="trailing" secondItem="3EY-to-a8a" secondAttribute="trailing" constant="20" id="oHh-eb-1Bx"/>
                             <constraint firstItem="XgD-tA-b2p" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="20" id="of9-kz-dc7"/>
+                            <constraint firstItem="dg5-zl-tMz" firstAttribute="centerX" secondItem="xi7-Dd-cK5" secondAttribute="centerX" id="p2b-w5-4Yp"/>
                             <constraint firstItem="3EY-to-a8a" firstAttribute="top" secondItem="lcs-ZU-HmD" secondAttribute="top" constant="85" id="tAM-BH-HHe"/>
                             <constraint firstItem="VVp-lR-pHR" firstAttribute="leading" secondItem="3QN-dD-v6j" secondAttribute="leading" id="uwX-Wr-ND0"/>
                         </constraints>
@@ -681,23 +700,24 @@ YouTube: iDevice Central</string>
                         <outlet property="ignoreCVEsToggle" destination="3EY-to-a8a" id="JcJ-P0-fID"/>
                         <outlet property="ignoreVPNToggle" destination="6g1-lA-j7u" id="0Es-9b-74S"/>
                         <outlet property="removeQuarantinedItemsButton" destination="VVp-lR-pHR" id="a87-b4-8SB"/>
+                        <outlet property="resetSSHPasswords" destination="dg5-zl-tMz" id="d61-Bl-A15"/>
                         <outlet property="saveSettingsbutton" destination="3QN-dD-v6j" id="qIc-RA-lvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W66-Zu-5CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="-562.5"/>
+            <point key="canvasLocation" x="160.80000000000001" y="-562.66866566716647"/>
         </scene>
         <!--RootPasswd-->
         <scene sceneID="2En-h1-luW">
             <objects>
                 <viewController storyboardIdentifier="RootPasswd" title="RootPasswd" id="G4X-wQ-tZw" customClass="iSecureOS_ROOT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="foc-st-Hvl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new ROOT password" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i98-Io-zvP">
-                                <rect key="frame" x="55" y="197" width="304" height="29"/>
+                                <rect key="frame" x="55" y="197" width="265" height="29"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="eEA-zD-upu"/>
@@ -707,7 +727,7 @@ YouTube: iDevice Central</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cad-Iq-t54">
-                                <rect key="frame" x="38" y="447.66666666666669" width="338" height="66.000000000000057"/>
+                                <rect key="frame" x="38" y="447.5" width="299" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66.000000000000057" id="Dpw-Bn-IZ7"/>
                                 </constraints>
@@ -718,7 +738,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1q-88-UAZ">
-                                <rect key="frame" x="55" y="244.99999999999997" width="128.66666666666666" height="23.666666666666657"/>
+                                <rect key="frame" x="55" y="245" width="128.5" height="23.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23.666666666666657" id="IvB-eK-Xvm"/>
@@ -728,7 +748,7 @@ YouTube: iDevice Central</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make it strong" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xmG-uw-INv">
-                                <rect key="frame" x="55" y="276.66666666666669" width="304" height="34"/>
+                                <rect key="frame" x="55" y="276.5" width="265" height="34"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="7IR-1b-Xaq"/>
@@ -738,7 +758,7 @@ YouTube: iDevice Central</string>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password (again):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-QK-gSA">
-                                <rect key="frame" x="55" y="325.66666666666669" width="194" height="24"/>
+                                <rect key="frame" x="55" y="325.5" width="194" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="KMf-kP-91o"/>
@@ -748,7 +768,7 @@ YouTube: iDevice Central</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Make it strong" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EWP-lQ-deQ">
-                                <rect key="frame" x="55" y="357.66666666666669" width="304" height="34"/>
+                                <rect key="frame" x="55" y="357.5" width="265" height="34"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="G8c-jS-g5z"/>
@@ -758,7 +778,7 @@ YouTube: iDevice Central</string>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="RCZ-7c-2ho">
-                                <rect key="frame" x="89" y="20" width="236" height="160"/>
+                                <rect key="frame" x="89" y="20" width="197" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="DHM-6r-2sD"/>
                                 </constraints>
@@ -803,16 +823,16 @@ YouTube: iDevice Central</string>
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="85.333335876464844" height="85.333335876464844"/>
-        <image name="button_mask" width="133.33332824707031" height="66.666664123535156"/>
-        <image name="diskette" width="21.333333969116211" height="21.333333969116211"/>
-        <image name="no-wifi" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="password" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="radar" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="settings" width="42.666667938232422" height="42.666667938232422"/>
-        <image name="shield" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="back" width="128" height="128"/>
+        <image name="button_mask" width="200" height="100"/>
+        <image name="diskette" width="32" height="32"/>
+        <image name="no-wifi" width="256" height="256"/>
+        <image name="password" width="256" height="256"/>
+        <image name="radar" width="256" height="256"/>
+        <image name="settings" width="64" height="64"/>
+        <image name="shield" width="256" height="256"/>
         <image name="shield.slash.fill" catalog="system" width="128" height="121"/>
-        <image name="warning" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="warning" width="256" height="256"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
