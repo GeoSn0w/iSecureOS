@@ -10,6 +10,7 @@
 #include "iSecureOS-Common.h"
 #include "iSecureOS-Signatures.h"
 #import <SystemConfiguration/SystemConfiguration.h>
+#include "iSecureOS-Core.h"
 
 @interface ViewController ()
 
@@ -32,9 +33,6 @@
             [self presentViewController:vc animated:YES completion:nil];
         });
     } else {
-        if (@available(iOS 13.0, *)) {
-                self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
-        }
         bool shouldNotScan = scanFileExists("/var/mobile/iSecureOS/ScanResult.json");
         
         if (shouldNotScan == false) {
@@ -96,9 +94,10 @@ bool scanFileExists (char *filename) {
 }
 
 - (IBAction)performScanNow:(id)sender {
-    _currentStatus.text = @"You have never scanned.";
-    _shieldStatus.image = [UIImage imageNamed: @"shielderr.png"];
+    _currentStatus.text = @"You have scanned before.";
+    _shieldStatus.image = [UIImage imageNamed: @"shield.png"];
     
+    shouldScan = true;
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString * storyboardName = @"Main";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];

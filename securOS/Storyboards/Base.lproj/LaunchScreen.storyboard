@@ -32,7 +32,8 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hexagon" translatesAutoresizingMaskIntoConstraints="NO" id="xg1-5k-Rvt">
-                                <rect key="frame" x="121.66666666666669" y="282.66666666666669" width="170.66666666666663" height="170.66666666666669"/>
+                                <rect key="frame" x="121.66666666666667" y="282.66666666666669" width="170.66666666666663" height="170.66666666666669"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -156,7 +156,6 @@
                     _resetPasswordsBtn.enabled = NO;
                     [_resetPasswordsBtn setTitle:@"Failed: Missing user" forState:UIControlStateDisabled];
                 }
-                break;
             }
         }
     if (operationSuccess == true) {
@@ -169,9 +168,8 @@
                                                                        message:@"The SSH password for ROOT and MOBILE users has been reverted back to the default, alpine. Please do a scan with iSecureOS and change it to a new one that you will remember."
                                    preferredStyle:UIAlertControllerStyleAlert];
 
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDefault
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Thank you!" style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction * action) {
-            respringDeviceNow();
         }];
 
         [alert addAction:defaultAction];
