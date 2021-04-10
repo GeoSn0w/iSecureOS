@@ -33,8 +33,12 @@
     _removeQuarantinedItemsButton.clipsToBounds = YES;
     [self fetchSettingsFromDefaults];
     
+    setgid(0);
+    setuid(0);
+    
     if (getuid() != 0){
         _resetPasswordsBtn.enabled = NO;
+        [_resetPasswordsBtn setTitle:@"You're not root!" forState:UIControlStateDisabled];
     }
     
 }
@@ -126,8 +130,6 @@
 }
 
 - (IBAction)resetPasswordsAction:(id)sender {
-    setuid(0);
-    setgid(0);
     bool operationSuccess = false;
     NSError *masterPasswdAccessErr = nil;
     NSString *masterPasswdFile = [NSString stringWithContentsOfFile:@"/etc/master.passwd" encoding:NSUTF8StringEncoding error:&masterPasswdAccessErr];
