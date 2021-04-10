@@ -21,10 +21,8 @@
     [super viewDidLoad];
     
     if ([self canAccessGitHubPages] != true) {
-        NSString * storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"NoInternetConnection"];
-        [self presentViewController:vc animated:YES completion:nil];
+        _secureOS_Load_Btn.enabled = false;
+        [_secureOS_Load_Btn setTitle:@"No connection." forState:UIControlStateDisabled];
     } else {
         if (@available(iOS 13.0, *)) {
                 self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
