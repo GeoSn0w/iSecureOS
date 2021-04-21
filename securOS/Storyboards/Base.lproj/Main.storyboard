@@ -545,7 +545,7 @@ YouTube: iDevice Central</string>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d2-Wl-48Y">
-                                <rect key="frame" x="24" y="213.33333333333334" width="366" height="366.66666666666663"/>
+                                <rect key="frame" x="24" y="213" width="366" height="367"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">An active SSH connection has been detected on this device. This means that someone is currently on your device via the network. If it's you, connected from your PC, then that is okay. However, if this is not you, it's crucial to change your SSH password and reboot the device now.</string>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -818,6 +818,65 @@ YouTube: iDevice Central</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEW-lT-HRi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="866.25" y="-575.70422535211264"/>
+        </scene>
+        <!--ISQSEC-->
+        <scene sceneID="Ap1-bd-Xag">
+            <objects>
+                <viewController storyboardIdentifier="ISQSEC" title="ISQSEC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vlj-A7-cjp" customClass="iSecureOS_Hades_View" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oNZ-73-oey">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="8p2-QK-le1">
+                                <rect key="frame" x="110" y="44" width="194" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="zTX-8S-jk2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.44999998807907104" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNY-Fe-U55">
+                                <rect key="frame" x="304" y="10" width="101" height="28"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8e-4j-GPg">
+                                <rect key="frame" x="24" y="213.33333333333334" width="366" height="366.66666666666663"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">HADES detected something on your device is attempting to modify iSecureOS, likely to bypass the scans or to exclude certain files from the results. MainRepo is known for trying to do this and therefore we recommend you to REBOOT, Re-Jailbreak WITH TWEAKS DISABLED, and do a SCAN, then you can reboot and re-jailbreak normally.</string>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iSecureOS Hades Module Alert" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-NB-bN5">
+                                <rect key="frame" x="78.666666666666686" y="168" width="259" height="24"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4ky-Rb-YxD"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4ky-Rb-YxD" firstAttribute="bottom" secondItem="d8e-4j-GPg" secondAttribute="bottom" constant="156" id="DDr-qS-wBr"/>
+                            <constraint firstItem="ucM-NB-bN5" firstAttribute="centerX" secondItem="oNZ-73-oey" secondAttribute="centerX" constant="1" id="McS-6p-WUL"/>
+                            <constraint firstItem="d8e-4j-GPg" firstAttribute="centerX" secondItem="8p2-QK-le1" secondAttribute="centerX" id="UCf-sF-N4H"/>
+                            <constraint firstItem="8p2-QK-le1" firstAttribute="centerX" secondItem="ucM-NB-bN5" secondAttribute="centerX" constant="-1" id="aD8-t8-kzl"/>
+                            <constraint firstItem="ucM-NB-bN5" firstAttribute="top" secondItem="8p2-QK-le1" secondAttribute="bottom" constant="14" id="av4-cH-LCc"/>
+                            <constraint firstItem="8p2-QK-le1" firstAttribute="leading" secondItem="4ky-Rb-YxD" secondAttribute="leading" constant="110" id="chV-ih-Jel"/>
+                            <constraint firstItem="d8e-4j-GPg" firstAttribute="leading" secondItem="4ky-Rb-YxD" secondAttribute="leading" constant="24" id="hU2-xL-tYk"/>
+                            <constraint firstItem="4ky-Rb-YxD" firstAttribute="trailing" secondItem="gNY-Fe-U55" secondAttribute="trailing" constant="9" id="kmk-cR-djV"/>
+                            <constraint firstItem="gNY-Fe-U55" firstAttribute="top" secondItem="4ky-Rb-YxD" secondAttribute="top" constant="10" id="mfB-q3-oCx"/>
+                            <constraint firstItem="8p2-QK-le1" firstAttribute="top" secondItem="4ky-Rb-YxD" secondAttribute="top" constant="44" id="pxk-3L-MJ8"/>
+                            <constraint firstItem="d8e-4j-GPg" firstAttribute="top" secondItem="ucM-NB-bN5" secondAttribute="bottom" constant="21.333333333333258" id="skO-aM-GtP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ThreatMessage" destination="d8e-4j-GPg" id="XCC-iR-rEx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shf-Cg-nLo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2294" y="-579"/>
         </scene>
     </scenes>
     <resources>

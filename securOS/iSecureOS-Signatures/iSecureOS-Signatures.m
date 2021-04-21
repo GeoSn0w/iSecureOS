@@ -10,7 +10,7 @@
 #include "iSecureOS-Common.h"
 
 #define kFloatFormat2(x) [NSString stringWithFormat:@"%.2f", [x floatValue]]
-NSString *app_ver = @"1.21";
+NSString *app_ver = @"1.20";
 
 bool checkForAppUpdate() {
     NSString *appVersionPlist = @"https://geosn0w.github.io/iSecureOS-Definitions/Isabella/SystemVersion.plist";

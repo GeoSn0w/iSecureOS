@@ -11,3 +11,5 @@ int sharedThreatLevel;
 bool CANT_CHK_VER = false;
 bool shouldNotScanCVE;
 bool shouldNotScanVPN;
+bool H4DS = false;
+bool ISOSPL = false;

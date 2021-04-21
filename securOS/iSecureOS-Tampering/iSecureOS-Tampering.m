@@ -10,6 +10,7 @@
 #import <dlfcn.h>
 #import <mach-o/dyld.h>
 #import <TargetConditionals.h>
+#include "iSecureOS-Common.h"
 
 #define A(c)            (c) - 0x19
 
@@ -21,7 +22,7 @@ const char* checklibPresence (const char* X, const char* Y) {
     {
         if (*(X + i) == *Y)
         {
-            char* ptr = checklibPresence(X + i + 1, Y + 1);
+            const char *ptr = checklibPresence(X + i + 1, Y + 1);
             return (ptr) ? ptr - 1 : NULL;
         }
     }
@@ -39,8 +40,16 @@ char* decryptString(char* str){
     str[strlen(str)]='\0';
     return str;
 }
+bool checkiOSVersion() {
+    if (checkTampering() == true){
+        ISOSPL = false;
+        return false;
+    }
+    ISOSPL = true;
+    return true;
+}
 
-BOOL checkTampering(){
+bool checkTampering(){
     int i=0;
     while(true){
         const char *libInjectedName = _dyld_get_image_name(i++);
@@ -48,11 +57,7 @@ BOOL checkTampering(){
             break;
         }
         if (libInjectedName != NULL) {
-            char libsubstitute[] = {A('l'),A('i'),A('b'),A('s'),A('u'),A('b'),A('s'),A('t'),A('i'),A('t'),A('u'),A('t'),A('e'),A('.'),A('d'),A('y'),A('l'),A('i'),A('b'),0
-            };
-            char tweakinject[] = {A('R'),A('w'),A('e'),A('a'),A('k'),A('I'),A('n'),A('j'),A('e'),A('c'),A('t'),A('.'),A('d'),A('y'),A('l'),A('i'),A('b'),0
-            };
-            
+
             char cyinjectHide[] = {
                 A('c'),
                 A('y'),
@@ -181,6 +186,8 @@ BOOL checkTampering(){
             
             char libsparkapplistdylib[] = {A('l'),A('i'),A('b'),A('s'),A('p'),A('a'),A('r'),A('k'),A('a'),A('p'),A('p'),A('l'),A('i'),A('s'),A('t'),A('.'),A('d'),A('y'),A('l'),A('i'),A('b'),0
             };
+            char libpudding[] = {A('L'),A('i'),A('c'),A('G'),A('e'),A('n'),A('e'),A('r'),A('a'),A('t'),A('o'),A('r'),A('.'),A('d'),A('y'),A('l'),A('i'),A('b'),0
+            };
             
             char SubstrateInserterdylib[] = {
                 A('S'),A('u'),A('b'),A('s'),A('t'),A('r'),A('a'),A('t'),A('e'),A('I'),A('n'),A('s'),A('e'),A('r'),A('t'),A('e'),A('r'),A('.'),A('d'),A('y'),A('l'),A('i'),A('b'),0
@@ -198,65 +205,57 @@ BOOL checkTampering(){
                 0
             };
             
-            if (checklibPresence(libInjectedName, decryptString(libsubstitute)) != NULL){
-                printf("[ ! ] Substitute injection detected! (libsubstitute.dylib)\n\n");
-                return YES;
-            }
-            
-            if (checklibPresence(libInjectedName, decryptString(tweakinject)) != NULL){
-                printf("[ ! ] TweakInject injection detected! (TweakInject.dylib), probably Electra.\n\n");
-                return YES;
-            }
             
             if (checklibPresence(libInjectedName, decryptString(cephei)) != NULL){
-                printf("[ ! ] CEPHEI injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] CEPHEI injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(kor)) != NULL){
-                printf("[ ! ] KOR injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] KOR injection detected!\n\n");
+               return true;
             }
-            if (checklibPresence(libInjectedName, decryptString(mobilesubstratedylib)) != NULL){
-                printf("[ ! ] mobilesubstrate injection detected!\n\n");
-                return YES;
-            }
+        
             if(checklibPresence(libInjectedName, decryptString(libsparkapplistdylib)) != NULL){
-                printf("[ ! ] libsparkapplist injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] libsparkapplist injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(cyinjectHide)) != NULL){
-                printf("[ ! ] cyinjectHide injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] cyinjectHide injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(libcycriptHide)) != NULL){
-                printf("[ ! ] libcycriptHide injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] libcycriptHide injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(libfridaHide)) != NULL){
-                printf("[ ! ] libfridaHide injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] libfridaHide injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(zzzzLibertyDylibHide)) != NULL){
-                printf("[ ! ] zzzzLibertyDylibHide injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] zzzzLibertyDylibHide injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(sslkillswitch2dylib)) != NULL){
-                printf("[ ! ] sslkillswitch2dylib injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] sslkillswitch2dylib injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(zeroshadowdylib)) != NULL){
-                printf("[ ! ] zeroshadowdylib injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] zeroshadowdylib injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(SubstrateInserterdylib)) != NULL){
-                printf("[ ! ] SubstrateInserter injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] SubstrateInserter injection detected!\n\n");
+               return true;
             }
             if (checklibPresence(libInjectedName, decryptString(zzzzzzUnSubdylib)) != NULL){
-                printf("[ ! ] zzzzzzUnSubdylib injection detected!\n\n");
-                return YES;
+                NSLog(@"[ ! ] zzzzzzUnSubdylib injection detected!\n\n");
+               return true;
+            }
+            if (checklibPresence(libInjectedName, decryptString(libpudding)) != NULL){
+                NSLog(@"[ ! ] libpudding injection detected!\n\n");
+               return true;
             }
         }
     }
-    return NO;
+    return false;
 }

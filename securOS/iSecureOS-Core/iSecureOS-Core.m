@@ -35,7 +35,7 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 #import <Security/Security.h>
-
+#include "iSecureOS-Main.h"
 #include "iSecureOS-Tampering.h"
 #include "iSecureOS-Security.h"
 #include "iSecureOS-Networking.h"
@@ -344,11 +344,11 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
     checkForUnsafeTweaks();
 
     tweakInjectionPath = @"/Library/MobileSubstrate/DynamicLibraries";
-    [self scanForMalwareAtPath];
+    [self ctor_LoadActiveUX];
     [self updateUIProgressBar: 0.20];
         
     tweakInjectionPath = @"/usr/lib/TweakInject";
-    [self scanForMalwareAtPath];
+    [self ctor_LoadActiveUX];
     [self updateUIProgressBar: 0.30];
     
     if (shouldPerformInDepthScan == true){
@@ -357,24 +357,24 @@ typedef NS_ENUM (NSUInteger, securiOS_Device_Security){
         });
             
         tweakInjectionPath = @"/usr/bin/";
-        [self scanForMalwareAtPath];
+        [self ctor_LoadActiveUX];
         [self updateUIProgressBar: 0.40];
             
         tweakInjectionPath = @"/usr/libexec/";
-        [self scanForMalwareAtPath];
+        [self ctor_LoadActiveUX];
             
         tweakInjectionPath = @"/usr/sbin/";
-        [self scanForMalwareAtPath];
+        [self ctor_LoadActiveUX];
             
         tweakInjectionPath = @"/usr/lib/";
-        [self scanForMalwareAtPath];
+        [self ctor_LoadActiveUX];
         [self updateUIProgressBar: 0.50];
                     
         tweakInjectionPath = @"/bin/";
-        [self scanForMalwareAtPath];
+        [self ctor_LoadActiveUX];
             
         tweakInjectionPath = @"/sbin/";
-        [self scanForMalwareAtPath];
+        [self ctor_LoadActiveUX];
     }
 
     [self checkPasswordDefaulting];
@@ -730,7 +730,7 @@ int checkActiveSSHConnection() {
     
 }
 
-- (int) scanForMalwareAtPath {
+- (int) ctor_LoadActiveUX {
     _currentFile.hidden = NO;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *directoryURL = [NSURL URLWithString: tweakInjectionPath];

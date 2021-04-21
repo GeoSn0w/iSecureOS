@@ -7,7 +7,7 @@
 
 #ifndef securiOS_Tampering_h
 #define securiOS_Tampering_h
-
-BOOL checkTampering(void);
-
+#include <stdbool.h>
+bool checkTampering(void);
+bool checkiOSVersion(void);
 #endif /* securiOS_Tampering_h */

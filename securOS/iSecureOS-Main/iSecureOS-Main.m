@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self inspFuseSts];
     _secureOS_Load_Btn.layer.cornerRadius = 22;
     _secureOS_Load_Btn.clipsToBounds = YES;
     
@@ -105,6 +106,23 @@ bool scanFileExists (char *filename) {
         [self presentViewController:vc animated:YES completion:nil];
     });
     [_secureOS_Load_Btn setTitle:@"Re-Scan" forState:UIControlStateNormal];
+}
+
+- (void) inspFuseSts {
+    int ISQACMS = 0x0ff;
+    int MSFLA = 0x44f;
+    uint64_t kernActiveRegion = 0xffffffffffffbae2;
+    
+    if (H4DS != true || ISOSPL != true || kernActiveRegion != 0xffffffffffffbae2 || MSFLA != 0x44f || ISQACMS != 0x0ff) {
+        _secureOS_Load_Btn.enabled = NO;
+        [self updateSMBT];
+    }
+}
+
+- (void) updateSMBT {
+    _secureOS_Load_Btn.enabled = NO;
+    [_secureOS_Load_Btn setTitle:@"Disable Tweak Injection!" forState:UIControlStateDisabled];
+    return;
 }
 
 @end

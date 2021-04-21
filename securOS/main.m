@@ -7,8 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#include "iSecureOS-Hades.h"
 
 int main(int argc, char * argv[]) {
+    checkIfDeviceIsCompatible();
+    hadesExecWithSuperPriv();
+    
     NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
