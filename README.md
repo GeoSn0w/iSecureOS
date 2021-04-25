@@ -33,7 +33,7 @@ This application does not collect any user identifiable data, does not send any 
 This application also does not include any analytics or advertisements code. 
 
 ### Price
-This application is completely. It's also Open-Source, but certain re-distribution rules apply. However, if you compile it for your own use, or if you wanna integrate parts of it into a bigger project of yours, feel free to. Reskins with the pure intention to redistribute the app under a different name and logo are not allowed. 
+This application is completely free. It's also Open-Source, but certain re-distribution rules apply. However, if you compile it for your own use, or if you wanna integrate parts of it into a bigger project of yours, feel free to. Reskins with the pure intention to redistribute the app under a different name and logo are not allowed. 
 
 If you paid for it, you have been scammed.
 
