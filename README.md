@@ -42,7 +42,7 @@ This application should only be downloaded from the official repo (https://isecu
 
 ### Credits
 
-This application was done entirely by GeoSn0w (@FCE365), however, I'd like to credit **sarahh12099** for their bad repos list that is being used in the application.
+This application was done entirely by GeoSn0w (@hiDeviceCentral), however, I'd like to credit **sarahh12099** for their bad repos list that is being used in the application.
 
 ### FAQ (Frequent Asked Questions)
 
