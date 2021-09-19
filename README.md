@@ -1,7 +1,5 @@
 # iSecureOS
 
-[![Build Status](https://travis-ci.com/GeoSn0w/iSecureOS.svg?branch=main)](https://travis-ci.com/GeoSn0w/iSecureOS) ![GitHub repo size](https://img.shields.io/github/repo-size/GeoSn0w/iSecureOS) ![Website](https://img.shields.io/website?down_color=red&down_message=Problems%20at%20iSecureOS&label=Repo%20Status&up_color=green&up_message=Everything%20OK&url=https%3A%2F%2Fshields.io%2Fwebsite%2Fhttps%2Fisecureos.idevicecentral.com%2FPackages)
-
 An iOS Security Application for Jailbroken devices. It does basic checks for repos you shouldn't trust, allows one to change the ROOT and mobile password, and provides general security information about vulnerabilities you may have on your device.
 
 This tweaks is currently in Beta 1 and it is expected to get much better with time.
