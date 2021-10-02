@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *scanningImage;
 @property (weak, nonatomic) IBOutlet UIButton *viewVulnerabilities;
 @property (weak, nonatomic) IBOutlet UIButton *changeRootPassword;
-
 @property (weak, nonatomic) IBOutlet UIProgressView *scannProgressbar;
 @property (weak, nonatomic) IBOutlet UILabel *scanningLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton12;
