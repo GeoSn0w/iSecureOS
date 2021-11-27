@@ -88,7 +88,7 @@ int shouldReboot;
                         [alert addAction:defaultAction];
                         [self presentViewController:alert animated:YES completion:nil];
                     } else if (hashPasswordAndPrepare(passwordForFunc) == -2) {
-                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Could not update ROOT Password"
+                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Could not update ROOT user Password"
                                                    message:@"While iSecureOS could successfully access the master.passwd file, the system has blocked the attempt to write to it. This is likely a permissions issue."
                                                    preferredStyle:UIAlertControllerStyleAlert];
 
