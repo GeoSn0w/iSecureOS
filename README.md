@@ -2,7 +2,7 @@
 
 An iOS Security Application for Jailbroken devices. It does basic checks for repos you shouldn't trust, allows one to change the ROOT and mobile password, and provides general security information about vulnerabilities you may have on your device.
 
-This tweaks is currently in Beta 1 and it is expected to get much better with time.
+This tweak is currently in Beta 1 and it is expected to get much better with time.
 
 While this tweak aims to aid you in getting a better security strategy on your device, **this is not a real-time antivirus**.
 
@@ -10,12 +10,12 @@ While this tweak aims to aid you in getting a better security strategy on your d
 
 As of Beta 1 (v1.17~Beta1), the application has the following features:
 
-* Detects the MainRepo Backdoor malware, right now there are two separate malware occurences in the wild.
-* While scanning, it can detect an active SSH connection, or an attempted SSH connection via the network to your device.
+* Detects the MainRepo Backdoor malware, right now there are two separate malware occurrences in the wild.
+* While scanning, it can detect an active SSH connection or an attempted SSH connection via the network to your device.
 * It can detect unsafe pirate repos that may have outdated, modified or otherwise not recommended tweaks. This check is done against a built-in list fetched from GitHub for ease of updating. The app does include an in-memory copy of the list to be able to work offline when there's no internet connection.
-* Tells you some basic information about the overal security of the device: VPN, Location, Passcode, etc.
+* Tells you some basic information about the overall security of the device: VPN, Location, Passcode, etc.
 * Allows you to change the default ROOT and Mobile SSH password from the app itself.
-* Lists major CVEs for your device / version that are actively exploited in the wild - This needs to be redone as a much larger database and it's in the PoC stage.
+* Lists major CVEs for your device/version that are actively exploited in the wild - This needs to be redone as a much larger database and it's in the PoC stage.
 * Uses SHA-256 malware hashing and performs fast deep-scans which go system-wide.
 * Quarantines malware on the spot when it finds it.
 
@@ -27,7 +27,7 @@ While this application aims to help you improve your jailbreak's security, this 
 
 ### Privacy policy
 
-This application does not collect any user identifiable data, does not send any logs or reports to my server and does not track you in any way.
+This application does not collect any user-identifiable data, does not send any logs or reports to my server and does not track you in any way.
 This application also does not include any analytics or advertisements code. 
 
 ### Price
@@ -48,9 +48,9 @@ A: The CVE shown are informative. You cannot fix them without updating your iOS,
    These vulnerabilities are part of your iOS version, and many of them are the reason you can jailbreak in the first place. They are vulnerabilities nonetheless, so you should be careful.
    
 Q: The app says I don't have a VPN. What VPN should I use?
-A: We cannot make any VPN suggestions because that would be endorsement. You should research well which kind of VPN works for you. We can say that you should go for a reputable, no logs, good privacy policy VPN.
+A: We cannot make any VPN suggestions because that would be an endorsement. You should research well which kind of VPN works for you. We can say that you should go for a reputable, no logs, good privacy policy VPN.
 
-Q: What if I wanna keep using pirated repos?
+Q: What if I want to keep using pirated repos?
 A: Your choice. The app won't interfere with that and it won't delete anything.
 
 ### Compiling:
