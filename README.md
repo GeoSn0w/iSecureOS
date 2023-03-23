@@ -66,3 +66,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+### My Websites
+* <a href="https://idevicecentral.com">Latest iOS 16 Jailbreak News</a>
+* <a href="https://gametutorialpro.com">Latest Gaming News & Guides</a>
+* <a href="https://jailbreak.fce365.info">iOS Jailbreak Forum</a>
+* <a href="https://gsmbypass.com">Latest FRP Bypass Tools & Guides</a>
