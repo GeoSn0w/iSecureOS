@@ -21,6 +21,9 @@ As of Beta 1 (v1.17~Beta1), the application has the following features:
 
 More features are yet to come, this is just Beta 1.
 
+Found a vulnerability?
+Please send an email at office [a t] fce365 dot info
+
 ### Recommendations
 
 While this application aims to help you improve your jailbreak's security, this application is not an antivirus and it doesn't perform real-time scanning as of Beta 1. Maybe in the future, I might add background scanning, however, you should still use common sense and not install tweaks from unknown sources.
