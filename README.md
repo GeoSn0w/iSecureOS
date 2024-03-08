@@ -4,6 +4,8 @@ An iOS Security Application for Jailbroken devices. It does basic checks for rep
 
 This tweak is currently in Beta 1 and it is expected to get much better with time.
 
+Development for Dopamine 2 / Rootless Support has begun.
+
 While this tweak aims to aid you in getting a better security strategy on your device, **this is not a real-time antivirus**.
 
 ### Features 
